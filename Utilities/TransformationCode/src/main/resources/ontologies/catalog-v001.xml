@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.sisostds.org/ontologies/C2SIM_SMX_LOX" uri="C2SIM_SMX_LOX_version3.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.sisostds.org/ontologies/MGCS_C2SIM_SMX_LOX_V1" uri="C2SIM_SMX_LOX_v1.0.0.MGCS_v1.rdf"/>
+    <uri id="Imports Wizard Entry" name="http://www.sisostds.org/ontologies/MGCS_C2SIM_SMX_LOX_V1" uri="C2SIM_SMX_LOX_v1.0.0.MGCS_v1.rdf"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.semanticweb.org/magdalena.dechand/ontologies/2021/5/untitled-ontology-2" uri="MGCS_3_Test_14_Merge.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/C2SIM" uri="C2SIM_v1.0.0.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/C2SIM_SMX_LOX" uri="C2SIM_SMX_LOX_version3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/C2SIM_SMX_LOX_TDL" uri="C2SIM_SMX_LOX_TDL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="duplicate:http://www.sisostds.org/ontologies/MGCS" uri="MGCS_3_Test_14.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="duplicate:http://www.sisostds.org/ontologies/MGCS" uri="MGCS_v1.0.0.2.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/MGCS_C2SIM_SMX_LOX_V1" uri="C2SIM_SMX_LOX_v1.0.0.MGCS_v1.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/TDL" uri="Dembach_TDL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/lox" uri="C2SIM_LOX_v1.0.0.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1624376947996" name="http://www.sisostds.org/ontologies/smx" uri="C2SIM_SMX_v1.0.0.rdf"/>
+    </group>
+</catalog>

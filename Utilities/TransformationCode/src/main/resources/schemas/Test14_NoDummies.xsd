@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA TYPES*****-->
+  <xs:simpleType name="longitudeType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-180.0" />
+      <xs:maxInclusive value="180.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="longitude" type="longitudeType" />
+  <xs:simpleType name="angleType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-3.1415926" />
+      <xs:maxInclusive value="3.1415926" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="angle" type="angleType" />
+  <xs:simpleType name="IsoDateTimeBaseType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}[T]{1}[0-9]{2}:[0-9]{2}:[0-9]{2}[Z]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IsoDateTimeBase" type="IsoDateTimeBaseType" />
+  <xs:simpleType name="percentageType">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="percentage" type="percentageType" />
+  <xs:simpleType name="SymbolIDCodeStringType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[SGIWMO]{1}[PUAFNSHJKO\\-]{1}[PAGMOSTUFVXLIZ\\-]{1}[AP\\-]{1}[A-Z\\-]{6}[A-Z\\-\\*]{2}[\\-]{2}[AECGNSX\\-\\*]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SymbolIDCodeString" type="SymbolIDCodeStringType" />
+  <xs:simpleType name="UUIDBaseType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UUIDBase" type="UUIDBaseType" />
+  <xs:simpleType name="latitudeType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-90.0" />
+      <xs:maxInclusive value="90.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="latitude" type="latitudeType" />
+  <xs:simpleType name="IsoTimeDurationBaseType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[P]{1}[0-9]{2}[Y]{1}[0-9]{2}[M]{1}[0-9]{2}[D]{1}T{1}[0-9]{2}[H]{1}[0-9]{2}[M]{1}[0-9]{2}[S]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IsoTimeDurationBase" type="IsoTimeDurationBaseType" />
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA PROPERTIES*****-->
+  <xs:simpleType name="IsoTimeDurationType">
+    <xs:restriction base="IsoTimeDurationBaseType" />
+  </xs:simpleType>
+  <xs:element name="IsoTimeDuration" type="IsoTimeDurationType" />
+  <xs:simpleType name="QuantityType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Quantity" type="QuantityType" />
+  <xs:simpleType name="SIDCStringType">
+    <xs:restriction base="SymbolIDCodeStringType" />
+  </xs:simpleType>
+  <xs:element name="SIDCString" type="SIDCStringType" />
+  <xs:simpleType name="VersionType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Version" type="VersionType" />
+  <xs:simpleType name="IntializationFileTypeType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="IntializationFileType" type="IntializationFileTypeType" />
+  <xs:simpleType name="CommentType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Comment" type="CommentType" />
+  <xs:simpleType name="ProtocolType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Protocol" type="ProtocolType" />
+  <xs:simpleType name="ReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Reference" type="ReferenceType" />
+  <xs:simpleType name="MarkingType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Marking" type="MarkingType" />
+  <xs:simpleType name="TextType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Text" type="TextType" />
+  <xs:simpleType name="IsoDateTimeType">
+    <xs:restriction base="IsoDateTimeBaseType" />
+  </xs:simpleType>
+  <xs:element name="IsoDateTime" type="IsoDateTimeType" />
+  <xs:simpleType name="EntityTypeStringType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="EntityTypeString" type="EntityTypeStringType" />
+  <xs:simpleType name="ToBeExecutedNowType">
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:element name="ToBeExecutedNow" type="ToBeExecutedNowType" />
+  <xs:simpleType name="TriggerPhaseType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="TriggerPhase" type="TriggerPhaseType" />
+  <xs:simpleType name="SpecialC2HQType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="SpecialC2HQ" type="SpecialC2HQType" />
+  <xs:simpleType name="ProtocolVersionType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ProtocolVersion" type="ProtocolVersionType" />
+  <xs:simpleType name="UncertaintyIntervalType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="UncertaintyInterval" type="UncertaintyIntervalType" />
+  <xs:simpleType name="HigherFormationType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="HigherFormation" type="HigherFormationType" />
+  <xs:simpleType name="NameType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Name" type="NameType" />
+  <xs:simpleType name="ConfidenceLevelType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="ConfidenceLevel" type="ConfidenceLevelType" />
+  <xs:simpleType name="StrengthPercentageType">
+    <xs:restriction base="percentageType" />
+  </xs:simpleType>
+  <xs:element name="StrengthPercentage" type="StrengthPercentageType" />
+  <xs:simpleType name="InReplyToMessageIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="InReplyToMessageID" type="InReplyToMessageIDType" />
+  <xs:simpleType name="MessageIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="MessageID" type="MessageIDType" />
+  <xs:simpleType name="OrderIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="OrderID" type="OrderIDType" />
+  <xs:simpleType name="ConversationIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ConversationID" type="ConversationIDType" />
+  <xs:simpleType name="FromSendingSystemType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="FromSendingSystem" type="FromSendingSystemType" />
+  <xs:simpleType name="ReportIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ReportID" type="ReportIDType" />
+  <xs:simpleType name="ToReceivingSystemType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ToReceivingSystem" type="ToReceivingSystemType" />
+  <xs:simpleType name="ReplyToSystemType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ReplyToSystem" type="ReplyToSystemType" />
+  <xs:simpleType name="ActionReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ActionReference" type="ActionReferenceType" />
+  <xs:simpleType name="PlanPhaseReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="PlanPhaseReference" type="PlanPhaseReferenceType" />
+  <xs:simpleType name="EntityReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="EntityReference" type="EntityReferenceType" />
+  <xs:simpleType name="TaskReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="TaskReference" type="TaskReferenceType" />
+  <xs:simpleType name="EventReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="EventReference" type="EventReferenceType" />
+  <xs:simpleType name="TemporalAssociationWithActionType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="TemporalAssociationWithAction" type="TemporalAssociationWithActionType" />
+  <xs:simpleType name="CurrentTaskType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="CurrentTask" type="CurrentTaskType" />
+  <xs:simpleType name="FunctionalAssociationWithTaskType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="FunctionalAssociationWithTask" type="FunctionalAssociationWithTaskType" />
+  <xs:simpleType name="ActorReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ActorReference" type="ActorReferenceType" />
+  <xs:simpleType name="ConcreteEntityReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ConcreteEntityReference" type="ConcreteEntityReferenceType" />
+  <xs:simpleType name="PerformingEntityType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="PerformingEntity" type="PerformingEntityType" />
+  <xs:simpleType name="RequestingEntityType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="RequestingEntity" type="RequestingEntityType" />
+  <xs:simpleType name="AffectedEntityType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="AffectedEntity" type="AffectedEntityType" />
+  <xs:simpleType name="SubordinateType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Subordinate" type="SubordinateType" />
+  <xs:simpleType name="SuperiorType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Superior" type="SuperiorType" />
+  <xs:simpleType name="FromSenderType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="FromSender" type="FromSenderType" />
+  <xs:simpleType name="SubjectEntityType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="SubjectEntity" type="SubjectEntityType" />
+  <xs:simpleType name="ReportingEntityType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ReportingEntity" type="ReportingEntityType" />
+  <xs:simpleType name="ToReceiverType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ToReceiver" type="ToReceiverType" />
+  <xs:simpleType name="MapGraphicIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="MapGraphicID" type="MapGraphicIDType" />
+  <xs:simpleType name="OwnerType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Owner" type="OwnerType" />
+  <xs:simpleType name="AbstractOrganizationReferenceType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="AbstractOrganizationReference" type="AbstractOrganizationReferenceType" />
+  <xs:simpleType name="OtherSideType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="OtherSide" type="OtherSideType" />
+  <xs:simpleType name="CommunicationsNetworkType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="CommunicationsNetwork" type="CommunicationsNetworkType" />
+  <xs:simpleType name="SideType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Side" type="SideType" />
+  <xs:simpleType name="AffiliatedWithType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="AffiliatedWith" type="AffiliatedWithType" />
+  <xs:simpleType name="AngleType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Angle" type="AngleType" />
+  <xs:simpleType name="DistanceType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Distance" type="DistanceType" />
+  <xs:simpleType name="SpeedType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Speed" type="SpeedType" />
+  <xs:simpleType name="AltitudeType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Altitude" type="AltitudeType" />
+  <xs:simpleType name="PsiType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Psi" type="PsiType" />
+  <xs:simpleType name="PhiType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Phi" type="PhiType" />
+  <xs:simpleType name="HeadingAngleType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="HeadingAngle" type="HeadingAngleType" />
+  <xs:simpleType name="ThetaType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Theta" type="ThetaType" />
+  <xs:simpleType name="LengthType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Length" type="LengthType" />
+  <xs:simpleType name="WidthType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Width" type="WidthType" />
+  <xs:simpleType name="HeightType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Height" type="HeightType" />
+  <xs:simpleType name="AltitudeAGLType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="AltitudeAGL" type="AltitudeAGLType" />
+  <xs:simpleType name="AltitudeMSLType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="AltitudeMSL" type="AltitudeMSLType" />
+  <xs:simpleType name="UUIDType">
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="UUID" type="UUIDType" />
+  <xs:simpleType name="SystemNameType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="SystemName" type="SystemNameType" />
+  <xs:simpleType name="DISExtraType">
+    <xs:restriction base="xs:byte" />
+  </xs:simpleType>
+  <xs:element name="DISExtra" type="DISExtraType" />
+  <xs:simpleType name="DISCountryType">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:element name="DISCountry" type="DISCountryType" />
+  <xs:simpleType name="DISKindType">
+    <xs:restriction base="xs:byte" />
+  </xs:simpleType>
+  <xs:element name="DISKind" type="DISKindType" />
+  <xs:simpleType name="DISSubCategoryType">
+    <xs:restriction base="xs:byte" />
+  </xs:simpleType>
+  <xs:element name="DISSubCategory" type="DISSubCategoryType" />
+  <xs:simpleType name="DISCategoryType">
+    <xs:restriction base="xs:byte" />
+  </xs:simpleType>
+  <xs:element name="DISCategory" type="DISCategoryType" />
+  <xs:simpleType name="DISSpecificType">
+    <xs:restriction base="xs:byte" />
+  </xs:simpleType>
+  <xs:element name="DISSpecific" type="DISSpecificType" />
+  <xs:simpleType name="DISDomainType">
+    <xs:restriction base="xs:byte" />
+  </xs:simpleType>
+  <xs:element name="DISDomain" type="DISDomainType" />
+  <xs:simpleType name="NorthType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="North" type="NorthType" />
+  <xs:simpleType name="LongitudeType">
+    <xs:restriction base="longitudeType" />
+  </xs:simpleType>
+  <xs:element name="Longitude" type="LongitudeType" />
+  <xs:simpleType name="EastType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="East" type="EastType" />
+  <xs:simpleType name="LatitudeType">
+    <xs:restriction base="latitudeType" />
+  </xs:simpleType>
+  <xs:element name="Latitude" type="LatitudeType" />
+  <xs:simpleType name="UpType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Up" type="UpType" />
+  <!--*****COMPLEX TYPES AND MODEL GROUPS DERIVED FROM ONTOLOGY CLASSES*****-->
+  <xs:complexType name="C2SIMContentType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="C2SIMContent" type="C2SIMContentType" />
+  <xs:complexType name="MessageConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MessageConcept" type="MessageConceptType" />
+  <xs:complexType name="InitializationConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="InitializationConcept" type="InitializationConceptType" />
+  <xs:complexType name="EntityType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Entity" type="EntityType" />
+  <xs:complexType name="PhysicalConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PhysicalConcept" type="PhysicalConceptType" />
+  <xs:complexType name="RuleOfEngagementType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="RuleOfEngagement" type="RuleOfEngagementType" />
+  <xs:complexType name="ActionType">
+    <xs:sequence>
+      <xs:element name="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Action" type="ActionType" />
+  <xs:complexType name="PlanPhaseTriggerType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PlanPhaseTrigger" type="PlanPhaseTriggerType" />
+  <xs:complexType name="RelationshipType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Relationship" type="RelationshipType" />
+  <xs:complexType name="ResourceType">
+    <xs:sequence>
+      <xs:element name="Quantity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resource" type="ResourceType" />
+  <xs:complexType name="PlanPhaseType">
+    <xs:sequence>
+      <xs:element name="TaskReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="SubPhase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="PlanPhaseCompletionCondition" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PlanPhaseTrigger" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanPhase" type="PlanPhaseType" />
+  <xs:complexType name="EntityStateType">
+    <xs:sequence>
+      <xs:element name="DateTime" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityState" type="EntityStateType" />
+  <xs:complexType name="CodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Code" type="CodeType" />
+  <xs:complexType name="ObservationType">
+    <xs:sequence>
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Observation" type="ObservationType" />
+  <xs:complexType name="EntityTypeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EntityType" type="EntityTypeType" />
+  <xs:complexType name="EntityDescriptorType">
+    <xs:sequence>
+      <xs:element name="AffiliatedWith" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Superior" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CommunicationsNetwork" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Side" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AllegianceRelationship" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityDescriptor" type="EntityDescriptorType" />
+  <xs:complexType name="AbstractObjectType">
+    <xs:sequence>
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractObject" type="AbstractObjectType" />
+  <xs:complexType name="PhysicalEntityType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhysicalEntity" type="PhysicalEntityType" />
+  <xs:complexType name="ActorEntityType">
+    <xs:sequence>
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActorEntity" type="ActorEntityType" />
+  <xs:complexType name="CulturalFeatureType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CulturalFeature" type="CulturalFeatureType" />
+  <xs:complexType name="GeographicFeatureType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeographicFeature" type="GeographicFeatureType" />
+  <xs:complexType name="MapGraphicType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapGraphic" type="MapGraphicType" />
+  <xs:complexType name="EnvironmentalObjectType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnvironmentalObject" type="EnvironmentalObjectType" />
+  <xs:complexType name="TacticalGraphicType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TacticalGraphic" type="TacticalGraphicType" />
+  <xs:complexType name="UnitSymbolType">
+    <xs:sequence>
+      <xs:element name="HigherFormation" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SpecialC2HQ" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="OperationalStatus" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ReinforcedReducedType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnitSymbol" type="UnitSymbolType" />
+  <xs:complexType name="METOCGraphicType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="METOCGraphic" type="METOCGraphicType" />
+  <xs:complexType name="TaskGraphicType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskGraphic" type="TaskGraphicType" />
+  <xs:complexType name="TacticalAreaType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TacticalArea" type="TacticalAreaType" />
+  <xs:complexType name="LineType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Line" type="LineType" />
+  <xs:complexType name="NBC_EventType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NBC_Event" type="NBC_EventType" />
+  <xs:complexType name="PointType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Point" type="PointType" />
+  <xs:complexType name="BoundaryType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Boundary" type="BoundaryType" />
+  <xs:complexType name="RouteType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Route" type="RouteType" />
+  <xs:complexType name="CheckPointType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CheckPoint" type="CheckPointType" />
+  <xs:complexType name="WayPointType">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WayPoint" type="WayPointType" />
+  <xs:complexType name="CollectiveEntityType">
+    <xs:sequence>
+      <xs:element name="Subordinate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollectiveEntity" type="CollectiveEntityType" />
+  <xs:complexType name="PlatformType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Platform" type="PlatformType" />
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" type="PersonType" />
+  <xs:complexType name="MilitaryOrganizationType">
+    <xs:sequence>
+      <xs:element name="Subordinate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MilitaryOrganization" type="MilitaryOrganizationType" />
+  <xs:complexType name="NonMilitaryOrganizationType">
+    <xs:sequence>
+      <xs:element name="Subordinate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NonMilitaryOrganization" type="NonMilitaryOrganizationType" />
+  <xs:complexType name="UnitType">
+    <xs:sequence>
+      <xs:element name="Subordinate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CommandRelation" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EchelonCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Unit" type="UnitType" />
+  <xs:complexType name="ForceType">
+    <xs:sequence>
+      <xs:element name="Subordinate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Force" type="ForceType" />
+  <xs:complexType name="AircraftType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Aircraft" type="AircraftType" />
+  <xs:complexType name="SurfaceVesselType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SurfaceVessel" type="SurfaceVesselType" />
+  <xs:complexType name="VehicleType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Vehicle" type="VehicleType" />
+  <xs:complexType name="SubsurfaceVesselType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubsurfaceVessel" type="SubsurfaceVesselType" />
+  <xs:complexType name="Fixed-WingType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Fixed-Wing" type="Fixed-WingType" />
+  <xs:complexType name="UAVType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UAV" type="UAVType" />
+  <xs:complexType name="RotorcraftType">
+    <xs:sequence>
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CurrentState" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rotorcraft" type="RotorcraftType" />
+  <xs:complexType name="TemporalConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TemporalConcept" type="TemporalConceptType" />
+  <xs:complexType name="SpatialOffsetType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SpatialOffset" type="SpatialOffsetType" />
+  <xs:complexType name="SpaceTimeType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TemporalConcept" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpaceTime" type="SpaceTimeType" />
+  <xs:complexType name="EntityHealthStatusType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EntityHealthStatus" type="EntityHealthStatusType" />
+  <xs:complexType name="OrientationType">
+    <xs:sequence>
+      <xs:element name="HeadingAngle" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Orientation" type="OrientationType" />
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" type="LocationType" />
+  <xs:complexType name="IntervalTimeType">
+    <xs:sequence>
+      <xs:element name="EndTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="StartTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IntervalTime" type="IntervalTimeType" />
+  <xs:complexType name="DurationType">
+    <xs:sequence>
+      <xs:element name="IsoTimeDuration" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Duration" type="DurationType" />
+  <xs:complexType name="TimeInstantType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeInstant" type="TimeInstantType" />
+  <xs:complexType name="SimulationTimeType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DelayTimeAmount" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SimulationTime" type="SimulationTimeType" />
+  <xs:complexType name="RelativeTimeType">
+    <xs:sequence>
+      <xs:element name="EventReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TimeReferenceCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DelayTimeAmount" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelativeTime" type="RelativeTimeType" />
+  <xs:complexType name="DateTimeType">
+    <xs:sequence>
+      <xs:element name="IsoDateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateTime" type="DateTimeType" />
+  <xs:complexType name="CartesianOffsetType">
+    <xs:sequence>
+      <xs:element name="Up" minOccurs="1" maxOccurs="1" />
+      <xs:element name="North" minOccurs="1" maxOccurs="1" />
+      <xs:element name="East" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartesianOffset" type="CartesianOffsetType" />
+  <xs:complexType name="StrengthType">
+    <xs:sequence>
+      <xs:element name="StrengthPercentage" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Strength" type="StrengthType" />
+  <xs:complexType name="ResourcesType">
+    <xs:sequence>
+      <xs:element name="Resource" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resources" type="ResourcesType" />
+  <xs:complexType name="OperationalStatusType">
+    <xs:sequence>
+      <xs:element name="OperationalStatusCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationalStatus" type="OperationalStatusType" />
+  <xs:complexType name="HeadingType">
+    <xs:sequence>
+      <xs:element name="HeadingAngle" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Heading" type="HeadingType" />
+  <xs:complexType name="EulerAnglesType">
+    <xs:sequence>
+      <xs:element name="Psi" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Phi" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Theta" minOccurs="1" maxOccurs="1" />
+      <xs:element name="HeadingAngle" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EulerAngles" type="EulerAnglesType" />
+  <xs:complexType name="RelativeLocationType">
+    <xs:sequence>
+      <xs:element name="EntityReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SpatialOffset" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelativeLocation" type="RelativeLocationType" />
+  <xs:complexType name="AreaLocationType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="GeodeticCoordinate" minOccurs="3" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AreaLocation" type="AreaLocationType" />
+  <xs:complexType name="GeodeticCoordinateType">
+    <xs:sequence>
+      <xs:element name="Longitude" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Latitude" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AltitudeAGL" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AltitudeMSL" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeodeticCoordinate" type="GeodeticCoordinateType" />
+  <xs:complexType name="MipWeaponUseROEType">
+    <xs:sequence>
+      <xs:element name="WeaponROECode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MipWeaponUseROE" type="MipWeaponUseROEType" />
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:element name="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="StartTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EventCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Event" type="EventType" />
+  <xs:complexType name="TaskType">
+    <xs:sequence>
+      <xs:element name="AffectedEntity" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="PerformingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DesiredEffectCode" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EndTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TaskActionCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="StartTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Task" type="TaskType" />
+  <xs:complexType name="UAVTaskType">
+    <xs:sequence>
+      <xs:element name="AffectedEntity" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="PerformingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ResourceDeployment" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="SpaceTime" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="DesiredEffectCode" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EndTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TaskActionCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="StartTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UAVTask" type="UAVTaskType" />
+  <xs:complexType name="ManeuverWarfareTaskType">
+    <xs:sequence>
+      <xs:element name="AffectedEntity" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="PerformingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TaskFunctionalRelation" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="RuleOfEngagement" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ResourceDeployment" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="DesiredEffectCode" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EndTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TaskActionCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="StartTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ManeuverWarfareTask" type="ManeuverWarfareTaskType" />
+  <xs:complexType name="EventTriggerType">
+    <xs:sequence>
+      <xs:element name="Event" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventTrigger" type="EventTriggerType" />
+  <xs:complexType name="PriorPhaseCompletionTriggerType">
+    <xs:sequence>
+      <xs:element name="TriggerPhase" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PriorPhaseCompletionTrigger" type="PriorPhaseCompletionTriggerType" />
+  <xs:complexType name="OnOrderTriggerType">
+    <xs:sequence>
+      <xs:element name="TaskReference" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OnOrderTrigger" type="OnOrderTriggerType" />
+  <xs:complexType name="AllegianceRelationshipType">
+    <xs:sequence>
+      <xs:element name="ActorReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AllegianceRelationshipCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AllegianceRelationship" type="AllegianceRelationshipType" />
+  <xs:complexType name="ActionTemporalRelationshipType">
+    <xs:sequence>
+      <xs:element name="TemporalAssociationWithAction" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActionTemporalAssociationCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActionTemporalRelationship" type="ActionTemporalRelationshipType" />
+  <xs:complexType name="CommandRelationType">
+    <xs:sequence>
+      <xs:element name="ActorReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CommandRelationCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommandRelation" type="CommandRelationType" />
+  <xs:complexType name="ForceSideRelationType">
+    <xs:sequence>
+      <xs:element name="OtherSide" minOccurs="1" maxOccurs="1" />
+      <xs:element name="HostilityStatusCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ForceSideRelation" type="ForceSideRelationType" />
+  <xs:complexType name="TaskFunctionalRelationType">
+    <xs:sequence>
+      <xs:element name="FunctionalAssociationWithTask" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TaskFunctionalAssociationCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskFunctionalRelation" type="TaskFunctionalRelationType" />
+  <xs:complexType name="PhysicalStateType">
+    <xs:sequence>
+      <xs:element name="Speed" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="EntityHealthStatus" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Orientation" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DirectionOfMovement" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DateTime" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhysicalState" type="PhysicalStateType" />
+  <xs:complexType name="WeaponRuleOfEngagementCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="WeaponRuleOfEngagementCode" type="WeaponRuleOfEngagementCodeType" />
+  <xs:complexType name="ActionTemporalAssociationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ActionTemporalAssociationCode" type="ActionTemporalAssociationCodeType" />
+  <xs:complexType name="HostilityStatusCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="HostilityStatusCode" type="HostilityStatusCodeType" />
+  <xs:complexType name="SecurityClassificationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SecurityClassificationCode" type="SecurityClassificationCodeType" />
+  <xs:complexType name="ReinforcedReducedTypeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ReinforcedReducedType" type="ReinforcedReducedTypeType" />
+  <xs:complexType name="AllegianceRelationshipCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="AllegianceRelationshipCode" type="AllegianceRelationshipCodeType" />
+  <xs:complexType name="ActionCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ActionCode" type="ActionCodeType" />
+  <xs:complexType name="TimeReferenceCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TimeReferenceCode" type="TimeReferenceCodeType" />
+  <xs:complexType name="EchelonCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EchelonCode" type="EchelonCodeType" />
+  <xs:complexType name="OperationalStatusCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="OperationalStatusCode" type="OperationalStatusCodeType" />
+  <xs:complexType name="WeaponTypeSubCategoryCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="WeaponTypeSubCategoryCode" type="WeaponTypeSubCategoryCodeType" />
+  <xs:complexType name="DesiredEffectCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DesiredEffectCode" type="DesiredEffectCodeType" />
+  <xs:complexType name="TaskFunctionalAssociationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TaskFunctionalAssociationCode" type="TaskFunctionalAssociationCodeType" />
+  <xs:complexType name="OrganizationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="OrganizationCode" type="OrganizationCodeType" />
+  <xs:complexType name="CommandRelationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CommandRelationCode" type="CommandRelationCodeType" />
+  <xs:complexType name="PlanPhaseCompletionConditionType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PlanPhaseCompletionCondition" type="PlanPhaseCompletionConditionType" />
+  <xs:complexType name="TaskActionCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TaskActionCode" type="TaskActionCodeType" />
+  <xs:complexType name="EventCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EventCode" type="EventCodeType" />
+  <xs:complexType name="UnitOperationalStatusCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="UnitOperationalStatusCode" type="UnitOperationalStatusCodeType" />
+  <xs:complexType name="ReligionCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ReligionCode" type="ReligionCodeType" />
+  <xs:complexType name="EthnicGroupCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EthnicGroupCode" type="EthnicGroupCodeType" />
+  <xs:complexType name="OrganizationTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="OrganizationTypeCode" type="OrganizationTypeCodeType" />
+  <xs:complexType name="CountryCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CountryCode" type="CountryCodeType" />
+  <xs:complexType name="HealthObservationType">
+    <xs:sequence>
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EntityHealthStatus" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HealthObservation" type="HealthObservationType" />
+  <xs:complexType name="SubjectTypeObservationType">
+    <xs:sequence>
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubjectTypeObservation" type="SubjectTypeObservationType" />
+  <xs:complexType name="ActivityObservationType">
+    <xs:sequence>
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActionCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityObservation" type="ActivityObservationType" />
+  <xs:complexType name="NameObservationType">
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Side" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+      <xs:element name="HostilityStatusCode" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NameObservation" type="NameObservationType" />
+  <xs:complexType name="LocationObservationType">
+    <xs:sequence>
+      <xs:element name="Speed" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DirectionOfMovement" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocationObservation" type="LocationObservationType" />
+  <xs:complexType name="ResourceObservationType">
+    <xs:sequence>
+      <xs:element name="ConfidenceLevel" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UncertaintyInterval" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Resource" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceObservation" type="ResourceObservationType" />
+  <xs:complexType name="NamedEntityTypeType">
+    <xs:sequence>
+      <xs:element name="EntityTypeString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedEntityType" type="NamedEntityTypeType" />
+  <xs:complexType name="WeaponTypeType">
+    <xs:sequence>
+      <xs:element name="WeaponTypeSubCategoryCode" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WeaponType" type="WeaponTypeType" />
+  <xs:complexType name="DISEntityTypeType">
+    <xs:sequence>
+      <xs:element name="DISCategory" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DISDomain" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DISExtra" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DISCountry" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DISSubCategory" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DISKind" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DISSpecific" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DISEntityType" type="DISEntityTypeType" />
+  <xs:complexType name="APP6-SIDCType">
+    <xs:sequence>
+      <xs:element name="SIDCString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="APP6-SIDC" type="APP6-SIDCType" />
+  <xs:complexType name="CommunicationNetworkType">
+    <xs:sequence>
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommunicationNetwork" type="CommunicationNetworkType" />
+  <xs:complexType name="ForceSideType">
+    <xs:sequence>
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ForceSideRelation" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ForceSide" type="ForceSideType" />
+  <xs:complexType name="AbstractOrganizationType">
+    <xs:sequence>
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EthnicGroupCode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CountryCode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ReligionCode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OrganizationTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractOrganization" type="AbstractOrganizationType" />
+  <xs:complexType name="OverlayType">
+    <xs:sequence>
+      <xs:element name="EntityReference" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Overlay" type="OverlayType" />
+  <xs:complexType name="RequestContentType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="RequestContent" type="RequestContentType" />
+  <xs:complexType name="MessageCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MessageCode" type="MessageCodeType" />
+  <xs:complexType name="ReportContentType">
+    <xs:sequence>
+      <xs:element name="TimeOfObservation" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportContent" type="ReportContentType" />
+  <xs:complexType name="MessageType">
+    <xs:sequence>
+      <xs:element name="MessageBody" minOccurs="1" maxOccurs="1" />
+      <xs:element name="C2SIMHeader" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" type="MessageType" />
+  <xs:complexType name="C2SIMHeaderType">
+    <xs:sequence>
+      <xs:element name="FromSendingSystem" minOccurs="1" maxOccurs="1" />
+      <xs:element name="InReplyToMessageID" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ConversationID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ToReceivingSystem" minOccurs="1" maxOccurs="1" />
+      <xs:element name="MessageID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ReplyToSystem" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SendingTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SecurityClassificationCode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CommunicativeActTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="C2SIMHeader" type="C2SIMHeaderType" />
+  <xs:complexType name="MessageBodyType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MessageBody" type="MessageBodyType" />
+  <xs:complexType name="MIPRequestContentType">
+    <xs:sequence>
+      <xs:element name="MIPRequestCategoryCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MIPRequestContent" type="MIPRequestContentType" />
+  <xs:complexType name="TaskRequestContentType">
+    <xs:sequence>
+      <xs:element name="Task" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskRequestContent" type="TaskRequestContentType" />
+  <xs:complexType name="SystemCommandTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SystemCommandTypeCode" type="SystemCommandTypeCodeType" />
+  <xs:complexType name="MIPRequestCategoryCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MIPRequestCategoryCode" type="MIPRequestCategoryCodeType" />
+  <xs:complexType name="CommunicativeActTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CommunicativeActTypeCode" type="CommunicativeActTypeCodeType" />
+  <xs:complexType name="TaskStatusCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TaskStatusCode" type="TaskStatusCodeType" />
+  <xs:complexType name="AcknowledgeTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="AcknowledgeTypeCode" type="AcknowledgeTypeCodeType" />
+  <xs:complexType name="PositionReportContentType">
+    <xs:sequence>
+      <xs:element name="SubjectEntity" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="1" />
+      <xs:element name="EntityHealthStatus" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="TimeOfObservation" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PositionReportContent" type="PositionReportContentType" />
+  <xs:complexType name="ObservationReportContentType">
+    <xs:sequence>
+      <xs:element name="Observation" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="TimeOfObservation" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObservationReportContent" type="ObservationReportContentType" />
+  <xs:complexType name="TaskStatusType">
+    <xs:sequence>
+      <xs:element name="CurrentTask" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TaskStatusCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TimeOfObservation" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskStatus" type="TaskStatusType" />
+  <xs:complexType name="SystemAcknowledgementBodyType">
+    <xs:sequence>
+      <xs:element name="AcknowledgeTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemAcknowledgementBody" type="SystemAcknowledgementBodyType" />
+  <xs:complexType name="DomainMessageBodyType">
+    <xs:sequence>
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DomainMessageBody" type="DomainMessageBodyType" />
+  <xs:complexType name="ObjectInitializationBodyType">
+    <xs:sequence>
+      <xs:element name="InitializationDataFile" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ScenarioSetting" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SystemEntityList" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ObjectDefinitions" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectInitializationBody" type="ObjectInitializationBodyType" />
+  <xs:complexType name="SystemCommandBodyType">
+    <xs:sequence>
+      <xs:element name="SystemCommandTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemCommandBody" type="SystemCommandBodyType" />
+  <xs:complexType name="C2SIMInitializationBodyType">
+    <xs:sequence>
+      <xs:element name="ScenarioSetting" minOccurs="1" maxOccurs="1" />
+      <xs:element name="SystemEntityList" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="ObjectDefinitions" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="InitializationDataFile" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="C2SIMInitializationBody" type="C2SIMInitializationBodyType" />
+  <xs:complexType name="OrderBodyType">
+    <xs:sequence>
+      <xs:element name="RequestingEntity" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TaskReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="OrderID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element name="IssuedTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Task" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Entity" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderBody" type="OrderBodyType" />
+  <xs:complexType name="PlanBodyType">
+    <xs:sequence>
+      <xs:element name="ToBeExecutedNow" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PlanPhaseReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PlanPhase" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanBody" type="PlanBodyType" />
+  <xs:complexType name="AcknowledgementBodyType">
+    <xs:sequence>
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AcknowledgeTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcknowledgementBody" type="AcknowledgementBodyType" />
+  <xs:complexType name="ReportBodyType">
+    <xs:sequence>
+      <xs:element name="ReportID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ReportingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ReportContent" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportBody" type="ReportBodyType" />
+  <xs:complexType name="RequestBodyType">
+    <xs:sequence>
+      <xs:element name="RequestingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element name="RequestContent" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestBody" type="RequestBodyType" />
+  <xs:complexType name="SystemEntityListType">
+    <xs:sequence>
+      <xs:element name="SystemName" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemEntityList" type="SystemEntityListType" />
+  <xs:complexType name="InitializationDataFileType">
+    <xs:sequence>
+      <xs:element name="IntializationFileType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" />
+      <xs:element name="SystemName" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InitializationDataFile" type="InitializationDataFileType" />
+  <xs:complexType name="ScenarioSettingType">
+    <xs:sequence>
+      <xs:element name="Version" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DateTime" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScenarioSetting" type="ScenarioSettingType" />
+  <xs:complexType name="ObjectDefinitionsType">
+    <xs:sequence>
+      <xs:element name="PlanPhaseReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Action" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Entity" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="AbstractObject" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectDefinitions" type="ObjectDefinitionsType" />
+</xs:schema>

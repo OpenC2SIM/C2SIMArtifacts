@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+  <xs:complexType name="TDLCorrelationReportContenttype">
+    <xs:sequence>
+      <xs:element name="hasTDLInternalDetectionID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="hasTDLOrganisatorTN" minOccurs="1" maxOccurs="1" />
+      <xs:element name="hasTDLObjectiveTN" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TimeOfObservation" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA TYPES*****-->
+  <xs:simpleType name="angleType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-3.1415926" />
+      <xs:maxInclusive value="3.1415926" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="angle" type="angleType" />
+  <xs:simpleType name="percentageType">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="100^^xsd:nonNegativeInteger" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="percentage" type="percentageType" />
+  <xs:simpleType name="latitudeType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-90.0" />
+      <xs:maxInclusive value="90.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="latitude" type="latitudeType" />
+  <xs:simpleType name="UUIDBaseType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UUIDBase" type="UUIDBaseType" />
+  <xs:simpleType name="entityTypeStringType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="entityTypeString" type="entityTypeStringType" />
+  <xs:simpleType name="IsoTimeDurationBaseType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[P]{1}[0-9]{2}[Y]{1}[0-9]{2}[M]{1}[0-9]{2}[D]{1}T{1}[0-9]{2}[H]{1}[0-9]{2}[M]{1}[0-9]{2}[S]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IsoTimeDurationBase" type="IsoTimeDurationBaseType" />
+  <xs:simpleType name="longitudeType">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-180.0" />
+      <xs:maxInclusive value="180.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="longitude" type="longitudeType" />
+  <xs:simpleType name="IsoDateTimeBaseType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}[T]{1}[0-9]{2}:[0-9]{2}:[0-9]{2}[Z]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IsoDateTimeBase" type="IsoDateTimeBaseType" />
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA PROPERTIES*****-->
+  <xs:simpleType name="EntityTypeStringType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="EntityTypeString" type="EntityTypeStringType" />
+  <xs:simpleType name="IsoTimeDurationType">
+    <xs:restriction base="IsoTimeDurationBasetype" />
+  </xs:simpleType>
+  <xs:element name="IsoTimeDuration" type="IsoTimeDurationType" />
+  <xs:simpleType name="QuantityType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Quantity" type="QuantityType" />
+  <xs:simpleType name="ProtocolVersionType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ProtocolVersion" type="ProtocolVersionType" />
+  <xs:simpleType name="MessagingDataPropertyType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="MessagingDataProperty" type="MessagingDataPropertyType" />
+  <xs:simpleType name="VersionType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Version" type="VersionType" />
+  <xs:simpleType name="IntializationFileTypeType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="IntializationFileType" type="IntializationFileTypeType" />
+  <xs:simpleType name="CommentType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Comment" type="CommentType" />
+  <xs:simpleType name="NameType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Name" type="NameType" />
+  <xs:simpleType name="ProtocolType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Protocol" type="ProtocolType" />
+  <xs:simpleType name="ReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="Reference" type="ReferenceType" />
+  <xs:simpleType name="CoordinateValueType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="CoordinateValue" type="CoordinateValueType" />
+  <xs:simpleType name="MarkingType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Marking" type="MarkingType" />
+  <xs:simpleType name="SpatialMeasureType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="SpatialMeasure" type="SpatialMeasureType" />
+  <xs:simpleType name="StrengthPercentageType">
+    <xs:restriction base="percentagetype" />
+  </xs:simpleType>
+  <xs:element name="StrengthPercentage" type="StrengthPercentageType" />
+  <xs:simpleType name="UniqueIdentifierType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="UniqueIdentifier" type="UniqueIdentifierType" />
+  <xs:simpleType name="IsoDateTimeType">
+    <xs:restriction base="IsoDateTimeBasetype" />
+  </xs:simpleType>
+  <xs:element name="IsoDateTime" type="IsoDateTimeType" />
+  <xs:simpleType name="owl:bottomDataPropertyType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="owl:bottomDataProperty" type="owl:bottomDataPropertyType" />
+  <xs:simpleType name="InReplyToMessageIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="InReplyToMessageID" type="InReplyToMessageIDType" />
+  <xs:simpleType name="MessageIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="MessageID" type="MessageIDType" />
+  <xs:simpleType name="OrderIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="OrderID" type="OrderIDType" />
+  <xs:simpleType name="ConversationIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ConversationID" type="ConversationIDType" />
+  <xs:simpleType name="FromSendingSystemType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="FromSendingSystem" type="FromSendingSystemType" />
+  <xs:simpleType name="ReportIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ReportID" type="ReportIDType" />
+  <xs:simpleType name="ToReceivingSystemType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ToReceivingSystem" type="ToReceivingSystemType" />
+  <xs:simpleType name="ReplyToSystemType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ReplyToSystem" type="ReplyToSystemType" />
+  <xs:simpleType name="SystemNameType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="SystemName" type="SystemNameType" />
+  <xs:simpleType name="ActionReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ActionReference" type="ActionReferenceType" />
+  <xs:simpleType name="EntityReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="EntityReference" type="EntityReferenceType" />
+  <xs:simpleType name="AbstractObjectReferenceType">
+    <xs:restriction />
+  </xs:simpleType>
+  <xs:element name="AbstractObjectReference" type="AbstractObjectReferenceType" />
+  <xs:simpleType name="TaskReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="TaskReference" type="TaskReferenceType" />
+  <xs:simpleType name="EventReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="EventReference" type="EventReferenceType" />
+  <xs:simpleType name="TemporalAssociationWithActionType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="TemporalAssociationWithAction" type="TemporalAssociationWithActionType" />
+  <xs:simpleType name="CurrentTaskType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="CurrentTask" type="CurrentTaskType" />
+  <xs:simpleType name="ActorReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ActorReference" type="ActorReferenceType" />
+  <xs:simpleType name="ConcreteEntityReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ConcreteEntityReference" type="ConcreteEntityReferenceType" />
+  <xs:simpleType name="PerformingEntityType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="PerformingEntity" type="PerformingEntityType" />
+  <xs:simpleType name="RequestingEntityType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="RequestingEntity" type="RequestingEntityType" />
+  <xs:simpleType name="SubordinateType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="Subordinate" type="SubordinateType" />
+  <xs:simpleType name="AffectedEntityType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="AffectedEntity" type="AffectedEntityType" />
+  <xs:simpleType name="SubjectEntityType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="SubjectEntity" type="SubjectEntityType" />
+  <xs:simpleType name="FromSenderType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="FromSender" type="FromSenderType" />
+  <xs:simpleType name="SuperiorType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="Superior" type="SuperiorType" />
+  <xs:simpleType name="ReportingEntityType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ReportingEntity" type="ReportingEntityType" />
+  <xs:simpleType name="ToReceiverType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="ToReceiver" type="ToReceiverType" />
+  <xs:simpleType name="MapGraphicIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="MapGraphicID" type="MapGraphicIDType" />
+  <xs:simpleType name="AbstractOrganizationReferenceType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="AbstractOrganizationReference" type="AbstractOrganizationReferenceType" />
+  <xs:simpleType name="CommunicationsNetworkType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="CommunicationsNetwork" type="CommunicationsNetworkType" />
+  <xs:simpleType name="AffiliatedWithType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="AffiliatedWith" type="AffiliatedWithType" />
+  <xs:simpleType name="NorthType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="North" type="NorthType" />
+  <xs:simpleType name="LongitudeType">
+    <xs:restriction base="longitudetype" />
+  </xs:simpleType>
+  <xs:element name="Longitude" type="LongitudeType" />
+  <xs:simpleType name="EastType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="East" type="EastType" />
+  <xs:simpleType name="UpType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Up" type="UpType" />
+  <xs:simpleType name="LatitudeType">
+    <xs:restriction base="latitudetype" />
+  </xs:simpleType>
+  <xs:element name="Latitude" type="LatitudeType" />
+  <xs:simpleType name="AngleType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Angle" type="AngleType" />
+  <xs:simpleType name="DistanceType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Distance" type="DistanceType" />
+  <xs:simpleType name="SpeedType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Speed" type="SpeedType" />
+  <xs:simpleType name="AltitudeType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Altitude" type="AltitudeType" />
+  <xs:simpleType name="PsiType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Psi" type="PsiType" />
+  <xs:simpleType name="PhiType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Phi" type="PhiType" />
+  <xs:simpleType name="HeadingAngleType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="HeadingAngle" type="HeadingAngleType" />
+  <xs:simpleType name="ThetaType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Theta" type="ThetaType" />
+  <xs:simpleType name="LengthType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Length" type="LengthType" />
+  <xs:simpleType name="WidthType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Width" type="WidthType" />
+  <xs:simpleType name="HeightType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Height" type="HeightType" />
+  <xs:simpleType name="AltitudeAGLType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="AltitudeAGL" type="AltitudeAGLType" />
+  <xs:simpleType name="AltitudeMSLType">
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="AltitudeMSL" type="AltitudeMSLType" />
+  <xs:simpleType name="UUIDType">
+    <xs:restriction base="UUIDBasetype" />
+  </xs:simpleType>
+  <xs:element name="UUID" type="UUIDType" />
+  <!--*****COMPLEX TYPES AND MODEL GROUPS DERIVED FROM ONTOLOGY CLASSES*****-->
+  <xs:complexType name="owl:ThingType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="owl:Thing" type="owl:ThingType" />
+  <xs:complexType name="ReportContentType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ReportContent" type="ReportContentType" />
+  <xs:complexType name="C2SIMContentType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="C2SIMContent" type="C2SIMContentType" />
+  <xs:complexType name="PositionReportContentType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PositionReportContent" type="PositionReportContentType" />
+  <xs:complexType name="MessageConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MessageConcept" type="MessageConceptType" />
+  <xs:complexType name="InitializationConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="InitializationConcept" type="InitializationConceptType" />
+  <xs:complexType name="TaskStatusType">
+    <xs:sequence>
+      <xs:element name="CurrentTask" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TaskStatusCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskStatus" type="TaskStatusType" />
+  <xs:complexType name="owl:NothingType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="owl:Nothing" type="owl:NothingType" />
+  <xs:complexType name="EntityType">
+    <xs:sequence>
+      <xs:element name="Name" maxOccurs="0" />
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Entity" type="EntityType" />
+  <xs:complexType name="EntityTypeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EntityType" type="EntityTypeType" />
+  <xs:complexType name="PhysicalConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PhysicalConcept" type="PhysicalConceptType" />
+  <xs:complexType name="ActionType">
+    <xs:sequence>
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" maxOccurs="0" />
+      <xs:element name="MapGraphicID" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Action" type="ActionType" />
+  <xs:complexType name="EntityDescriptorType">
+    <xs:sequence>
+      <xs:element name="Superior" maxOccurs="0" />
+      <xs:element name="CommunicationsNetwork" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="AffiliatedWith" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="AllegianceRelationship" minOccurs="0" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityDescriptor" type="EntityDescriptorType" />
+  <xs:complexType name="AbstractObjectType">
+    <xs:sequence>
+      <xs:element name="UUID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractObject" type="AbstractObjectType" />
+  <xs:complexType name="RelationshipType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Relationship" type="RelationshipType" />
+  <xs:complexType name="ResourceType">
+    <xs:sequence>
+      <xs:element name="Name" maxOccurs="0" />
+      <xs:element name="Quantity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EntityType" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resource" type="ResourceType" />
+  <xs:complexType name="EntityStateType">
+    <xs:sequence>
+      <xs:element name="DateTime" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityState" type="EntityStateType" />
+  <xs:complexType name="CodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Code" type="CodeType" />
+  <xs:complexType name="PhysicalEntityType">
+    <xs:sequence>
+      <xs:element name="Marking" maxOccurs="0" />
+      <xs:element name="CurrentState" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhysicalEntity" type="PhysicalEntityType" />
+  <xs:complexType name="ActorEntityType">
+    <xs:sequence>
+      <xs:element name="CurrentTask" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="Resource" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActorEntity" type="ActorEntityType" />
+  <xs:complexType name="CulturalFeatureType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CulturalFeature" type="CulturalFeatureType" />
+  <xs:complexType name="GeographicFeatureType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GeographicFeature" type="GeographicFeatureType" />
+  <xs:complexType name="MapGraphicType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MapGraphic" type="MapGraphicType" />
+  <xs:complexType name="EnvironmentalObjectType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EnvironmentalObject" type="EnvironmentalObjectType" />
+  <xs:complexType name="CollectiveEntityType">
+    <xs:sequence>
+      <xs:element name="Subordinate" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="CurrentState" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollectiveEntity" type="CollectiveEntityType" />
+  <xs:complexType name="PlatformType">
+    <xs:sequence>
+      <xs:element name="Marking" maxOccurs="0" />
+      <xs:element name="CurrentState" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Platform" type="PlatformType" />
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="Marking" maxOccurs="0" />
+      <xs:element name="CurrentState" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" type="PersonType" />
+  <xs:complexType name="NonMilitaryOrganizationType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="NonMilitaryOrganization" type="NonMilitaryOrganizationType" />
+  <xs:complexType name="NamedEntityTypeType">
+    <xs:sequence>
+      <xs:element name="EntityTypeString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedEntityType" type="NamedEntityTypeType" />
+  <xs:complexType name="TemporalConceptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TemporalConcept" type="TemporalConceptType" />
+  <xs:complexType name="SpatialOffsetType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SpatialOffset" type="SpatialOffsetType" />
+  <xs:complexType name="EntityHealthStatusType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EntityHealthStatus" type="EntityHealthStatusType" />
+  <xs:complexType name="OrientationType">
+    <xs:sequence>
+      <xs:element name="HeadingAngle" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Orientation" type="OrientationType" />
+  <xs:complexType name="LocationType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Location" type="LocationType" />
+  <xs:complexType name="IntervalTimeType">
+    <xs:sequence>
+      <xs:element name="EndTime" maxOccurs="0" />
+      <xs:element name="StartTime" maxOccurs="0" />
+      <xs:element name="Duration" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IntervalTime" type="IntervalTimeType" />
+  <xs:complexType name="DurationType">
+    <xs:sequence>
+      <xs:element name="IsoTimeDuration" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Duration" type="DurationType" />
+  <xs:complexType name="TimeInstantType">
+    <xs:sequence>
+      <xs:element name="Name" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeInstant" type="TimeInstantType" />
+  <xs:complexType name="SimulationTimeType">
+    <xs:sequence>
+      <xs:element name="DelayTimeAmount" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SimulationTime" type="SimulationTimeType" />
+  <xs:complexType name="RelativeTimeType">
+    <xs:sequence>
+      <xs:element name="EventReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DelayTimeAmount" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TimeReferenceCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelativeTime" type="RelativeTimeType" />
+  <xs:complexType name="DateTimeType">
+    <xs:sequence>
+      <xs:element name="IsoDateTime" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateTime" type="DateTimeType" />
+  <xs:complexType name="CartesianOffsetType">
+    <xs:sequence>
+      <xs:element name="North" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Up" minOccurs="1" maxOccurs="1" />
+      <xs:element name="East" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartesianOffset" type="CartesianOffsetType" />
+  <xs:complexType name="StrengthType">
+    <xs:sequence>
+      <xs:element name="StrengthPercentage" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Strength" type="StrengthType" />
+  <xs:complexType name="ResourcesType">
+    <xs:sequence>
+      <xs:element name="Resource" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resources" type="ResourcesType" />
+  <xs:complexType name="OperationalStatusType">
+    <xs:sequence>
+      <xs:element name="OperationalStatusCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationalStatus" type="OperationalStatusType" />
+  <xs:complexType name="HeadingType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Heading" type="HeadingType" />
+  <xs:complexType name="EulerAnglesType">
+    <xs:sequence>
+      <xs:element name="Psi" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Phi" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Theta" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EulerAngles" type="EulerAnglesType" />
+  <xs:complexType name="RelativeLocationType">
+    <xs:sequence>
+      <xs:element name="EntityReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="SpatialOffset" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelativeLocation" type="RelativeLocationType" />
+  <xs:complexType name="GeodeticCoordinateType">
+    <xs:sequence>
+      <xs:element name="Longitude" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AltitudeMSL" maxOccurs="0" />
+      <xs:element name="AltitudeAGL" maxOccurs="0" />
+      <xs:element name="Latitude" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeodeticCoordinate" type="GeodeticCoordinateType" />
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:element name="StartTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EventCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Event" type="EventType" />
+  <xs:complexType name="TaskType">
+    <xs:sequence>
+      <xs:element name="PerformingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AffectedEntity" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="TaskActionCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EndTime" maxOccurs="0" />
+      <xs:element name="DesiredEffectCode" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="Duration" maxOccurs="0" />
+      <xs:element name="StartTime" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Task" type="TaskType" />
+  <xs:complexType name="CommunicationNetworkType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CommunicationNetwork" type="CommunicationNetworkType" />
+  <xs:complexType name="AbstractOrganizationType">
+    <xs:sequence>
+      <xs:element name="CountryCode" maxOccurs="0" />
+      <xs:element name="OrganizationTypeCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="EthnicGroupCode" maxOccurs="0" />
+      <xs:element name="ReligionCode" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractOrganization" type="AbstractOrganizationType" />
+  <xs:complexType name="OverlayType">
+    <xs:sequence>
+      <xs:element name="EntityReference" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Overlay" type="OverlayType" />
+  <xs:complexType name="AllegianceRelationshipType">
+    <xs:sequence>
+      <xs:element name="ActorReference" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AllegianceRelationshipCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AllegianceRelationship" type="AllegianceRelationshipType" />
+  <xs:complexType name="ActionTemporalRelationshipType">
+    <xs:sequence>
+      <xs:element name="TemporalAssociationWithAction" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ActionTemporalAssociationCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Duration" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActionTemporalRelationship" type="ActionTemporalRelationshipType" />
+  <xs:complexType name="PhysicalStateType">
+    <xs:sequence>
+      <xs:element name="Speed" maxOccurs="0" />
+      <xs:element name="Orientation" maxOccurs="0" />
+      <xs:element name="EntityHealthStatus" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="Location" minOccurs="1" maxOccurs="unbound" />
+      <xs:element name="DirectionOfMovement" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhysicalState" type="PhysicalStateType" />
+  <xs:complexType name="DesiredEffectCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DesiredEffectCode" type="DesiredEffectCodeType" />
+  <xs:complexType name="ActionTemporalAssociationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ActionTemporalAssociationCode" type="ActionTemporalAssociationCodeType" />
+  <xs:complexType name="SecurityClassificationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SecurityClassificationCode" type="SecurityClassificationCodeType" />
+  <xs:complexType name="AllegianceRelationshipCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="AllegianceRelationshipCode" type="AllegianceRelationshipCodeType" />
+  <xs:complexType name="ActionCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ActionCode" type="ActionCodeType" />
+  <xs:complexType name="TimeReferenceCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TimeReferenceCode" type="TimeReferenceCodeType" />
+  <xs:complexType name="OrganizationCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="OrganizationCode" type="OrganizationCodeType" />
+  <xs:complexType name="OperationalStatusCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="OperationalStatusCode" type="OperationalStatusCodeType" />
+  <xs:complexType name="TaskActionCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TaskActionCode" type="TaskActionCodeType" />
+  <xs:complexType name="EventCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EventCode" type="EventCodeType" />
+  <xs:complexType name="ReligionCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ReligionCode" type="ReligionCodeType" />
+  <xs:complexType name="EthnicGroupCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EthnicGroupCode" type="EthnicGroupCodeType" />
+  <xs:complexType name="OrganizationTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="OrganizationTypeCode" type="OrganizationTypeCodeType" />
+  <xs:complexType name="CountryCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CountryCode" type="CountryCodeType" />
+  <xs:complexType name="RequestContentType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="RequestContent" type="RequestContentType" />
+  <xs:complexType name="MessageCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MessageCode" type="MessageCodeType" />
+  <xs:complexType name="MessageType">
+    <xs:sequence>
+      <xs:element name="C2SIMHeader" minOccurs="1" maxOccurs="1" />
+      <xs:element name="MessageBody" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" type="MessageType" />
+  <xs:complexType name="C2SIMHeaderType">
+    <xs:sequence>
+      <xs:element name="ConversationID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ToReceivingSystem" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FromSendingSystem" minOccurs="1" maxOccurs="1" />
+      <xs:element name="MessageID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="InReplyToMessageID" maxOccurs="0" />
+      <xs:element name="ReplyToSystem" maxOccurs="0" />
+      <xs:element name="SecurityClassificationCode" maxOccurs="0" />
+      <xs:element name="SendingTime" maxOccurs="0" />
+      <xs:element name="CommunicativeActTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="C2SIMHeader" type="C2SIMHeaderType" />
+  <xs:complexType name="MessageBodyType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MessageBody" type="MessageBodyType" />
+  <xs:complexType name="TaskRequestContentType">
+    <xs:sequence>
+      <xs:element name="Task" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskRequestContent" type="TaskRequestContentType" />
+  <xs:complexType name="SystemCommandTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SystemCommandTypeCode" type="SystemCommandTypeCodeType" />
+  <xs:complexType name="CommunicativeActTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CommunicativeActTypeCode" type="CommunicativeActTypeCodeType" />
+  <xs:complexType name="TaskStatusCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="TaskStatusCode" type="TaskStatusCodeType" />
+  <xs:complexType name="AcknowledgeTypeCodeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="AcknowledgeTypeCode" type="AcknowledgeTypeCodeType" />
+  <xs:complexType name="SystemAcknowledgementBodyType">
+    <xs:sequence>
+      <xs:element name="AcknowledgeTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemAcknowledgementBody" type="SystemAcknowledgementBodyType" />
+  <xs:complexType name="DomainMessageBodyType">
+    <xs:sequence>
+      <xs:element name="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ToReceiver" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DomainMessageBody" type="DomainMessageBodyType" />
+  <xs:complexType name="ObjectInitializationBodyType">
+    <xs:sequence>
+      <xs:element name="SystemEntityList" maxOccurs="0" />
+      <xs:element name="InitializationDataFile" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="ScenarioSetting" maxOccurs="0" />
+      <xs:element name="ObjectDefinitions" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectInitializationBody" type="ObjectInitializationBodyType" />
+  <xs:complexType name="SystemCommandBodyType">
+    <xs:sequence>
+      <xs:element name="SystemCommandTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemCommandBody" type="SystemCommandBodyType" />
+  <xs:complexType name="C2SIMInitializationBodyType">
+    <xs:sequence>
+      <xs:element name="InitializationDataFile" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="SystemEntityList" minOccurs="1" maxOccurs="unbound" />
+      <xs:element name="ScenarioSetting" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ObjectDefinitions" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="C2SIMInitializationBody" type="C2SIMInitializationBodyType" />
+  <xs:complexType name="OrderBodyType">
+    <xs:sequence>
+      <xs:element name="RequestingEntity" maxOccurs="0" />
+      <xs:element name="OrderID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TaskReference" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="Task" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="IssuedTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Entity" minOccurs="0" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderBody" type="OrderBodyType" />
+  <xs:complexType name="AcknowledgementBodyType">
+    <xs:sequence>
+      <xs:element name="AcknowledgeTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcknowledgementBody" type="AcknowledgementBodyType" />
+  <xs:complexType name="ReportBodyType">
+    <xs:sequence>
+      <xs:element name="ReportID" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ReportingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ReportContent" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportBody" type="ReportBodyType" />
+  <xs:complexType name="RequestBodyType">
+    <xs:sequence>
+      <xs:element name="RequestingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element name="RequestContent" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestBody" type="RequestBodyType" />
+  <xs:complexType name="SystemEntityListType">
+    <xs:sequence>
+      <xs:element name="SystemName" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ActorReference" minOccurs="1" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemEntityList" type="SystemEntityListType" />
+  <xs:complexType name="InitializationDataFileType">
+    <xs:sequence>
+      <xs:element name="SystemName" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" />
+      <xs:element name="IntializationFileType" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InitializationDataFile" type="InitializationDataFileType" />
+  <xs:complexType name="ScenarioSettingType">
+    <xs:sequence>
+      <xs:element name="Version" minOccurs="1" maxOccurs="1" />
+      <xs:element name="DateTime" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScenarioSetting" type="ScenarioSettingType" />
+  <xs:complexType name="ObjectDefinitionsType">
+    <xs:sequence>
+      <xs:element name="Action" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="AbstractObject" minOccurs="0" maxOccurs="unbound" />
+      <xs:element name="Entity" minOccurs="0" maxOccurs="unbound" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectDefinitions" type="ObjectDefinitionsType" />
+</xs:schema>

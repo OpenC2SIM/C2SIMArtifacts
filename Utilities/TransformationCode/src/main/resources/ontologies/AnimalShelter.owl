@@ -1,0 +1,149 @@
+@prefix : <http://www.fraunhofer.fkie.de/AnimalShelter#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.fraunhofer.fkie.de/AnimalShelter> .
+
+<http://www.fraunhofer.fkie.de/AnimalShelter> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#has
+:has rdf:type owl:ObjectProperty ;
+     owl:inverseOf :partOf .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#partOf
+:partOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:Name .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Animal
+:Animal rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :has ;
+                          owl:someValuesFrom :BodyPart
+                        ] .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Backbone
+:Backbone rdf:type owl:Class ;
+          owl:equivalentClass :Spine .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Bird
+:Bird rdf:type owl:Class ;
+      rdfs:subClassOf :Animal ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Spine
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :has ;
+                        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Wing
+                      ] .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#BodyPart
+:BodyPart rdf:type owl:Class .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Cat
+:Cat rdf:type owl:Class ;
+     rdfs:subClassOf :Animal .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Dog
+:Dog rdf:type owl:Class ;
+     rdfs:subClassOf :Animal ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :has ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :Backbone
+                     ] .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Limb
+:Limb rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Mammal
+:Mammal rdf:type owl:Class ;
+        rdfs:subClassOf :Vertebrate ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :has ;
+                          owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Limb
+                        ] .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Mouse
+:Mouse rdf:type owl:Class ;
+       rdfs:subClassOf :Animal .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#NamedAnimal
+:NamedAnimal rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Animal
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasName ;
+                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onDataRange xsd:Name
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Spine
+:Spine rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Vertebrate
+:Vertebrate rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Animal
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :has ;
+                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                         owl:onClass :Spine
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Wing
+:Wing rdf:type owl:Class ;
+      rdfs:subClassOf :Limb .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.fraunhofer.fkie.de/AnimalShelter#Mauz
+:Mauz rdf:type owl:NamedIndividual ,
+               :Cat .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

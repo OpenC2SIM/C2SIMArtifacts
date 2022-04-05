@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AcknowledgementBody xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="">
+    <FromSender>
+        <UUIDBase/>
+    </FromSender>
+    <ToReceiver>
+        <UUIDBase/>
+    </ToReceiver>
+    <AcknowledgeTypeCode>
+        <AcknowledgeTypeCode/>
+    </AcknowledgeTypeCode>
+</AcknowledgementBody>

@@ -1,0 +1,2718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA TYPES*****-->
+  <xs:simpleType name="IsoDateTimeBaseType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#IsoDateTimeBase</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}[T]{1}[0-9]{2}:[0-9]{2}:[0-9]{2}[Z]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IsoDateTimeBase" type="IsoDateTimeBaseType" />
+  <xs:simpleType name="IsoTimeDurationBaseType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#IsoTimeDurationBase</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[P]{1}[0-9]{2}[Y]{1}[0-9]{2}[M]{1}[0-9]{2}[D]{1}T{1}[0-9]{2}[H]{1}[0-9]{2}[M]{1}[0-9]{2}[S]{1}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IsoTimeDurationBase" type="IsoTimeDurationBaseType" />
+  <xs:simpleType name="UUIDBaseType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#UUIDBase</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UUIDBase" type="UUIDBaseType" />
+  <xs:simpleType name="angleType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#angle</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-3.1415926" />
+      <xs:maxInclusive value="3.1415926" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="angle" type="angleType" />
+  <xs:simpleType name="latitudeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#latitude</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-90.0" />
+      <xs:maxInclusive value="90.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="latitude" type="latitudeType" />
+  <xs:simpleType name="longitudeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#longitude</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-180.0" />
+      <xs:maxInclusive value="180.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="longitude" type="longitudeType" />
+  <xs:simpleType name="percentageType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#percentage</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="percentage" type="percentageType" />
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA PROPERTIES*****-->
+  <xs:simpleType name="EntityTypeStringType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeString</xs:documentation>
+      <xs:documentation>"String describing the type of an entity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="EntityTypeString" type="EntityTypeStringType" />
+  <xs:simpleType name="IsoTimeDurationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasIsoTimeDuration</xs:documentation>
+      <xs:documentation>"Instances of the class have a data value identifying the duration of its \"When\" in ISO Time format."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="IsoTimeDurationBaseType" />
+  </xs:simpleType>
+  <xs:element name="IsoTimeDuration" type="IsoTimeDurationType" />
+  <xs:simpleType name="QuantityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasQuantity</xs:documentation>
+      <xs:documentation>"Instances of the class have data identifying a numeric value associated with the quantity for that instance."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Quantity" type="QuantityType" />
+  <xs:simpleType name="ProtocolVersionType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasProtocolVersion</xs:documentation>
+      <xs:documentation>"Instances of the class have a version identifier associated with a protocol applicable to that class, which in turn is identified by property has Protocol."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ProtocolVersion" type="ProtocolVersionType" />
+  <xs:simpleType name="VersionType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasVersion</xs:documentation>
+      <xs:documentation>"Property of a class for which all instances have a unique identifier that represents a version."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Version" type="VersionType" />
+  <xs:simpleType name="IntializationFileTypeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasIntializationFileType</xs:documentation>
+      <xs:documentation>"Indicates initialization information is available in a named data file."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="IntializationFileType" type="IntializationFileTypeType" />
+  <xs:simpleType name="CommentType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasComment</xs:documentation>
+      <xs:documentation>"The class has descriptive information to allow human understanding of its function."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Comment" type="CommentType" />
+  <xs:simpleType name="NameType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasName</xs:documentation>
+      <xs:documentation>"An alphanumeric identifier that serves for humans to recognize the instance."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Name" type="NameType" />
+  <xs:simpleType name="ProtocolType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasProtocol</xs:documentation>
+      <xs:documentation>"Instances of the class have a code identifying a protocol applicable to that class."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Protocol" type="ProtocolType" />
+  <xs:simpleType name="ReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasReference</xs:documentation>
+      <xs:documentation>"Instances of the class have reference to instanced of another associated class."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Reference" type="ReferenceType" />
+  <xs:simpleType name="MarkingType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasMarking</xs:documentation>
+      <xs:documentation>"Instances of the class include data for alphanumeric information used to identify the instance; typically this is visual identification by humans."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="Marking" type="MarkingType" />
+  <xs:simpleType name="StrengthPercentageType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasStrengthPercentage</xs:documentation>
+      <xs:documentation>"The HealthStatus includes a value for Strength Percentage as a fraction of expected maximum numerical strength; vlue should be in range 0 to 100."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="percentageType" />
+  </xs:simpleType>
+  <xs:element name="StrengthPercentage" type="StrengthPercentageType" />
+  <xs:simpleType name="IsoDateTimeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasIsoDateTime</xs:documentation>
+      <xs:documentation>"Instances of the class include identifying \"When\" information in ISO Date Time format."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="IsoDateTimeBaseType" />
+  </xs:simpleType>
+  <xs:element name="IsoDateTime" type="IsoDateTimeType" />
+  <xs:simpleType name="InReplyToMessageIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isInReplyToMessageID</xs:documentation>
+      <xs:documentation>"Unique FIPA identifer of the message to be identified in a message reply."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="InReplyToMessageID" type="InReplyToMessageIDType" />
+  <xs:simpleType name="MessageIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasMessageID</xs:documentation>
+      <xs:documentation>"FIPA identifer unique to an individual message for a particular sender."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="MessageID" type="MessageIDType" />
+  <xs:simpleType name="OrderIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasOrderID</xs:documentation>
+      <xs:documentation>"FIPA identifer unique to an individual Order for a particular sender."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="OrderID" type="OrderIDType" />
+  <xs:simpleType name="ConversationIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasConversationID</xs:documentation>
+      <xs:documentation>"FIPA identifer unique to a particular thread of messages for a particular sender."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ConversationID" type="ConversationIDType" />
+  <xs:simpleType name="FromSendingSystemType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isFromSendingSystem</xs:documentation>
+      <xs:documentation>"Unique FIPA identifer of the system from which individual message is sent."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="FromSendingSystem" type="FromSendingSystemType" />
+  <xs:simpleType name="ReportIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasReportID</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ReportID" type="ReportIDType" />
+  <xs:simpleType name="ReplyToSystemType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasReplyToSystem</xs:documentation>
+      <xs:documentation>"Unique FIPA identifer of the system to which individual message reply is to be made."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ReplyToSystem" type="ReplyToSystemType" />
+  <xs:simpleType name="ToReceivingSystemType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isToReceivingSystem</xs:documentation>
+      <xs:documentation>"Unique FIPA identifer of the system to which individual message is sent."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="ToReceivingSystem" type="ToReceivingSystemType" />
+  <xs:simpleType name="SystemNameType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasSystemName</xs:documentation>
+      <xs:documentation>"Instances of the class have an alphanumeric name for a system implementing C2SIM, unique within the class, that also serve symbolically for humans to recognize the instance."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="SystemName" type="SystemNameType" />
+  <xs:simpleType name="ActionReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasActionReference</xs:documentation>
+      <xs:documentation>"The reference is to another class identifying an Action."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ActionReference" type="ActionReferenceType" />
+  <xs:simpleType name="EntityReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasEntityReference</xs:documentation>
+      <xs:documentation>"The reference is to an instance of an Entity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="EntityReference" type="EntityReferenceType" />
+  <xs:simpleType name="TaskReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasTaskReference</xs:documentation>
+      <xs:documentation>"The reference is to another class identifying a Task."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="TaskReference" type="TaskReferenceType" />
+  <xs:simpleType name="EventReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasEventReference</xs:documentation>
+      <xs:documentation>"The reference is to another Action class identifying an Event."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="EventReference" type="EventReferenceType" />
+  <xs:simpleType name="TemporalAssociationWithActionType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasTemporalAssociationWithAction</xs:documentation>
+      <xs:documentation>"The object action with which the subject action has a temporal association (relationship)"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="TemporalAssociationWithAction" type="TemporalAssociationWithActionType" />
+  <xs:simpleType name="CurrentTaskType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask</xs:documentation>
+      <xs:documentation>"The reference is to another class identifying a Task which is currently active."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="CurrentTask" type="CurrentTaskType" />
+  <xs:simpleType name="ActorReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasActorReference</xs:documentation>
+      <xs:documentation>"These references should be to objects of class Actor, or subclasses."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ActorReference" type="ActorReferenceType" />
+  <xs:simpleType name="ConcreteEntityReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasConcreteEntityReference</xs:documentation>
+      <xs:documentation>"Property of a class that has a Concrete Entity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ConcreteEntityReference" type="ConcreteEntityReferenceType" />
+  <xs:simpleType name="PerformingEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasPerformingEntity</xs:documentation>
+      <xs:documentation>"The reference is to an instance of PerformingEntity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="PerformingEntity" type="PerformingEntityType" />
+  <xs:simpleType name="SubordinateType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasSubordinate</xs:documentation>
+      <xs:documentation>"The reference is to an instance of Entity that is subordinate for purposes of the class."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Subordinate" type="SubordinateType" />
+  <xs:simpleType name="RequestingEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasRequestingEntity</xs:documentation>
+      <xs:documentation>"The reference is to an instance of RequestingEntity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="RequestingEntity" type="RequestingEntityType" />
+  <xs:simpleType name="AffectedEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasAffectedEntity</xs:documentation>
+      <xs:documentation>"The reference is to an instance of AffectedEntity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="AffectedEntity" type="AffectedEntityType" />
+  <xs:simpleType name="FromSenderType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isFromSender</xs:documentation>
+      <xs:documentation>"The reference is to an instance of Entity that sent associated information."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="FromSender" type="FromSenderType" />
+  <xs:simpleType name="SuperiorType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasSuperior</xs:documentation>
+      <xs:documentation>"The reference is to an instance of Entity that is superior (that is, has authority to provide direction) for purposes of the class."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="Superior" type="SuperiorType" />
+  <xs:simpleType name="SubjectEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasSubjectEntity</xs:documentation>
+      <xs:documentation>"The reference is to an instance of SubjectEntity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="SubjectEntity" type="SubjectEntityType" />
+  <xs:simpleType name="ReportingEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasReportingEntity</xs:documentation>
+      <xs:documentation>"The reference is to an instance of ReportingEntity."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ReportingEntity" type="ReportingEntityType" />
+  <xs:simpleType name="ToReceiverType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isToReceiver</xs:documentation>
+      <xs:documentation>"The reference is to an instance of Entity that intended to receive the associated information."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="ToReceiver" type="ToReceiverType" />
+  <xs:simpleType name="MapGraphicIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasMapGraphicID</xs:documentation>
+      <xs:documentation>"Property of a class that has a Concrete Entity that is a Map Graphic."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="MapGraphicID" type="MapGraphicIDType" />
+  <xs:simpleType name="AbstractOrganizationReferenceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasAbstractOrganizationReference</xs:documentation>
+      <xs:documentation>"The reference is to an abstract organization."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="AbstractOrganizationReference" type="AbstractOrganizationReferenceType" />
+  <xs:simpleType name="CommunicationsNetworkType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasCommunicationsNetwork</xs:documentation>
+      <xs:documentation>"The reference is to a class identifying a communications network."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="CommunicationsNetwork" type="CommunicationsNetworkType" />
+  <xs:simpleType name="AffiliatedWithType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isAffiliatedWith</xs:documentation>
+      <xs:documentation>"Indicates an AbstractOrganization that the entity is affiliated with in some way."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="AffiliatedWith" type="AffiliatedWithType" />
+  <xs:simpleType name="NorthType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasNorth</xs:documentation>
+      <xs:documentation>"Value for North coordinate is included."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="North" type="NorthType" />
+  <xs:simpleType name="LongitudeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasLongitude</xs:documentation>
+      <xs:documentation>"Value for Longitude coordinate is included. This should have a range specified of -180 to +180 (degrees)"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="longitudeType" />
+  </xs:simpleType>
+  <xs:element name="Longitude" type="LongitudeType" />
+  <xs:simpleType name="EastType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasEast</xs:documentation>
+      <xs:documentation>"Value for East coordinate is included."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="East" type="EastType" />
+  <xs:simpleType name="UpType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasUp</xs:documentation>
+      <xs:documentation>"Value for Up coordinate is included."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Up" type="UpType" />
+  <xs:simpleType name="LatitudeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasLatitude</xs:documentation>
+      <xs:documentation>"Value for Latitude coordinate is included. This should have a range specified of -90 to +90 (degrees)"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="latitudeType" />
+  </xs:simpleType>
+  <xs:element name="Latitude" type="LatitudeType" />
+  <xs:simpleType name="DistanceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasDistance</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents an aspect of a distance."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Distance" type="DistanceType" />
+  <xs:simpleType name="AngleType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasAngle</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Angle" type="AngleType" />
+  <xs:simpleType name="SpeedType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasSpeed</xs:documentation>
+      <xs:documentation>"Speed in meters/second."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Speed" type="SpeedType" />
+  <xs:simpleType name="AltitudeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasAltitude</xs:documentation>
+      <xs:documentation>"Property of geospatial data values that represent distance vertically above a surface."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Altitude" type="AltitudeType" />
+  <xs:simpleType name="LengthType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasLength</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents length aspect of a distance in meters."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Length" type="LengthType" />
+  <xs:simpleType name="WidthType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasWidth</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents width aspect of a distance in meters."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Width" type="WidthType" />
+  <xs:simpleType name="HeightType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasHeight</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents height aspect of a distance in meters."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Height" type="HeightType" />
+  <xs:simpleType name="PsiType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasPsi</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents Euler Angle Psi in radians."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Psi" type="PsiType" />
+  <xs:simpleType name="PhiType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasPhi</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents Euler Angle Phi in radians."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Phi" type="PhiType" />
+  <xs:simpleType name="HeadingAngleType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasHeadingAngle</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents heading direction in degrees where north is zero."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="HeadingAngle" type="HeadingAngleType" />
+  <xs:simpleType name="ThetaType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasTheta</xs:documentation>
+      <xs:documentation>"Property of geospatial data value that represents Euler Angle Theta in radians."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="Theta" type="ThetaType" />
+  <xs:simpleType name="AltitudeAGLType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasAltitudeAGL</xs:documentation>
+      <xs:documentation>"Property of geospatial data values that represent distance vertically above ground level in meters."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="AltitudeAGL" type="AltitudeAGLType" />
+  <xs:simpleType name="AltitudeMSLType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasAltitudeMSL</xs:documentation>
+      <xs:documentation>"Property of geospatial data values that represent distance vertically above mean sea level in meters."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:double" />
+  </xs:simpleType>
+  <xs:element name="AltitudeMSL" type="AltitudeMSLType" />
+  <xs:simpleType name="UUIDType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasUUID</xs:documentation>
+      <xs:documentation>"A unique identifier in UUID format."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="UUIDBaseType" />
+  </xs:simpleType>
+  <xs:element name="UUID" type="UUIDType" />
+  <!--*****TYPES DERIVED FROM ONTOLOGY CLASSES*****-->
+  <xs:complexType name="ResourceType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Resource</xs:documentation>
+      <xs:documentation>"This is a resource that can be part of, transferred to, or removed from an object (Entity), but is not an entity itself; therefore it does not have a location, extent, or other physical attributes.
+Resources may include consumable material such as ammunition and fuel; equipment such as weapons, vehicles, and communication devices; and personnel."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Quantity" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resource" type="ResourceType" />
+  <xs:complexType name="EntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Entity</xs:documentation>
+      <xs:documentation>"An individually identified object. Objects may have physical properties, in which case they belong to the subclass ConcreteEntity. Objects may be able to perform actions, in which case they belong in the subclass ActorEntity. If they have physical properties AND can perform actions, then they inherit from both subclasses."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="ActorEntity" />
+      <xs:element ref="PhysicalEntity" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Entity" type="EntityType" />
+  <xs:complexType name="PositionReportContentType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PositionReportContent</xs:documentation>
+      <xs:documentation>"The content of a report that is used primarily to convey the position of an entity."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PositionReportContent" type="PositionReportContentType" />
+  <xs:complexType name="CodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Code</xs:documentation>
+      <xs:documentation>"A collection of enumerations used by various data types in C2SIM"</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="ActionCode" />
+      <xs:element ref="ActionTemporalAssociationCode" />
+      <xs:element ref="AllegianceRelationshipCode" />
+      <xs:element ref="DesiredEffectCode" />
+      <xs:element ref="OperationalStatusCode" />
+      <xs:element ref="OrganizationCode" />
+      <xs:element ref="SecurityClassificationCode" />
+      <xs:element ref="TimeReferenceCode" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Code" type="CodeType" />
+  <xs:complexType name="AcknowledgementBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#AcknowledgementBody</xs:documentation>
+      <xs:documentation>"An acknowledgement from one Actor to another that a message was received."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="AcknowledgeTypeCode" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ToReceiver" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcknowledgementBody" type="AcknowledgementBodyType" />
+  <xs:complexType name="LocationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Location</xs:documentation>
+      <xs:documentation>"A representation of location in space. Can be a coordinate value, a reference to an entity location, or a location relative to another location.
+
+An optional altitude representation code indicates whether this is a fully specified point in 3 dimensions, or whether the altitude encoded in the class should be ignored or set to some other reference. If the code is not present, then the location is assumed to be a fully specified 3D point.
+
+The location of a CollectiveEntity may represent the center of mass or headquarters location in the case of an organization."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="GeodeticCoordinate" />
+      <xs:element ref="RelativeLocation" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Location" type="LocationType" />
+  <xs:complexType name="RequestBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RequestBody</xs:documentation>
+      <xs:documentation>"The body of a message from an actor in the domain to another actor in the domain that requests something.
+A request is fulfilled at the discretion of the entity to which it is directed."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="RequestContent" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="RequestingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ToReceiver" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestBody" type="RequestBodyType" />
+  <xs:complexType name="HeadingType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Heading</xs:documentation>
+      <xs:documentation>"Heading is the rotation clockwise relative to local grid north. This is a rotation about one axis; other axis orientations are unspecified, and if a system needs values they can be assumed to be zero or appropriate angles to clamp the entity to the ground."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="HeadingAngle" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Heading" type="HeadingType" />
+  <xs:complexType name="RequestContentType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RequestContent</xs:documentation>
+      <xs:documentation>"The content of a request message in the domain. This is a parent class that has subclasses for different types of requests."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="TaskRequestContent" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="RequestContent" type="RequestContentType" />
+  <xs:complexType name="OrderBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#OrderBody</xs:documentation>
+      <xs:documentation>"The structure for sending order messages.
+This message may define tasks, or it may refer to tasks defined elsewhere (such as in an initialization message).
+An order generally comes from an entity with command authority and thus is expected to be obeyed if it is physically possible to do so."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="DateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="MapGraphic" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="OrderID" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="RequestingEntity" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Task" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="TaskReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ToReceiver" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderBody" type="OrderBodyType" />
+  <xs:simpleType name="ActionTemporalAssociationCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ActionTemporalAssociationCode</xs:documentation>
+      <xs:documentation>"An enumeration describing the temporal relationship between two actions."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ENDSTR" />
+      <xs:enumeration value="SASTEA" />
+      <xs:enumeration value="STREND" />
+      <xs:enumeration value="SAENDO" />
+      <xs:enumeration value="STRSNL" />
+      <xs:enumeration value="STRENL" />
+      <xs:enumeration value="ENDENL" />
+      <xs:enumeration value="SBEAST" />
+      <xs:enumeration value="STRSTR" />
+      <xs:enumeration value="ENDSNE" />
+      <xs:enumeration value="STRENE" />
+      <xs:enumeration value="SAEAST" />
+      <xs:enumeration value="SDUREA" />
+      <xs:enumeration value="SDUREB" />
+      <xs:enumeration value="STRSNE" />
+      <xs:enumeration value="ENDSNL" />
+      <xs:enumeration value="ENDEND" />
+      <xs:enumeration value="ENDENE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActionTemporalAssociationCode" type="ActionTemporalAssociationCodeType" />
+  <xs:complexType name="RelativeTimeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RelativeTime</xs:documentation>
+      <xs:documentation>"Specifies an absolute time relative to the start or end time of an event."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="Duration" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="EventReference" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="TimeReferenceCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelativeTime" type="RelativeTimeType" />
+  <xs:complexType name="MessageBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#MessageBody</xs:documentation>
+      <xs:documentation>"The structure for sending domain messages: orders, reports, and acknowledgements."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="C2SIMInitializationBody" />
+      <xs:element ref="DomainMessageBody" />
+      <xs:element ref="ObjectInitializationBody" />
+      <xs:element ref="SystemAcknowledgementBody" />
+      <xs:element ref="SystemCommandBody" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="MessageBody" type="MessageBodyType" />
+  <xs:complexType name="AbstractOrganizationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#AbstractOrganization</xs:documentation>
+      <xs:documentation>"A group that an actor can be affiliated with. Does not perform any actions and does not have a specific location.
+Subclasses of this class can be created for country, religion, etc. Each of these will have defined instances (one for each country, etc.)"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="CountryCode" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="EthnicGroupCode" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="OrganizationTypeCode" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ReligionCode" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractOrganization" type="AbstractOrganizationType" />
+  <xs:simpleType name="OperationalStatusCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#OperationalStatusCode</xs:documentation>
+      <xs:documentation>"An enumeration indicating the general level of capability of an entity relative to its greatest expected capability."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MostlyOperational" />
+      <xs:enumeration value="NotOperational" />
+      <xs:enumeration value="FullyOperational" />
+      <xs:enumeration value="PartlyOperational" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OperationalStatusCode" type="OperationalStatusCodeType" />
+  <xs:complexType name="EntityTypeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EntityType</xs:documentation>
+      <xs:documentation>"This is a set of category enumerations, e.g. a DIS type specification, or other set of unique values defining the type of an Entity for representation in simulations and depiction on C2 displays."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="NamedEntityType" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="EntityType" type="EntityTypeType" />
+  <xs:complexType name="C2SIMHeaderType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#C2SIMHeader</xs:documentation>
+      <xs:documentation>"Indicates that the receiving system should submit its initialization data to the system identified in the"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="CommunicativeActTypeCode" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ConversationID" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="DateTime" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="FromSendingSystem" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="InReplyToMessageID" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="MessageID" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ReplyToSystem" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="SecurityClassificationCode" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="ToReceivingSystem" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="C2SIMHeader" type="C2SIMHeaderType" />
+  <xs:complexType name="EventType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Event</xs:documentation>
+      <xs:documentation>"An ACTION that is an incident, phenomenon, or occasion. May or may not be the result of an agent's action."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="EventCode" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="TimeInstant" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Event" type="EventType" />
+  <xs:complexType name="MessageType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Message</xs:documentation>
+      <xs:documentation>"Any C2SIM message that is sent between host systems."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="C2SIMHeader" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="MessageBody" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" type="MessageType" />
+  <xs:complexType name="TaskRequestContentType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TaskRequestContent</xs:documentation>
+      <xs:documentation>"A request for an Actor to perform a Task. The Actor to perform the Task is identified by the hasPerformingEntity property of the Task."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="Task" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskRequestContent" type="TaskRequestContentType" />
+  <xs:complexType name="ScenarioSettingType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ScenarioSetting</xs:documentation>
+      <xs:documentation>"Information describing the setting of the scenario, including the date, time, physical extent of the terrain, and a version string."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="DateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Version" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScenarioSetting" type="ScenarioSettingType" />
+  <xs:complexType name="TaskType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Task</xs:documentation>
+      <xs:documentation>"An Action that takes place over time, and is performed by an Entity to change the state of the world.
+Must identify WHO, WHAT, WHEN and WHERE.
+WHO is represented by hasPerformingEntity (and hasAffectedEntity).
+WHAT is represented by the hasTaskActionCode.
+WHEN is represented by the start time/duration/end time (2 of 3)
+WHERE is represented by hasLocation and/or hasMapGraphicID reference.
+WHY may be represented by hasDesiredEffect."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ActionTemporalRelationship" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="AffectedEntity" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="DesiredEffectCode" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Location" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="MapGraphicID" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PerformingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="TaskActionCode" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="TimeInstant" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Task" type="TaskType" />
+  <xs:complexType name="C2SIMContentType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#C2SIMContent</xs:documentation>
+      <xs:documentation>"Class of all concepts for the content of messages in the core C2SIM data model."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="AbstractObject" />
+      <xs:element ref="Action" />
+      <xs:element ref="Code" />
+      <xs:element ref="Entity" />
+      <xs:element ref="EntityDescriptor" />
+      <xs:element ref="EntityState" />
+      <xs:element ref="EntityType" />
+      <xs:element ref="PhysicalConcept" />
+      <xs:element ref="Relationship" />
+      <xs:element ref="Resource" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="C2SIMContent" type="C2SIMContentType" />
+  <xs:complexType name="DurationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Duration</xs:documentation>
+      <xs:documentation>"A time duration expressed in ISO 8601:2000 duration format PnYnMnDTnHnMnS e.g. P00Y00M00DT00H00M00S. Note that this does not support fractions of seconds. From MSDL simple types."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="IsoTimeDuration" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Duration" type="DurationType" />
+  <xs:complexType name="TaskStatusType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TaskStatus</xs:documentation>
+      <xs:documentation>"The status of a task, provided before, during or after a task is executed."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="CurrentTask" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="TaskStatusCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskStatus" type="TaskStatusType" />
+  <xs:complexType name="RelationshipType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Relationship</xs:documentation>
+      <xs:documentation>"This class describes a relationship to some entity. The type of relationship is defined by a subclass, which has a code property that specifies what the relationship is."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="ActionTemporalRelationship" />
+      <xs:element ref="AllegianceRelationship" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Relationship" type="RelationshipType" />
+  <xs:complexType name="DomainMessageBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody</xs:documentation>
+      <xs:documentation>"The body of a message that is sent between actors in the domain.
+It is one subclass of MessageBody (other subclasses perform administrative functions in the C2SIM Coalition.)"</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="AcknowledgementBody" />
+      <xs:element ref="OrderBody" />
+      <xs:element ref="ReportBody" />
+      <xs:element ref="RequestBody" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="DomainMessageBody" type="DomainMessageBodyType" />
+  <xs:complexType name="InitializationDataFileType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#InitializationDataFile</xs:documentation>
+      <xs:documentation>"Defines a file of supplementary data that is used to initialize the scenario. This file is generally system-specific, for example a terrain database file or a mapping from C2SIM entity types to local entity type enumerations. It could apply to \"all\" systems."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="IntializationFileType" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="SystemName" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InitializationDataFile" type="InitializationDataFileType" />
+  <xs:complexType name="SystemAcknowledgementBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SystemAcknowledgementBody</xs:documentation>
+      <xs:documentation>"An acknowledgement from one C2SIM system to another that a message was received."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="AcknowledgeTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemAcknowledgementBody" type="SystemAcknowledgementBodyType" />
+  <xs:complexType name="OperationalStatusType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#OperationalStatus</xs:documentation>
+      <xs:documentation>"An enumeration indicating degree of partial capability."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="OperationalStatusCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationalStatus" type="OperationalStatusType" />
+  <xs:complexType name="EntityStateType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EntityState</xs:documentation>
+      <xs:documentation>"Dynamic state information for entities in the exercise."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="PhysicalState" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="EntityState" type="EntityStateType" />
+  <xs:complexType name="ResourcesType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Resources</xs:documentation>
+      <xs:documentation>"A level of personnel, equipment, ammunition, fuel, etc. The user must compare this to the full strength of the unit."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="Resource" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resources" type="ResourcesType" />
+  <xs:simpleType name="EventCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EventCode</xs:documentation>
+      <xs:documentation>"The type of event."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TaskStart" />
+      <xs:enumeration value="TaskEnd" />
+      <xs:enumeration value="GenericEvent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EventCode" type="EventCodeType" />
+  <xs:complexType name="TimeInstantType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TimeInstant</xs:documentation>
+      <xs:documentation>"A specific time expressed in seconds, i.e. with no date. The generator and user of this time must understand a common reference point, for example the start of the scenario."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="DateTime" />
+      <xs:element ref="RelativeTime" />
+      <xs:element ref="SimulationTime" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="TimeInstant" type="TimeInstantType" />
+  <xs:complexType name="DateTimeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#DateTime</xs:documentation>
+      <xs:documentation>"A date and time in ISO 8601:2000 DateTime Group format yyyy-mm-ddThh:mm:ssZ e.g. 1998-05-12T14:15:00Z. From MSDL simple types."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="IsoDateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateTime" type="DateTimeType" />
+  <xs:complexType name="StrengthType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Strength</xs:documentation>
+      <xs:documentation>"Representation of the strength of an entity expressed as a percentage of some starting value."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="StrengthPercentage" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Strength" type="StrengthType" />
+  <xs:complexType name="CollectiveEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#CollectiveEntity</xs:documentation>
+      <xs:documentation>"This is an Entity that is normally thought of as having constituent entities, i.e. a Unit.
+
+CollectiveEntities may or may not hve their subordinates explicitly represented in the exercise (i.e., it may always be aggregated, or it may have subordinates that are themselves entities).  If they are represented, then the hasSubordinate property will have at least one instance.
+
+The CollectivEntity may be an abstract actor, or it may have physical properties; if the latter, then the hasCurrentState property is present with a PhysicalState."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="NonMilitaryOrganization" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="CollectiveEntity" type="CollectiveEntityType" />
+  <xs:complexType name="AbstractObjectType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#AbstractObject</xs:documentation>
+      <xs:documentation>"An AbstractObject is an object in the system that does not have the full characteristics of an entity. For example, it does not have a location or an extent. It does however have a unique identifier."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="AbstractOrganization" />
+      <xs:element ref="CommunicationNetwork" />
+      <xs:element ref="Overlay" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="AbstractObject" type="AbstractObjectType" />
+  <xs:complexType name="ObjectInitializationBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ObjectInitializationBody</xs:documentation>
+      <xs:documentation>"This message is sent by each system to a marshalling server upon receipt of a SubmitInitialization message."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="InitializationDataFile" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ObjectDefinitions" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="ScenarioSetting" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="SystemEntityList" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectInitializationBody" type="ObjectInitializationBodyType" />
+  <xs:complexType name="AllegianceRelationshipType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationship</xs:documentation>
+      <xs:documentation>"This is a relationship of friendly, hostile, or neutral toward an actor entity. It is part of the definition of the hasAllegianceTo property of an EntityDescriptor."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ActorReference" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="AllegianceRelationshipCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AllegianceRelationship" type="AllegianceRelationshipType" />
+  <xs:simpleType name="CountryCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#CountryCode</xs:documentation>
+      <xs:documentation>"A unique three-letter code for each nation on Earth, defined in ISO 3166-1 standard and also found in JC3IEDM AffiliationGeopoliticalCode."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GUF" />
+      <xs:enumeration value="COK" />
+      <xs:enumeration value="SLB" />
+      <xs:enumeration value="USA" />
+      <xs:enumeration value="FSM" />
+      <xs:enumeration value="NFK" />
+      <xs:enumeration value="TGO" />
+      <xs:enumeration value="PNG" />
+      <xs:enumeration value="MEX" />
+      <xs:enumeration value="CAN" />
+      <xs:enumeration value="BHR" />
+      <xs:enumeration value="CPV" />
+      <xs:enumeration value="GNB" />
+      <xs:enumeration value="KEN" />
+      <xs:enumeration value="COL" />
+      <xs:enumeration value="BIH" />
+      <xs:enumeration value="TKL" />
+      <xs:enumeration value="SOM" />
+      <xs:enumeration value="BLR" />
+      <xs:enumeration value="WSM" />
+      <xs:enumeration value="CXR" />
+      <xs:enumeration value="BHS" />
+      <xs:enumeration value="GIN" />
+      <xs:enumeration value="COM" />
+      <xs:enumeration value="OMN" />
+      <xs:enumeration value="CSXX" />
+      <xs:enumeration value="DJI" />
+      <xs:enumeration value="GUM" />
+      <xs:enumeration value="SGP" />
+      <xs:enumeration value="SLE" />
+      <xs:enumeration value="CHE" />
+      <xs:enumeration value="DEU" />
+      <xs:enumeration value="IRN" />
+      <xs:enumeration value="ARG" />
+      <xs:enumeration value="TJK" />
+      <xs:enumeration value="GRD" />
+      <xs:enumeration value="CYM" />
+      <xs:enumeration value="NCL" />
+      <xs:enumeration value="HTI" />
+      <xs:enumeration value="WLF" />
+      <xs:enumeration value="BFA" />
+      <xs:enumeration value="CSHH" />
+      <xs:enumeration value="MOZ" />
+      <xs:enumeration value="NAM" />
+      <xs:enumeration value="LKA" />
+      <xs:enumeration value="MNP" />
+      <xs:enumeration value="PHL" />
+      <xs:enumeration value="BDI" />
+      <xs:enumeration value="JAM" />
+      <xs:enumeration value="BEL" />
+      <xs:enumeration value="NRU" />
+      <xs:enumeration value="DNK" />
+      <xs:enumeration value="PRK" />
+      <xs:enumeration value="DMA" />
+      <xs:enumeration value="BVT" />
+      <xs:enumeration value="DOM" />
+      <xs:enumeration value="MKD" />
+      <xs:enumeration value="LBN" />
+      <xs:enumeration value="KIR" />
+      <xs:enumeration value="TCD" />
+      <xs:enumeration value="SEN" />
+      <xs:enumeration value="SMR" />
+      <xs:enumeration value="SGS" />
+      <xs:enumeration value="TUV" />
+      <xs:enumeration value="CZE" />
+      <xs:enumeration value="MLI" />
+      <xs:enumeration value="MTQ" />
+      <xs:enumeration value="BEN" />
+      <xs:enumeration value="KOR" />
+      <xs:enumeration value="CYP" />
+      <xs:enumeration value="CMR" />
+      <xs:enumeration value="ASM" />
+      <xs:enumeration value="STP" />
+      <xs:enumeration value="BRB" />
+      <xs:enumeration value="FIN" />
+      <xs:enumeration value="UMI" />
+      <xs:enumeration value="SUR" />
+      <xs:enumeration value="NLD" />
+      <xs:enumeration value="DDDE" />
+      <xs:enumeration value="ERI" />
+      <xs:enumeration value="ESH" />
+      <xs:enumeration value="HMD" />
+      <xs:enumeration value="SYR" />
+      <xs:enumeration value="LIE" />
+      <xs:enumeration value="GEO" />
+      <xs:enumeration value="MLT" />
+      <xs:enumeration value="VCT" />
+      <xs:enumeration value="MDA" />
+      <xs:enumeration value="MDV" />
+      <xs:enumeration value="CRI" />
+      <xs:enumeration value="LVA" />
+      <xs:enumeration value="LUX" />
+      <xs:enumeration value="ANT" />
+      <xs:enumeration value="GAB" />
+      <xs:enumeration value="MWI" />
+      <xs:enumeration value="TTO" />
+      <xs:enumeration value="ARM" />
+      <xs:enumeration value="ETH" />
+      <xs:enumeration value="BLZ" />
+      <xs:enumeration value="PSE" />
+      <xs:enumeration value="IRL" />
+      <xs:enumeration value="LBR" />
+      <xs:enumeration value="YEM" />
+      <xs:enumeration value="IRQ" />
+      <xs:enumeration value="HUN" />
+      <xs:enumeration value="VEN" />
+      <xs:enumeration value="REU" />
+      <xs:enumeration value="KWT" />
+      <xs:enumeration value="ABW" />
+      <xs:enumeration value="NER" />
+      <xs:enumeration value="CIV" />
+      <xs:enumeration value="ITA" />
+      <xs:enumeration value="CHL" />
+      <xs:enumeration value="ALA" />
+      <xs:enumeration value="SAU" />
+      <xs:enumeration value="HKG" />
+      <xs:enumeration value="SVK" />
+      <xs:enumeration value="SDN" />
+      <xs:enumeration value="BGR" />
+      <xs:enumeration value="VAT" />
+      <xs:enumeration value="GIB" />
+      <xs:enumeration value="ALB" />
+      <xs:enumeration value="BRA" />
+      <xs:enumeration value="SHN" />
+      <xs:enumeration value="PYF" />
+      <xs:enumeration value="ATA" />
+      <xs:enumeration value="BRN" />
+      <xs:enumeration value="GRL" />
+      <xs:enumeration value="MRT" />
+      <xs:enumeration value="ISL" />
+      <xs:enumeration value="SPM" />
+      <xs:enumeration value="SUHH" />
+      <xs:enumeration value="TLS" />
+      <xs:enumeration value="MAC" />
+      <xs:enumeration value="LAO" />
+      <xs:enumeration value="PRI" />
+      <xs:enumeration value="CHN" />
+      <xs:enumeration value="TUR" />
+      <xs:enumeration value="KAZ" />
+      <xs:enumeration value="FJI" />
+      <xs:enumeration value="GGY" />
+      <xs:enumeration value="UZB" />
+      <xs:enumeration value="CUB" />
+      <xs:enumeration value="HRV" />
+      <xs:enumeration value="NOS" />
+      <xs:enumeration value="ZWE" />
+      <xs:enumeration value="IMN" />
+      <xs:enumeration value="GTM" />
+      <xs:enumeration value="FRA" />
+      <xs:enumeration value="IOT" />
+      <xs:enumeration value="IND" />
+      <xs:enumeration value="CAF" />
+      <xs:enumeration value="VIR" />
+      <xs:enumeration value="KGZ" />
+      <xs:enumeration value="YUCS" />
+      <xs:enumeration value="LCA" />
+      <xs:enumeration value="RUS" />
+      <xs:enumeration value="SYC" />
+      <xs:enumeration value="AND" />
+      <xs:enumeration value="COD" />
+      <xs:enumeration value="NIU" />
+      <xs:enumeration value="URY" />
+      <xs:enumeration value="SVN" />
+      <xs:enumeration value="THA" />
+      <xs:enumeration value="JOR" />
+      <xs:enumeration value="PAK" />
+      <xs:enumeration value="NGA" />
+      <xs:enumeration value="MNE" />
+      <xs:enumeration value="KHM" />
+      <xs:enumeration value="GHA" />
+      <xs:enumeration value="PRT" />
+      <xs:enumeration value="VUT" />
+      <xs:enumeration value="TZA" />
+      <xs:enumeration value="ROU" />
+      <xs:enumeration value="BOL" />
+      <xs:enumeration value="VGB" />
+      <xs:enumeration value="GLP" />
+      <xs:enumeration value="FLK" />
+      <xs:enumeration value="GUY" />
+      <xs:enumeration value="BMU" />
+      <xs:enumeration value="GBR" />
+      <xs:enumeration value="SWE" />
+      <xs:enumeration value="ARE" />
+      <xs:enumeration value="AFG" />
+      <xs:enumeration value="ZMB" />
+      <xs:enumeration value="PCN" />
+      <xs:enumeration value="BWA" />
+      <xs:enumeration value="PAN" />
+      <xs:enumeration value="LTU" />
+      <xs:enumeration value="SWZ" />
+      <xs:enumeration value="GNQ" />
+      <xs:enumeration value="POL" />
+      <xs:enumeration value="ESP" />
+      <xs:enumeration value="MNG" />
+      <xs:enumeration value="PLW" />
+      <xs:enumeration value="NPL" />
+      <xs:enumeration value="NIC" />
+      <xs:enumeration value="RWA" />
+      <xs:enumeration value="QAT" />
+      <xs:enumeration value="AZE" />
+      <xs:enumeration value="ATF" />
+      <xs:enumeration value="MMR" />
+      <xs:enumeration value="COG" />
+      <xs:enumeration value="LBY" />
+      <xs:enumeration value="SRB" />
+      <xs:enumeration value="MDG" />
+      <xs:enumeration value="GRC" />
+      <xs:enumeration value="ISR" />
+      <xs:enumeration value="TON" />
+      <xs:enumeration value="UKR" />
+      <xs:enumeration value="TCA" />
+      <xs:enumeration value="JEY" />
+      <xs:enumeration value="AGO" />
+      <xs:enumeration value="ZAF" />
+      <xs:enumeration value="VNM" />
+      <xs:enumeration value="BGD" />
+      <xs:enumeration value="DZA" />
+      <xs:enumeration value="MSR" />
+      <xs:enumeration value="MYT" />
+      <xs:enumeration value="NOR" />
+      <xs:enumeration value="NZL" />
+      <xs:enumeration value="SJM" />
+      <xs:enumeration value="MAR" />
+      <xs:enumeration value="GMB" />
+      <xs:enumeration value="ATG" />
+      <xs:enumeration value="ECU" />
+      <xs:enumeration value="JPN" />
+      <xs:enumeration value="HND" />
+      <xs:enumeration value="IDN" />
+      <xs:enumeration value="AIA" />
+      <xs:enumeration value="CCK" />
+      <xs:enumeration value="TUN" />
+      <xs:enumeration value="UGA" />
+      <xs:enumeration value="MUS" />
+      <xs:enumeration value="SLV" />
+      <xs:enumeration value="TWN" />
+      <xs:enumeration value="PRY" />
+      <xs:enumeration value="BTN" />
+      <xs:enumeration value="EGY" />
+      <xs:enumeration value="AUS" />
+      <xs:enumeration value="MCO" />
+      <xs:enumeration value="MYS" />
+      <xs:enumeration value="FXFR" />
+      <xs:enumeration value="LSO" />
+      <xs:enumeration value="FRO" />
+      <xs:enumeration value="EST" />
+      <xs:enumeration value="MHL" />
+      <xs:enumeration value="TKM" />
+      <xs:enumeration value="PER" />
+      <xs:enumeration value="KNA" />
+      <xs:enumeration value="AUT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CountryCode" type="CountryCodeType" />
+  <xs:complexType name="SimulationTimeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SimulationTime</xs:documentation>
+      <xs:documentation>"A time measured as a time duration since the time instant of the scenario start."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="Duration" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SimulationTime" type="SimulationTimeType" />
+  <xs:complexType name="CartesianOffsetType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#CartesianOffset</xs:documentation>
+      <xs:documentation>"A spatial offset expressed in local flat earth coordinates."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="East" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="North" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Up" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartesianOffset" type="CartesianOffsetType" />
+  <xs:complexType name="OrientationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Orientation</xs:documentation>
+      <xs:documentation>"Represents the direction in which an entity is oriented; typically the direction it is facing. Where this class is used, C2SIM Coalitions must state whether they require values for both EulerAngles, Heading, or both. In the absence of specification both are required."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="EulerAngles" />
+      <xs:element ref="Heading" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Orientation" type="OrientationType" />
+  <xs:complexType name="ActionTemporalRelationshipType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ActionTemporalRelationship</xs:documentation>
+      <xs:documentation>"A temporal relationship between two actions. Some relationships involve a time duration."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ActionTemporalAssociationCode" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="TemporalAssociationWithAction" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActionTemporalRelationship" type="ActionTemporalRelationshipType" />
+  <xs:simpleType name="OrganizationTypeCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#OrganizationTypeCode</xs:documentation>
+      <xs:documentation>"Alphabetic code up to six letters describing the type of an organization, obtained from JC3IEDM-3.0.2 GroupOrganisationTypeCategoryCode"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FINCAL" />
+      <xs:enumeration value="POLCHF" />
+      <xs:enumeration value="POW" />
+      <xs:enumeration value="NKN" />
+      <xs:enumeration value="POLICE" />
+      <xs:enumeration value="TERRST" />
+      <xs:enumeration value="LOCINH" />
+      <xs:enumeration value="INSRGT" />
+      <xs:enumeration value="CNTRCT" />
+      <xs:enumeration value="PRSNR" />
+      <xs:enumeration value="INTLCT" />
+      <xs:enumeration value="SHURA" />
+      <xs:enumeration value="MEDINT" />
+      <xs:enumeration value="NOS" />
+      <xs:enumeration value="MRCHNT" />
+      <xs:enumeration value="JUDCAL" />
+      <xs:enumeration value="MEDNAT" />
+      <xs:enumeration value="EDUCAL" />
+      <xs:enumeration value="POLTCL" />
+      <xs:enumeration value="MEDNOS" />
+      <xs:enumeration value="FRNFGT" />
+      <xs:enumeration value="INTEL" />
+      <xs:enumeration value="MEDLCL" />
+      <xs:enumeration value="REFUGE" />
+      <xs:enumeration value="LNDOWN" />
+      <xs:enumeration value="SOCIAL" />
+      <xs:enumeration value="GANG" />
+      <xs:enumeration value="CIVCON" />
+      <xs:enumeration value="CRIMIN" />
+      <xs:enumeration value="VILELD" />
+      <xs:enumeration value="MEDCAL" />
+      <xs:enumeration value="TRIBAL" />
+      <xs:enumeration value="JRNLST" />
+      <xs:enumeration value="WRITER" />
+      <xs:enumeration value="DSPLPR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrganizationTypeCode" type="OrganizationTypeCodeType" />
+  <xs:complexType name="MessageCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#MessageCode</xs:documentation>
+      <xs:documentation>"Enumerations used in messages."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="AcknowledgeTypeCode" />
+      <xs:element ref="CommunicativeActTypeCode" />
+      <xs:element ref="SystemCommandTypeCode" />
+      <xs:element ref="TaskStatusCode" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="MessageCode" type="MessageCodeType" />
+  <xs:simpleType name="TaskStatusCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TaskStatusCode</xs:documentation>
+      <xs:documentation>"An enumeration of possible status values for a task."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TASKINPRG" />
+      <xs:enumeration value="TASKABRT" />
+      <xs:enumeration value="TASKCMPLT" />
+      <xs:enumeration value="TASKSTRT" />
+      <xs:enumeration value="TASKPEND" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TaskStatusCode" type="TaskStatusCodeType" />
+  <xs:complexType name="NamedEntityTypeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#NamedEntityType</xs:documentation>
+      <xs:documentation>"An EntityType that can be identified by a unique name"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityTypeString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedEntityType" type="NamedEntityTypeType" />
+  <xs:complexType name="EntityHealthStatusType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EntityHealthStatus</xs:documentation>
+      <xs:documentation>"A representation of the health status of an entity. Subclasses for representing health as Operational Status, a count of some salient resource, or a percentage of full strength."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="OperationalStatus" />
+      <xs:element ref="Resources" />
+      <xs:element ref="Strength" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="EntityHealthStatus" type="EntityHealthStatusType" />
+  <xs:simpleType name="EthnicGroupCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EthnicGroupCode</xs:documentation>
+      <xs:documentation>"Alphabetic code up to six letters, describing an ethnic group, obtained from JC3IEDM AffiliationEthnicGroupCode-3.0.2"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TOKELN" />
+      <xs:enumeration value="SOUSSO" />
+      <xs:enumeration value="INDOAR" />
+      <xs:enumeration value="AFRGOL" />
+      <xs:enumeration value="KUWAIT" />
+      <xs:enumeration value="KABYE" />
+      <xs:enumeration value="INDNFD" />
+      <xs:enumeration value="LUO" />
+      <xs:enumeration value="SAMMAR" />
+      <xs:enumeration value="MUSLMZ" />
+      <xs:enumeration value="DANISH" />
+      <xs:enumeration value="OAFNEC" />
+      <xs:enumeration value="ALBANN" />
+      <xs:enumeration value="BASQUE" />
+      <xs:enumeration value="ALGRAN" />
+      <xs:enumeration value="GERMAN" />
+      <xs:enumeration value="BHOTE" />
+      <xs:enumeration value="MBAYE" />
+      <xs:enumeration value="GURUNG" />
+      <xs:enumeration value="MALCHN" />
+      <xs:enumeration value="MUSLMF" />
+      <xs:enumeration value="TAICHN" />
+      <xs:enumeration value="SRINFD" />
+      <xs:enumeration value="MESTZE" />
+      <xs:enumeration value="SANISL" />
+      <xs:enumeration value="BLACKA" />
+      <xs:enumeration value="MAKOA" />
+      <xs:enumeration value="SONGHA" />
+      <xs:enumeration value="BULGRN" />
+      <xs:enumeration value="CHAMOR" />
+      <xs:enumeration value="UZBEK" />
+      <xs:enumeration value="NORWGN" />
+      <xs:enumeration value="KALANG" />
+      <xs:enumeration value="BAHRAN" />
+      <xs:enumeration value="BHOTIA" />
+      <xs:enumeration value="MASSA" />
+      <xs:enumeration value="KIKUYU" />
+      <xs:enumeration value="AUSTRL" />
+      <xs:enumeration value="COASTA" />
+      <xs:enumeration value="SOUAFR" />
+      <xs:enumeration value="TAHITN" />
+      <xs:enumeration value="AMERUS" />
+      <xs:enumeration value="UYGUR" />
+      <xs:enumeration value="HUNGRN" />
+      <xs:enumeration value="BETE" />
+      <xs:enumeration value="VANUAT" />
+      <xs:enumeration value="NKN" />
+      <xs:enumeration value="MARISL" />
+      <xs:enumeration value="ICLNDR" />
+      <xs:enumeration value="VITCHN" />
+      <xs:enumeration value="AFRGIO" />
+      <xs:enumeration value="MUSLMK" />
+      <xs:enumeration value="TEUTON" />
+      <xs:enumeration value="IRNPER" />
+      <xs:enumeration value="BANDA" />
+      <xs:enumeration value="KAZAKH" />
+      <xs:enumeration value="CRELLA" />
+      <xs:enumeration value="PAPUAN" />
+      <xs:enumeration value="COSTRN" />
+      <xs:enumeration value="THAI" />
+      <xs:enumeration value="WALLIS" />
+      <xs:enumeration value="SOUNFD" />
+      <xs:enumeration value="LOMWE" />
+      <xs:enumeration value="MDENEC" />
+      <xs:enumeration value="SUNDAN" />
+      <xs:enumeration value="AFRMNO" />
+      <xs:enumeration value="SERBAN" />
+      <xs:enumeration value="SLVNEC" />
+      <xs:enumeration value="JAMACN" />
+      <xs:enumeration value="SOLVEN" />
+      <xs:enumeration value="MOUND" />
+      <xs:enumeration value="MALAYM" />
+      <xs:enumeration value="PALAUA" />
+      <xs:enumeration value="SOMALI" />
+      <xs:enumeration value="GMBISL" />
+      <xs:enumeration value="EGYPTN" />
+      <xs:enumeration value="ALBNAN" />
+      <xs:enumeration value="MUSLMH" />
+      <xs:enumeration value="GERMAR" />
+      <xs:enumeration value="MINA" />
+      <xs:enumeration value="MANGIS" />
+      <xs:enumeration value="LAOTAN" />
+      <xs:enumeration value="BOSCRO" />
+      <xs:enumeration value="SOCISL" />
+      <xs:enumeration value="RARTGN" />
+      <xs:enumeration value="ETHNCN" />
+      <xs:enumeration value="ITALAN" />
+      <xs:enumeration value="HAWIAN" />
+      <xs:enumeration value="AFRBAL" />
+      <xs:enumeration value="CHNISL" />
+      <xs:enumeration value="NGONDE" />
+      <xs:enumeration value="EUROAF" />
+      <xs:enumeration value="AFRKPE" />
+      <xs:enumeration value="INDOMA" />
+      <xs:enumeration value="AFROAR" />
+      <xs:enumeration value="ISRJEW" />
+      <xs:enumeration value="ORIENT" />
+      <xs:enumeration value="AUSTRN" />
+      <xs:enumeration value="AZERBA" />
+      <xs:enumeration value="COKNFD" />
+      <xs:enumeration value="VOLTAC" />
+      <xs:enumeration value="OPANFD" />
+      <xs:enumeration value="ZANZIB" />
+      <xs:enumeration value="MOROCN" />
+      <xs:enumeration value="CHRSTN" />
+      <xs:enumeration value="MAZAND" />
+      <xs:enumeration value="SHAN" />
+      <xs:enumeration value="AFRGRE" />
+      <xs:enumeration value="AFRSER" />
+      <xs:enumeration value="BETSIM" />
+      <xs:enumeration value="NEWGER" />
+      <xs:enumeration value="PUNJAB" />
+      <xs:enumeration value="KAREN" />
+      <xs:enumeration value="ITALSL" />
+      <xs:enumeration value="SIDAMO" />
+      <xs:enumeration value="ROMANN" />
+      <xs:enumeration value="ANTASA" />
+      <xs:enumeration value="KALENJ" />
+      <xs:enumeration value="OASNEC" />
+      <xs:enumeration value="INDIGM" />
+      <xs:enumeration value="YAPISL" />
+      <xs:enumeration value="AFROAS" />
+      <xs:enumeration value="MORAVI" />
+      <xs:enumeration value="MONTEN" />
+      <xs:enumeration value="MACDNN" />
+      <xs:enumeration value="DUTCH" />
+      <xs:enumeration value="KISII" />
+      <xs:enumeration value="TUVISL" />
+      <xs:enumeration value="MAUR" />
+      <xs:enumeration value="GREEKT" />
+      <xs:enumeration value="CARISL" />
+      <xs:enumeration value="COMORA" />
+      <xs:enumeration value="ECUDRN" />
+      <xs:enumeration value="OSANEC" />
+      <xs:enumeration value="LITHUN" />
+      <xs:enumeration value="CENAMR" />
+      <xs:enumeration value="MUSIMO" />
+      <xs:enumeration value="OIMATS" />
+      <xs:enumeration value="SAMOAN" />
+      <xs:enumeration value="GREEK" />
+      <xs:enumeration value="AFRJOL" />
+      <xs:enumeration value="SHTISL" />
+      <xs:enumeration value="PORTGS" />
+      <xs:enumeration value="LADINO" />
+      <xs:enumeration value="CHAM" />
+      <xs:enumeration value="BURGHR" />
+      <xs:enumeration value="LATVAN" />
+      <xs:enumeration value="INDIGN" />
+      <xs:enumeration value="FIJNIN" />
+      <xs:enumeration value="UKRANN" />
+      <xs:enumeration value="FULA" />
+      <xs:enumeration value="BALOCH" />
+      <xs:enumeration value="AFRNFD" />
+      <xs:enumeration value="NORMFR" />
+      <xs:enumeration value="MIXED" />
+      <xs:enumeration value="ETHNCT" />
+      <xs:enumeration value="AFRKIS" />
+      <xs:enumeration value="PASHTP" />
+      <xs:enumeration value="TOUCOU" />
+      <xs:enumeration value="MITISL" />
+      <xs:enumeration value="EURNEC" />
+      <xs:enumeration value="RIOMUN" />
+      <xs:enumeration value="ROMANS" />
+      <xs:enumeration value="HAN" />
+      <xs:enumeration value="AFRBAR" />
+      <xs:enumeration value="EWE" />
+      <xs:enumeration value="AFRFUL" />
+      <xs:enumeration value="NIUEAN" />
+      <xs:enumeration value="SYRANL" />
+      <xs:enumeration value="GUJART" />
+      <xs:enumeration value="AFRNDE" />
+      <xs:enumeration value="CAUCAS" />
+      <xs:enumeration value="YORUBA" />
+      <xs:enumeration value="TAMANG" />
+      <xs:enumeration value="SOLISL" />
+      <xs:enumeration value="INDNEC" />
+      <xs:enumeration value="NEWZLE" />
+      <xs:enumeration value="SLVNFD" />
+      <xs:enumeration value="TWA" />
+      <xs:enumeration value="CZECH" />
+      <xs:enumeration value="GOULAY" />
+      <xs:enumeration value="WELSH" />
+      <xs:enumeration value="BERBER" />
+      <xs:enumeration value="KARAKA" />
+      <xs:enumeration value="TUMBUK" />
+      <xs:enumeration value="TATAR" />
+      <xs:enumeration value="BISMAR" />
+      <xs:enumeration value="ANGOLA" />
+      <xs:enumeration value="MARQIS" />
+      <xs:enumeration value="NORDIC" />
+      <xs:enumeration value="BOSMUS" />
+      <xs:enumeration value="AFROEU" />
+      <xs:enumeration value="MEXCAN" />
+      <xs:enumeration value="KIRGHZ" />
+      <xs:enumeration value="FRANCO" />
+      <xs:enumeration value="KAMBA" />
+      <xs:enumeration value="HAUSA" />
+      <xs:enumeration value="MELANE" />
+      <xs:enumeration value="MULATT" />
+      <xs:enumeration value="NEWARS" />
+      <xs:enumeration value="RUTHEN" />
+      <xs:enumeration value="POLISH" />
+      <xs:enumeration value="MOLDOV" />
+      <xs:enumeration value="RAKHIN" />
+      <xs:enumeration value="DRAVID" />
+      <xs:enumeration value="PAKSTN" />
+      <xs:enumeration value="AFROEA" />
+      <xs:enumeration value="RUSSAN" />
+      <xs:enumeration value="OVIMBU" />
+      <xs:enumeration value="GAELIC" />
+      <xs:enumeration value="BELAU" />
+      <xs:enumeration value="PHOUTH" />
+      <xs:enumeration value="PANMAN" />
+      <xs:enumeration value="BRETON" />
+      <xs:enumeration value="MUSLMM" />
+      <xs:enumeration value="CROATN" />
+      <xs:enumeration value="URUGYN" />
+      <xs:enumeration value="SICLAN" />
+      <xs:enumeration value="SLOVNE" />
+      <xs:enumeration value="AZERI" />
+      <xs:enumeration value="PERUVN" />
+      <xs:enumeration value="MOUSSE" />
+      <xs:enumeration value="MALAGA" />
+      <xs:enumeration value="SPANSH" />
+      <xs:enumeration value="MONEGA" />
+      <xs:enumeration value="SAMOAP" />
+      <xs:enumeration value="SERER" />
+      <xs:enumeration value="SINDHI" />
+      <xs:enumeration value="BASARW" />
+      <xs:enumeration value="SYROLE" />
+      <xs:enumeration value="MOSSI" />
+      <xs:enumeration value="TOUBOU" />
+      <xs:enumeration value="EASISL" />
+      <xs:enumeration value="LOBI" />
+      <xs:enumeration value="ABKHAZ" />
+      <xs:enumeration value="MAYA" />
+      <xs:enumeration value="GURAGE" />
+      <xs:enumeration value="SANGHA" />
+      <xs:enumeration value="NEWBRT" />
+      <xs:enumeration value="FRENCH" />
+      <xs:enumeration value="SAKALA" />
+      <xs:enumeration value="WAKISL" />
+      <xs:enumeration value="AUSISL" />
+      <xs:enumeration value="TUAISL" />
+      <xs:enumeration value="BANTBT" />
+      <xs:enumeration value="TONGAN" />
+      <xs:enumeration value="AYMARA" />
+      <xs:enumeration value="BAYA" />
+      <xs:enumeration value="SWISS" />
+      <xs:enumeration value="HISPAN" />
+      <xs:enumeration value="WSTIND" />
+      <xs:enumeration value="HUTU" />
+      <xs:enumeration value="BIOKOB" />
+      <xs:enumeration value="AFRBEL" />
+      <xs:enumeration value="MUHAJR" />
+      <xs:enumeration value="FIJIAN" />
+      <xs:enumeration value="HONDRN" />
+      <xs:enumeration value="PEUL" />
+      <xs:enumeration value="BENGLI" />
+      <xs:enumeration value="MDENFD" />
+      <xs:enumeration value="GERMAL" />
+      <xs:enumeration value="ESTONN" />
+      <xs:enumeration value="COLMBN" />
+      <xs:enumeration value="QUECHU" />
+      <xs:enumeration value="AFRMAN" />
+      <xs:enumeration value="MONGOL" />
+      <xs:enumeration value="SOUTHA" />
+      <xs:enumeration value="RWANDA" />
+      <xs:enumeration value="JORDNN" />
+      <xs:enumeration value="AFRBAS" />
+      <xs:enumeration value="MAUKIS" />
+      <xs:enumeration value="MALVAN" />
+      <xs:enumeration value="YEMENI" />
+      <xs:enumeration value="NEGRIT" />
+      <xs:enumeration value="MUSLMT" />
+      <xs:enumeration value="NIGRAN" />
+      <xs:enumeration value="AFRMEN" />
+      <xs:enumeration value="AITISL" />
+      <xs:enumeration value="NAUISL" />
+      <xs:enumeration value="POLYNT" />
+      <xs:enumeration value="AFRSHO" />
+      <xs:enumeration value="WHITE" />
+      <xs:enumeration value="INDOCH" />
+      <xs:enumeration value="MANDEB" />
+      <xs:enumeration value="AMHARA" />
+      <xs:enumeration value="CARIBN" />
+      <xs:enumeration value="BANTBA" />
+      <xs:enumeration value="COCOSM" />
+      <xs:enumeration value="HAMTCM" />
+      <xs:enumeration value="SCANDN" />
+      <xs:enumeration value="MUSLIM" />
+      <xs:enumeration value="POLYNS" />
+      <xs:enumeration value="PASHTU" />
+      <xs:enumeration value="MALINK" />
+      <xs:enumeration value="CHUVAS" />
+      <xs:enumeration value="BRTNFD" />
+      <xs:enumeration value="CHNNEC" />
+      <xs:enumeration value="AUSTRA" />
+      <xs:enumeration value="VLACHS" />
+      <xs:enumeration value="NORMAN" />
+      <xs:enumeration value="MAN" />
+      <xs:enumeration value="WALISL" />
+      <xs:enumeration value="GILAKI" />
+      <xs:enumeration value="MALAYA" />
+      <xs:enumeration value="KIMBUN" />
+      <xs:enumeration value="KAZAKQ" />
+      <xs:enumeration value="DIOLA" />
+      <xs:enumeration value="BANTFA" />
+      <xs:enumeration value="CREOLE" />
+      <xs:enumeration value="SAHO" />
+      <xs:enumeration value="GUATLN" />
+      <xs:enumeration value="AGNI" />
+      <xs:enumeration value="FULANI" />
+      <xs:enumeration value="TAJIK" />
+      <xs:enumeration value="CRELUS" />
+      <xs:enumeration value="KUNAMA" />
+      <xs:enumeration value="NAINDN" />
+      <xs:enumeration value="AFRFON" />
+      <xs:enumeration value="IBOS" />
+      <xs:enumeration value="NEWZEA" />
+      <xs:enumeration value="SRITML" />
+      <xs:enumeration value="CORSCN" />
+      <xs:enumeration value="BANTLU" />
+      <xs:enumeration value="MANDEM" />
+      <xs:enumeration value="TIGREA" />
+      <xs:enumeration value="TSIMHE" />
+      <xs:enumeration value="ZAIRAN" />
+      <xs:enumeration value="SRINEC" />
+      <xs:enumeration value="MICRON" />
+      <xs:enumeration value="SARDNN" />
+      <xs:enumeration value="DJERMA" />
+      <xs:enumeration value="GUADLN" />
+      <xs:enumeration value="AFRMND" />
+      <xs:enumeration value="ADMISL" />
+      <xs:enumeration value="MESTZS" />
+      <xs:enumeration value="CIRCAS" />
+      <xs:enumeration value="LATIN" />
+      <xs:enumeration value="BIHARS" />
+      <xs:enumeration value="CAFRE" />
+      <xs:enumeration value="EUROIN" />
+      <xs:enumeration value="SERVIC" />
+      <xs:enumeration value="TURKME" />
+      <xs:enumeration value="MANUIS" />
+      <xs:enumeration value="IKRBAT" />
+      <xs:enumeration value="LAPP" />
+      <xs:enumeration value="BRAZLN" />
+      <xs:enumeration value="MEO" />
+      <xs:enumeration value="PHNISL" />
+      <xs:enumeration value="GURUNS" />
+      <xs:enumeration value="BAKONG" />
+      <xs:enumeration value="MAORI" />
+      <xs:enumeration value="JAVANE" />
+      <xs:enumeration value="OPANEC" />
+      <xs:enumeration value="RAKISL" />
+      <xs:enumeration value="SOUAMR" />
+      <xs:enumeration value="AFRBUR" />
+      <xs:enumeration value="MALATN" />
+      <xs:enumeration value="HKCHNS" />
+      <xs:enumeration value="AFAR" />
+      <xs:enumeration value="MOOR" />
+      <xs:enumeration value="NATVEF" />
+      <xs:enumeration value="NOS" />
+      <xs:enumeration value="AFGHAN" />
+      <xs:enumeration value="JAPNES" />
+      <xs:enumeration value="BIOKOF" />
+      <xs:enumeration value="BOSSER" />
+      <xs:enumeration value="HMONG" />
+      <xs:enumeration value="LIBYAN" />
+      <xs:enumeration value="OMANI" />
+      <xs:enumeration value="COTIER" />
+      <xs:enumeration value="SOTHO" />
+      <xs:enumeration value="NORTAF" />
+      <xs:enumeration value="JEWISH" />
+      <xs:enumeration value="CORNSH" />
+      <xs:enumeration value="ANDORR" />
+      <xs:enumeration value="GRNLND" />
+      <xs:enumeration value="TONGAS" />
+      <xs:enumeration value="YAO" />
+      <xs:enumeration value="KURD" />
+      <xs:enumeration value="AFRTEM" />
+      <xs:enumeration value="NGAMBY" />
+      <xs:enumeration value="OEUNFD" />
+      <xs:enumeration value="AFROCH" />
+      <xs:enumeration value="FLEMSH" />
+      <xs:enumeration value="EQUATO" />
+      <xs:enumeration value="ATUISL" />
+      <xs:enumeration value="BURMSE" />
+      <xs:enumeration value="OSSET" />
+      <xs:enumeration value="SIKH" />
+      <xs:enumeration value="MADURE" />
+      <xs:enumeration value="FILPNO" />
+      <xs:enumeration value="TORISL" />
+      <xs:enumeration value="NEPLSE" />
+      <xs:enumeration value="VIETNM" />
+      <xs:enumeration value="BATSWA" />
+      <xs:enumeration value="GYPSY" />
+      <xs:enumeration value="HAZARA" />
+      <xs:enumeration value="PALSTN" />
+      <xs:enumeration value="BELORU" />
+      <xs:enumeration value="OCNISL" />
+      <xs:enumeration value="GAGAUZ" />
+      <xs:enumeration value="BAOULE" />
+      <xs:enumeration value="EUROPE" />
+      <xs:enumeration value="MBAKA" />
+      <xs:enumeration value="NYANJA" />
+      <xs:enumeration value="NEWZLM" />
+      <xs:enumeration value="TUTSI" />
+      <xs:enumeration value="ROTUMN" />
+      <xs:enumeration value="ROMANY" />
+      <xs:enumeration value="RAIS" />
+      <xs:enumeration value="GOURMA" />
+      <xs:enumeration value="MANCHU" />
+      <xs:enumeration value="KENYAN" />
+      <xs:enumeration value="TIBETN" />
+      <xs:enumeration value="AMERIN" />
+      <xs:enumeration value="AFRYOR" />
+      <xs:enumeration value="BANGLS" />
+      <xs:enumeration value="PUKISL" />
+      <xs:enumeration value="ITALGE" />
+      <xs:enumeration value="BELGAN" />
+      <xs:enumeration value="TEKE" />
+      <xs:enumeration value="PUERTR" />
+      <xs:enumeration value="FINNSH" />
+      <xs:enumeration value="MUSLMU" />
+      <xs:enumeration value="BANTKO" />
+      <xs:enumeration value="LATNEC" />
+      <xs:enumeration value="BOLIVN" />
+      <xs:enumeration value="FORROS" />
+      <xs:enumeration value="PERSAN" />
+      <xs:enumeration value="SYRIAN" />
+      <xs:enumeration value="BERIKA" />
+      <xs:enumeration value="SINOMA" />
+      <xs:enumeration value="AFRLOM" />
+      <xs:enumeration value="LATNFD" />
+      <xs:enumeration value="AFRAMR" />
+      <xs:enumeration value="BUYI" />
+      <xs:enumeration value="IRISH" />
+      <xs:enumeration value="MUSLMA" />
+      <xs:enumeration value="PARGYN" />
+      <xs:enumeration value="AMERIC" />
+      <xs:enumeration value="TURKSH" />
+      <xs:enumeration value="BOUGNV" />
+      <xs:enumeration value="CAMERO" />
+      <xs:enumeration value="VEDDA" />
+      <xs:enumeration value="YUGOSL" />
+      <xs:enumeration value="OROMO" />
+      <xs:enumeration value="GEORGN" />
+      <xs:enumeration value="AFRPAP" />
+      <xs:enumeration value="MUSLMB" />
+      <xs:enumeration value="TUAREG" />
+      <xs:enumeration value="GARIFU" />
+      <xs:enumeration value="NGONI" />
+      <xs:enumeration value="INDIGE" />
+      <xs:enumeration value="GREENA" />
+      <xs:enumeration value="ORKISL" />
+      <xs:enumeration value="FAROES" />
+      <xs:enumeration value="AFRADJ" />
+      <xs:enumeration value="CHAHAR" />
+      <xs:enumeration value="NICRGN" />
+      <xs:enumeration value="CANADN" />
+      <xs:enumeration value="MARSIS" />
+      <xs:enumeration value="MERU" />
+      <xs:enumeration value="ARAB" />
+      <xs:enumeration value="ASNNFD" />
+      <xs:enumeration value="LIMBUS" />
+      <xs:enumeration value="MAURTN" />
+      <xs:enumeration value="BASHKR" />
+      <xs:enumeration value="IRAQI" />
+      <xs:enumeration value="EURNFD" />
+      <xs:enumeration value="WOLOF" />
+      <xs:enumeration value="TAMIL" />
+      <xs:enumeration value="BANTU" />
+      <xs:enumeration value="MANDNG" />
+      <xs:enumeration value="INDOSN" />
+      <xs:enumeration value="SCOTSH" />
+      <xs:enumeration value="MBOUM" />
+      <xs:enumeration value="MALAY" />
+      <xs:enumeration value="AFRGBA" />
+      <xs:enumeration value="KAMCHN" />
+      <xs:enumeration value="FLKISL" />
+      <xs:enumeration value="SLOVAK" />
+      <xs:enumeration value="HUI" />
+      <xs:enumeration value="MANDES" />
+      <xs:enumeration value="MUONG" />
+      <xs:enumeration value="ASSYRN" />
+      <xs:enumeration value="NEWCAL" />
+      <xs:enumeration value="CELTIC" />
+      <xs:enumeration value="TUNISN" />
+      <xs:enumeration value="SENUFO" />
+      <xs:enumeration value="AFRMNJ" />
+      <xs:enumeration value="ITALFR" />
+      <xs:enumeration value="ZHUANG" />
+      <xs:enumeration value="PALMIS" />
+      <xs:enumeration value="BANTMO" />
+      <xs:enumeration value="MANHIS" />
+      <xs:enumeration value="SEYISL" />
+      <xs:enumeration value="MBOCHI" />
+      <xs:enumeration value="SENOUF" />
+      <xs:enumeration value="DALMTN" />
+      <xs:enumeration value="CHNNFD" />
+      <xs:enumeration value="MIAO" />
+      <xs:enumeration value="CYRNFD" />
+      <xs:enumeration value="TURKOM" />
+      <xs:enumeration value="MALTSE" />
+      <xs:enumeration value="CHEWA" />
+      <xs:enumeration value="UGANDN" />
+      <xs:enumeration value="SINCHN" />
+      <xs:enumeration value="KANAKA" />
+      <xs:enumeration value="PITISL" />
+      <xs:enumeration value="MANDE" />
+      <xs:enumeration value="SENA" />
+      <xs:enumeration value="CHLEAN" />
+      <xs:enumeration value="LUHYA" />
+      <xs:enumeration value="BOBO" />
+      <xs:enumeration value="WALLOO" />
+      <xs:enumeration value="YI" />
+      <xs:enumeration value="SINHLS" />
+      <xs:enumeration value="ENGLSH" />
+      <xs:enumeration value="BANTES" />
+      <xs:enumeration value="MANDJI" />
+      <xs:enumeration value="GREENC" />
+      <xs:enumeration value="ARGNTN" />
+      <xs:enumeration value="ABORGN" />
+      <xs:enumeration value="GUYANS" />
+      <xs:enumeration value="ALEMAN" />
+      <xs:enumeration value="KIRDI" />
+      <xs:enumeration value="PACNFD" />
+      <xs:enumeration value="MALAYI" />
+      <xs:enumeration value="BLACK" />
+      <xs:enumeration value="LEBNSE" />
+      <xs:enumeration value="CREOLM" />
+      <xs:enumeration value="KOREAN" />
+      <xs:enumeration value="KONGO" />
+      <xs:enumeration value="KGALAG" />
+      <xs:enumeration value="PENISL" />
+      <xs:enumeration value="GUMISL" />
+      <xs:enumeration value="SHERPA" />
+      <xs:enumeration value="SARA" />
+      <xs:enumeration value="AFRKRU" />
+      <xs:enumeration value="SWEDSH" />
+      <xs:enumeration value="MANX" />
+      <xs:enumeration value="AFRVAI" />
+      <xs:enumeration value="KHMER" />
+      <xs:enumeration value="POLYNE" />
+      <xs:enumeration value="VENEZN" />
+      <xs:enumeration value="AFRWOL" />
+      <xs:enumeration value="MUSLMY" />
+      <xs:enumeration value="LUR" />
+      <xs:enumeration value="MAGARS" />
+      <xs:enumeration value="SLAVIC" />
+      <xs:enumeration value="DAGHES" />
+      <xs:enumeration value="HINDUS" />
+      <xs:enumeration value="HAMTC" />
+      <xs:enumeration value="BRTNEC" />
+      <xs:enumeration value="ERIRIA" />
+      <xs:enumeration value="AFRKRA" />
+      <xs:enumeration value="GERMAB" />
+      <xs:enumeration value="BEJA" />
+      <xs:enumeration value="ARMNAN" />
+      <xs:enumeration value="HUTUBA" />
+      <xs:enumeration value="NATVEM" />
+      <xs:enumeration value="MON" />
+      <xs:enumeration value="BYLRSN" />
+      <xs:enumeration value="BURMAN" />
+      <xs:enumeration value="NEWIRL" />
+      <xs:enumeration value="INUIT" />
+      <xs:enumeration value="ARABBE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EthnicGroupCode" type="EthnicGroupCodeType" />
+  <xs:simpleType name="SystemCommandTypeCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SystemCommandTypeCode</xs:documentation>
+      <xs:documentation>"The codes (enumerated individuals) that indicate what command is being sent in a system command message."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="StopScenario" />
+      <xs:enumeration value="SubmitInitialization" />
+      <xs:enumeration value="ShareScenario" />
+      <xs:enumeration value="InitializationComplete" />
+      <xs:enumeration value="StartScenario" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SystemCommandTypeCode" type="SystemCommandTypeCodeType" />
+  <xs:complexType name="ActionType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Action</xs:documentation>
+      <xs:documentation>"Any occurrence that occurs at a moment in time or over a period of time."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="Event" />
+      <xs:element ref="Task" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Action" type="ActionType" />
+  <xs:complexType name="OverlayType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Overlay</xs:documentation>
+      <xs:documentation>"A logical grouping of Entities (units, graphics, etc.) for purposes of conveniently referring to them."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityReference" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Overlay" type="OverlayType" />
+  <xs:complexType name="PhysicalStateType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PhysicalState</xs:documentation>
+      <xs:documentation>"Description of the physical state of an entity, including location, orientation, health, speed, etc.
+Note that an EnvironmentalState class should be a subclass of PhysicalState. The EnvironmentalState could be the state of, for example, a smoke plume, which would have a location and could have direction, orientation, and speed."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityHealthStatus" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Location" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Orientation" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Speed" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="TimeInstant" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhysicalState" type="PhysicalStateType" />
+  <xs:complexType name="PhysicalEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PhysicalEntity</xs:documentation>
+      <xs:documentation>"An Entity that has physical/kinematic properties."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="CulturalFeature" />
+      <xs:element ref="EnvironmentalObject" />
+      <xs:element ref="GeographicFeature" />
+      <xs:element ref="MapGraphic" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="PhysicalEntity" type="PhysicalEntityType" />
+  <xs:complexType name="CommunicationNetworkType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#CommunicationNetwork</xs:documentation>
+      <xs:documentation>"An specific network over which an entity communicates. A logical entity. Will have data properties defining communication parameters.
+Networks are part of an EntityDescriptor. If a message is sent to a CommunicationsNetwork, all ActorEntities that have this network will receive the message."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="Name" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommunicationNetwork" type="CommunicationNetworkType" />
+  <xs:complexType name="TemporalConceptType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TemporalConcept</xs:documentation>
+      <xs:documentation>"Time concepts include instants in time, durations of time, and intervals between two times."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="Duration" />
+      <xs:element ref="IntervalTime" />
+      <xs:element ref="TimeInstant" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="TemporalConcept" type="TemporalConceptType" />
+  <xs:complexType name="EulerAnglesType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EulerAngles</xs:documentation>
+      <xs:documentation>"Representation of the orientation of an entity in 3D space expressed as Euler angles (DIS). This orientation will be used primarily for initialization of simulation entities, especially those that are not clamped to the ground.
+This orienation indicates rotations from a geocentric coordinate system."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="HeadingAngle" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Phi" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Psi" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Theta" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EulerAngles" type="EulerAnglesType" />
+  <xs:simpleType name="AcknowledgeTypeCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#AcknowledgeTypeCode</xs:documentation>
+      <xs:documentation>"Enumeration of different types of acknowledgements."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACKREQGRT" />
+      <xs:enumeration value="ACKNOTRECGNZ" />
+      <xs:enumeration value="ACKSUCC" />
+      <xs:enumeration value="ACKREQDEN" />
+      <xs:enumeration value="ACKRCVD" />
+      <xs:enumeration value="ACKNOTEXEC" />
+      <xs:enumeration value="ACKFAIL" />
+      <xs:enumeration value="ACKNOTUNDSTD" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AcknowledgeTypeCode" type="AcknowledgeTypeCodeType" />
+  <xs:complexType name="GeographicFeatureType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#GeographicFeature</xs:documentation>
+      <xs:documentation>"A geographic feature generally used for location reference. For example a hill, river, etc."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeographicFeature" type="GeographicFeatureType" />
+  <xs:complexType name="ActorEntityType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ActorEntity</xs:documentation>
+      <xs:documentation>"An ActorEntity is an entity that can send/receive orders and reports and/or perform tasks."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="CollectiveEntity" />
+      <xs:element ref="Person" />
+      <xs:element ref="Platform" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="ActorEntity" type="ActorEntityType" />
+  <xs:complexType name="EnvironmentalObjectType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EnvironmentalObject</xs:documentation>
+      <xs:documentation>"A specified region in which the environment (e.g. weather, ocean state) is defined by a particular Environmental State."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnvironmentalObject" type="EnvironmentalObjectType" />
+  <xs:complexType name="PhysicalConceptType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PhysicalConcept</xs:documentation>
+      <xs:documentation>"Concepts relating to the physical characteristics of an entity (e.g., location, health, orientation, size, etc.). The subclasses of this class have complex or alternative representations, and so are classes. Other physical properties such as mass that are simple scalars can be data type properties of (ConcreteEntity) objects."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="EntityHealthStatus" />
+      <xs:element ref="Location" />
+      <xs:element ref="Orientation" />
+      <xs:element ref="SpatialOffset" />
+      <xs:element ref="TemporalConcept" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="PhysicalConcept" type="PhysicalConceptType" />
+  <xs:simpleType name="DesiredEffectCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode</xs:documentation>
+      <xs:documentation>"A code describing the intended effect of a task."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TaskSuccess" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DesiredEffectCode" type="DesiredEffectCodeType" />
+  <xs:complexType name="PersonType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Person</xs:documentation>
+      <xs:documentation>"An Entity that is an individual human being"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" type="PersonType" />
+  <xs:simpleType name="AllegianceRelationshipCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationshipCode</xs:documentation>
+      <xs:documentation>"This code defines the types of allegiance in an AllegianceRelationship."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HostileTo" />
+      <xs:enumeration value="FriendlyTo" />
+      <xs:enumeration value="NeutralTo" />
+      <xs:enumeration value="UnkownAllegianceTo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AllegianceRelationshipCode" type="AllegianceRelationshipCodeType" />
+  <xs:complexType name="MessageConceptType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#MessageConcept</xs:documentation>
+      <xs:documentation>"This parent class collects together classes that define the basic structure of messages used in C2SIM."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="C2SIMHeader" />
+      <xs:element ref="Message" />
+      <xs:element ref="MessageBody" />
+      <xs:element ref="MessageCode" />
+      <xs:element ref="RequestContent" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="MessageConcept" type="MessageConceptType" />
+  <xs:simpleType name="CommunicativeActTypeCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode</xs:documentation>
+      <xs:documentation>"Enumeration of different types of communications."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Request" />
+      <xs:enumeration value="Agree" />
+      <xs:enumeration value="Accept" />
+      <xs:enumeration value="Refuse" />
+      <xs:enumeration value="Inform" />
+      <xs:enumeration value="Propose" />
+      <xs:enumeration value="Confirm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CommunicativeActTypeCode" type="CommunicativeActTypeCodeType" />
+  <xs:complexType name="EntityDescriptorType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor</xs:documentation>
+      <xs:documentation>"The Descriptor defines static attributes of an entity, i.e. that do not change during the course of the simulation. This information is provided at initialization time.
+
+The friend/hostile/... relationship of this entity with others can be specfied with hasAllegianceRelationship properties and/or the hasSide property. The hasSide property can define this entity as a member of a \"Force\" or \"Side,\" i.e. a team of entities that are friendly to each other and are all friendly, hostile or neutral to other defined teams. ForceSides are abstract objects.
+The entity can also have friendly, hostile or neutral relationships with specific other objects as defined by its hasAllegianceRelationship properties. These can be used in place of ForceSide membership, or they can be used along with ForceSide memberships to define exceptions.
+
+The isAffiliatedWith property defines organizations that this entity is affiliated with. These organizations are abstract; they are not actors.
+
+C2 structures can be defined by using the hasSuperior property."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="AffiliatedWith" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="AllegianceRelationship" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="CommunicationsNetwork" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Superior" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityDescriptor" type="EntityDescriptorType" />
+  <xs:complexType name="SystemEntityListType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SystemEntityList</xs:documentation>
+      <xs:documentation>"This is a listing of entities that reside within a system. The list defines what system a message should be sent to in order to get it to a given actor.  Each entity can reside on only one system. This list does not define necessarily define the complete list of entities on the given system.
+Systems can build a map from this and other lists to get the system from a given entity."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ActorReference" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="SystemName" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemEntityList" type="SystemEntityListType" />
+  <xs:complexType name="IntervalTimeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#IntervalTime</xs:documentation>
+      <xs:documentation>"An interval defined by a start and end dateTime. Note that 2 of the 3 properties must be specified."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="Duration" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="TimeInstant" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IntervalTime" type="IntervalTimeType" />
+  <xs:complexType name="GeodeticCoordinateType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#GeodeticCoordinate</xs:documentation>
+      <xs:documentation>"A location defined by latitude, longitude, and altitude."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="AltitudeAGL" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="AltitudeMSL" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Latitude" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="Longitude" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeodeticCoordinate" type="GeodeticCoordinateType" />
+  <xs:simpleType name="TaskActionCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TaskActionCode</xs:documentation>
+      <xs:documentation>"The activity to be performed in the task, e.g. Move, Observe, Assist."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OrientToLocation" />
+      <xs:enumeration value="MoveToLocation" />
+      <xs:enumeration value="ReportPosition" />
+      <xs:enumeration value="UseCapability" />
+      <xs:enumeration value="AssistOtherUnit" />
+      <xs:enumeration value="Observe" />
+      <xs:enumeration value="HoldInPlace" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TaskActionCode" type="TaskActionCodeType" />
+  <xs:complexType name="ObjectDefinitionsType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ObjectDefinitions</xs:documentation>
+      <xs:documentation>"Information characterizing an object"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="AbstractObject" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Action" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Entity" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectDefinitions" type="ObjectDefinitionsType" />
+  <xs:complexType name="C2SIMInitializationBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#C2SIMInitializationBody</xs:documentation>
+      <xs:documentation>"This message can initialize all of the objects in the scenario as well as the scenario setting."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="InitializationDataFile" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ObjectDefinitions" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="ScenarioSetting" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="SystemEntityList" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="C2SIMInitializationBody" type="C2SIMInitializationBodyType" />
+  <xs:complexType name="PlatformType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#Platform</xs:documentation>
+      <xs:documentation>"An Entity that consists of an identifiable type physical equipment and/or software."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Platform" type="PlatformType" />
+  <xs:complexType name="SpatialOffsetType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SpatialOffset</xs:documentation>
+      <xs:documentation>"Used in a relative location specification."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="CartesianOffset" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="SpatialOffset" type="SpatialOffsetType" />
+  <xs:complexType name="ActionCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ActionCode</xs:documentation>
+      <xs:documentation>"An enumeration describing what the action is."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="EventCode" />
+      <xs:element ref="TaskActionCode" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="ActionCode" type="ActionCodeType" />
+  <xs:simpleType name="SecurityClassificationCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode</xs:documentation>
+      <xs:documentation>"Alphabetic text descriptions used by the USA-Department of Defense to identify the level of sensitivity of information"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TopSecret" />
+      <xs:enumeration value="Confidential" />
+      <xs:enumeration value="Unclassified" />
+      <xs:enumeration value="Secret" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SecurityClassificationCode" type="SecurityClassificationCodeType" />
+  <xs:complexType name="InitializationConceptType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#InitializationConcept</xs:documentation>
+      <xs:documentation>"This parent class collects together classes that are necessary for the initialization of a scenario."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="InitializationDataFile" />
+      <xs:element ref="ObjectDefinitions" />
+      <xs:element ref="ScenarioSetting" />
+      <xs:element ref="SystemEntityList" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="InitializationConcept" type="InitializationConceptType" />
+  <xs:complexType name="MapGraphicType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#MapGraphic</xs:documentation>
+      <xs:documentation>"Graphics on a map that define locations, lines, areas, actions, etc. The location of the graphic is the location in the real world represented on the map. The extent is the set of handle points or vertices that define its shape and size. This class includes task graphics, METOC graphics, and MOOTW graphics."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapGraphic" type="MapGraphicType" />
+  <xs:complexType name="SystemCommandBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SystemCommandBody</xs:documentation>
+      <xs:documentation>"The body of a message that is used to send system commands between C2SIM systems."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="SystemCommandTypeCode" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemCommandBody" type="SystemCommandBodyType" />
+  <xs:simpleType name="TimeReferenceCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#TimeReferenceCode</xs:documentation>
+      <xs:documentation>"Indicates whether a relative time is referenced to the start or the end of an interval time."</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IntervalEndTime" />
+      <xs:enumeration value="IntervalStartTime" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TimeReferenceCode" type="TimeReferenceCodeType" />
+  <xs:complexType name="NonMilitaryOrganizationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#NonMilitaryOrganization</xs:documentation>
+      <xs:documentation>"An organization operating external to military authority (e.g., law enforcement, non-governmental organizations)."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="CurrentTask" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="EntityDescriptor" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Resource" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="Subordinate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NonMilitaryOrganization" type="NonMilitaryOrganizationType" />
+  <xs:simpleType name="ReligionCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ReligionCode</xs:documentation>
+      <xs:documentation>"Alphabetic code, up to six letters, representing a religion, obtained from JC3IEDM-3.0.2 AffiliationReligionCode"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RMNCTH" />
+      <xs:enumeration value="KMBNGS" />
+      <xs:enumeration value="EPSCPL" />
+      <xs:enumeration value="CHRTVL" />
+      <xs:enumeration value="UNICTH" />
+      <xs:enumeration value="PRSBYT" />
+      <xs:enumeration value="BAHAI" />
+      <xs:enumeration value="ORTHDX" />
+      <xs:enumeration value="CATHLC" />
+      <xs:enumeration value="EVNGCH" />
+      <xs:enumeration value="ANGLCN" />
+      <xs:enumeration value="MUSMLY" />
+      <xs:enumeration value="UKRCTH" />
+      <xs:enumeration value="GRKCTH" />
+      <xs:enumeration value="ESTORT" />
+      <xs:enumeration value="MANDEA" />
+      <xs:enumeration value="ROMORT" />
+      <xs:enumeration value="UNDPRB" />
+      <xs:enumeration value="CPTCHR" />
+      <xs:enumeration value="VOODOO" />
+      <xs:enumeration value="RUSORT" />
+      <xs:enumeration value="SHIMUS" />
+      <xs:enumeration value="CNGCCH" />
+      <xs:enumeration value="ASMGOD" />
+      <xs:enumeration value="CNG" />
+      <xs:enumeration value="CHRFRW" />
+      <xs:enumeration value="ANIMSM" />
+      <xs:enumeration value="UNDMTH" />
+      <xs:enumeration value="HINDU" />
+      <xs:enumeration value="ARMNAN" />
+      <xs:enumeration value="SHINTO" />
+      <xs:enumeration value="PRTEVN" />
+      <xs:enumeration value="LTRSNT" />
+      <xs:enumeration value="UNCHAU" />
+      <xs:enumeration value="TBTBUD" />
+      <xs:enumeration value="NKN" />
+      <xs:enumeration value="EVNALL" />
+      <xs:enumeration value="GRKORT" />
+      <xs:enumeration value="MARONT" />
+      <xs:enumeration value="MORMON" />
+      <xs:enumeration value="BAPTST" />
+      <xs:enumeration value="ISLAMC" />
+      <xs:enumeration value="GEOORT" />
+      <xs:enumeration value="JUDASM" />
+      <xs:enumeration value="SIKH" />
+      <xs:enumeration value="CALVNS" />
+      <xs:enumeration value="CHRSTN" />
+      <xs:enumeration value="MUSZYD" />
+      <xs:enumeration value="SVNADV" />
+      <xs:enumeration value="CHRGOD" />
+      <xs:enumeration value="LUTHRN" />
+      <xs:enumeration value="CHRENG" />
+      <xs:enumeration value="MSCWPT" />
+      <xs:enumeration value="INDGNS" />
+      <xs:enumeration value="IBDMUS" />
+      <xs:enumeration value="PARSI" />
+      <xs:enumeration value="TAOISM" />
+      <xs:enumeration value="EVNLUT" />
+      <xs:enumeration value="ISLAMA" />
+      <xs:enumeration value="SOCFRD" />
+      <xs:enumeration value="PRTADV" />
+      <xs:enumeration value="NOS" />
+      <xs:enumeration value="JHVWTN" />
+      <xs:enumeration value="ETHORT" />
+      <xs:enumeration value="MODKNG" />
+      <xs:enumeration value="PRTMRV" />
+      <xs:enumeration value="RMNCTU" />
+      <xs:enumeration value="TRBREL" />
+      <xs:enumeration value="CHNDGY" />
+      <xs:enumeration value="MUSLIM" />
+      <xs:enumeration value="MUSSHF" />
+      <xs:enumeration value="ISLAMI" />
+      <xs:enumeration value="CHRSLB" />
+      <xs:enumeration value="UKRORT" />
+      <xs:enumeration value="UNCH" />
+      <xs:enumeration value="ATHEST" />
+      <xs:enumeration value="NIUNCH" />
+      <xs:enumeration value="PRT" />
+      <xs:enumeration value="SYNCHN" />
+      <xs:enumeration value="JAINS" />
+      <xs:enumeration value="LNDMSN" />
+      <xs:enumeration value="BEHAI" />
+      <xs:enumeration value="UNFRCH" />
+      <xs:enumeration value="BABYLN" />
+      <xs:enumeration value="LAMBUD" />
+      <xs:enumeration value="GRGARM" />
+      <xs:enumeration value="BUDHSM" />
+      <xs:enumeration value="CNFCNS" />
+      <xs:enumeration value="UKRAUT" />
+      <xs:enumeration value="AFRMTH" />
+      <xs:enumeration value="PGNAFR" />
+      <xs:enumeration value="UNCHPR" />
+      <xs:enumeration value="METHDS" />
+      <xs:enumeration value="SUNMUS" />
+      <xs:enumeration value="SHMNSM" />
+      <xs:enumeration value="SLVMUS" />
+      <xs:enumeration value="EKLNIE" />
+      <xs:enumeration value="APSTLC" />
+      <xs:enumeration value="CNGNCH" />
+      <xs:enumeration value="TRD" />
+      <xs:enumeration value="TRDMYN" />
+      <xs:enumeration value="DRUZE" />
+      <xs:enumeration value="MENNTE" />
+      <xs:enumeration value="ZRSTRN" />
+      <xs:enumeration value="KIEVPT" />
+      <xs:enumeration value="UNCHCN" />
+      <xs:enumeration value="SPRCLT" />
+      <xs:enumeration value="ISLAMN" />
+      <xs:enumeration value="NONE" />
+      <xs:enumeration value="BLGORT" />
+      <xs:enumeration value="PNTCST" />
+      <xs:enumeration value="ARMORT" />
+      <xs:enumeration value="THRVBD" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReligionCode" type="ReligionCodeType" />
+  <xs:complexType name="CulturalFeatureType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#CulturalFeature</xs:documentation>
+      <xs:documentation>"Any man-made feature in the environment"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="Marking" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="Name" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="PhysicalState" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="UUID" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CulturalFeature" type="CulturalFeatureType" />
+  <xs:complexType name="OrganizationCodeType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#OrganizationCode</xs:documentation>
+      <xs:documentation>"These provide enumerations of alphabetic text codes identifying characteristics of organizations."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="CountryCode" />
+      <xs:element ref="EthnicGroupCode" />
+      <xs:element ref="OrganizationTypeCode" />
+      <xs:element ref="ReligionCode" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="OrganizationCode" type="OrganizationCodeType" />
+  <xs:complexType name="ReportBodyType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ReportBody</xs:documentation>
+      <xs:documentation>"The structure for sending report messages."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="FromSender" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ReportContent" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element ref="ReportID" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ReportingEntity" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="ToReceiver" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportBody" type="ReportBodyType" />
+  <xs:complexType name="ReportContentType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ReportContent</xs:documentation>
+      <xs:documentation>"This is a collection class that may be used for different types of messages reporting information to other systems."</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="TaskStatus" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="ReportContent" type="ReportContentType" />
+  <xs:complexType name="RelativeLocationType">
+    <xs:annotation>
+      <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RelativeLocation</xs:documentation>
+      <xs:documentation>"A location defined by an offset to some reference location."</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="EntityReference" minOccurs="1" maxOccurs="1" />
+      <xs:element ref="SpatialOffset" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelativeLocation" type="RelativeLocationType" />
+  <!--*****ELEMENTS DERIVED FROM ONTOLOGY OBJECT PROPERTIES THAT ARE NOT ALREADY DERIVED FROM CLASSES*****-->
+  <xs:element name="DirectionOfMovement" type="OrientationType" />
+  <xs:element name="DelayTimeAmount" type="DurationType" />
+  <xs:element name="EndTime" type="TimeInstantType" />
+  <xs:element name="StartTime" type="TimeInstantType" />
+  <xs:element name="TimeOfObservation" type="TimeInstantType" />
+  <xs:element name="IssuedTime" type="DateTimeType" />
+  <xs:element name="SendingTime" type="DateTimeType" />
+  <xs:element name="CurrentState" type="EntityStateType" />
+</xs:schema>

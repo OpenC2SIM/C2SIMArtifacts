@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA TYPES*****-->
+  <!--*****SIMPLE TYPES DERIVED FROM ONTOLOGY DATA PROPERTIES*****-->
+  <xs:simpleType name="hatFellType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#hatFell</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:element name="hatFell" type="hatFellType" />
+  <!--*****TYPES DERIVED FROM ONTOLOGY CLASSES*****-->
+  <xs:complexType name="PfoteType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#Pfote</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Pfote" type="PfoteType" />
+  <xs:complexType name="HamsterType">
+    <xs:annotation>
+      <xs:documentation>http://www.semanticweb.org/michael.dembach/ontologies/2021/10/untitled-ontology-4#Hamster</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Hamster" type="HamsterType" />
+  <xs:simpleType name="KatzeType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#Katze</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Mauz" />
+      <xs:enumeration value="Mauzo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Katze" type="KatzeType" />
+  <xs:complexType name="SchwanzType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#Schwanz</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Schwanz" type="SchwanzType" />
+  <xs:complexType name="HundType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#Hund</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="Husky" />
+      <xs:element ref="Pudel" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Hund" type="HundType" />
+  <xs:complexType name="HuskyType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#Husky</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="bestehtAus" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Husky" type="HuskyType" />
+  <xs:complexType name="PudelType">
+    <xs:annotation>
+      <xs:documentation>http://www.fraunhofer.fkie.de/SimpleOntology#Pudel</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="bestehtAus" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pudel" type="PudelType" />
+  <!--*****ELEMENTS DERIVED FROM ONTOLOGY OBJECT PROPERTIES THAT ARE NOT ALREADY DERIVED FROM CLASSES*****-->
+</xs:schema>

@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.sisostds.org/ontologies/MGCS#"
+     xml:base="http://www.sisostds.org/ontologies/MGCS"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/MGCS">
+        <owl:imports rdf:resource="http://www.semanticweb.org/magdalena.dechand/ontologies/2021/2/untitled-ontology-125"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasAffectedEntityObject -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasAffectedEntityObject">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasDefenseLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasDefenseLocation">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasMIPCategoryCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasMIPCategoryCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasPerformingActorEntity -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasPerformingActorEntity">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasWeaponTypeSubCategory -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasWeaponTypeSubCategory">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasMIPRequestCategoryCode -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/smx#hasMIPRequestCategoryCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasMIPCategoryCode"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasAmountOfDrones -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasAmountOfDrones">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasQuantity"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasBoundary -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasBoundary">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpatialMeasure"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasLeapFrogDistance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasLeapFrogDistance">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpatialMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>should be semantically subclass of hasDistance.
+But it needs a different range (integer) other than &quot;hasDistance&quot; (double)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasLeapFrogEntity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasLeapFrogEntity">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+        <rdfs:comment>Leapfrog refers to a kind of movement of different parts of a swarm. Thus is a actor Reference.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasLeftBoundary -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasLeftBoundary">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasBoundary"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasMaxAltitudeAGL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasMaxAltitudeAGL">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAltitude"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasMinAltitudeAGL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasMinAltitudeAGL">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAltitude"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#hasRightBoundary -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/MGCS#hasRightBoundary">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasBoundary"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#EntityState -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/C2SIM#EntityState">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/lox#hasWeaponROECode"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/lox#WeaponRuleOfEngagementCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#GeodeticCoordinate -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/C2SIM#GeodeticCoordinate">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasName"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasMaxAltitudeAGL"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasMinAltitudeAGL"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Resource -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/C2SIM#Resource">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasWeaponTypeSubCategory"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/MGCS#WeaponTypeSubcategoryCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#CheckPoint -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#CheckPoint">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Point"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#Fixed-Wing -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#Fixed-Wing">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Aircraft"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#Force -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#Force">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MilitaryOrganization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#MilitaryUAVSwarm -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#MilitaryUAVSwarm">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MilitaryOrganization"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasLeapFrogEntity"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasAmountOfDrones"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>hasAmountOfDrones vs. hasRecource
+
+Recource refers to equipment of units, such as Ammunition etc which is not an (Actor)Entity itself.
+
+hasSubordinate would need specific UAVs with an UUIDBase as Subordinate.
+With hasAmountOfDrones, we just state the amount of Subordinates.
+
+We could also use EntityState to point out the strength of a unit. Strength can be changed during simulation.
+We prefer to either define this at this level.
+
+It could be also described as EntityDescriptor which also points to hasSide, Force etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#Rotorcraft -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#Rotorcraft">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Aircraft"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#UAV -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#UAV">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Aircraft"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#UAVTask -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#UAVTask">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Task"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasResource"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasPerformingActorEntity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/MGCS#MilitaryUAVSwarm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasLeapFrogDistance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#WayPoint -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#WayPoint">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Point"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#WeaponTypeSubcategoryCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/MGCS#WeaponTypeSubcategoryCode">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
+        <rdfs:comment>see JC3IEDM</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/lox#ManeuverWarfareTask -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/lox#ManeuverWarfareTask">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasResource"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/MGCS#hasAffectedEntityObject"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Entity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LocationObservation -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/smx#LocationObservation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ActorEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TacticalGraphic -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/smx#TacticalGraphic">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6-SIDC"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6-SIDC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#ACTIVATEMINE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#ACTIVATEMINE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TaskActionCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#BREAKTHROUGH -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#BREAKTHROUGH">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#DEACTIVATEMINE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#DEACTIVATEMINE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TaskActionCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#DESTROY -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#DESTROY">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#FIRE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#FIRE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TaskActionCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#GAIN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#GAIN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/MGCS#MachineGun -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/MGCS#MachineGun">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/MGCS#WeaponTypeSubcategoryCode"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

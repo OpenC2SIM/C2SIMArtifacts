@@ -1,1 +1,1 @@
-
+This is no release for publication. It is only intended as a basis for discussion within NATO MSG-193.
