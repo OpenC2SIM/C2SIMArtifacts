@@ -1,0 +1,2454 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.sisostds.org/ontologies/smx"
+     xml:base="http://www.sisostds.org/ontologies/smx"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/smx">
+        <owl:imports rdf:resource="http://www.sisostds.org/ontologies/C2SIM"/>
+        <rdfs:comment>Version 1.0.0 SISO Standard, May 2020</rdfs:comment>
+        <owl:versionInfo>C2SIM Standard Military Extension v1.0.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#maxQualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#maxQualifiedCardinality"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#minQualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#minQualifiedCardinality"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#qualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#qualifiedCardinality"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#UUIDBase -->
+
+    <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SymbolIDCodeString -->
+
+    <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:pattern>[SGIWMO]{1}[PUAFNSHJKO\-]{1}[PAGMOSTUFVXLIZ\-]{1}[AP\-]{1}[A-Z\-]{6}[A-Z\-\*]{2}[\-]{2}[AECGNSX\-\*]{1}</xsd:pattern>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+        <owl:annotatedTarget>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:pattern>[SGIWMO]{1}[PUAFNSHJKO\-]{1}[PAGMOSTUFVXLIZ\-]{1}[AP\-]{1}[A-Z\-]{6}[A-Z\-\*]{2}[\-]{2}[AECGNSX\-\*]{1}</xsd:pattern>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </owl:annotatedTarget>
+        <rdfs:comment>This pattern permits the full range of symbols for units, including their affiliation (position 2), status (position 4) and country (positions 13-14), even though this information is either a dynamic attribute and not part of the basic type of an entity (e.g., position 2) or redundant with information specified elsewhere in the ontology (positions 13-14). C2SIM systems should ignore characters in these fields.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasAllegianceRelationshipCode -->
+
+    <rdf:Description rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAllegianceRelationshipCode">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationshipCode"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDateTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDateTime"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDuration -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDuration"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEndTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEndTime"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEntityState -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEntityState"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEntityType -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasStartTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasStartTime"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasTask"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasAPP6-SIDC -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasAPP6-SIDC">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#APP6-SIDC"/>
+        <rdfs:comment>indiicates the NATO APP-6 tactical graphic code property for a class.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasCommandRelation -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasCommandRelation">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
+        <rdfs:comment>Indicates a miltary unit&apos;s particular command relationship.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasCommandRelationCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasCommandRelationCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasEchelonCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasEchelonCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasForceSideRelation -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasForceSideRelation">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#ForceSideRelation"/>
+        <rdfs:comment>Indicates the ForceSideRelation code for an Entity.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasMIPRequestCategoryCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasMIPRequestCategoryCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>A request category from the Joint Consultation Command Control Information Exchange Data Model (JC3IEDM) developed by the Multilateral Interoperability Programme (MIP).</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasObservation -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasObservation">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:comment>Indicates an Observation value associated with a class.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasOperationalStatus -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasOperationalStatus">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OperationalStatus"/>
+        <rdfs:comment>Indicates the level to which a military unit is prepared to carry out its combat functions, from a range of values.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasReinforcedReducedType -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasReinforcedReducedType">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+        <rdfs:comment>Indiates the current code for type of reiforcement or reduction of an ENtity.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasActorReference -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasSpeed"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasConfidenceLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Provides a confidence level associated with a class, from a range of values.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISCategory -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISCategory">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Category Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISCode">
+        <rdfs:comment>Provides an entity type code from IEEE 1516-2010 Distributed Interactive Simulation.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISCountry -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISCountry">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Provides a Country Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISDomain -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISDomain">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Domain Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISExtra -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISExtra">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides an Extra Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISKind -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISKind">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Kind Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISSpecific -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISSpecific">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Specific Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasDISSubCategory -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISSubCategory">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a SubCategory Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasHigherFormation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasHigherFormation">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The higher formation information associated with a unit tactical graphic.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasOtherSide -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasOtherSide">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasOwner -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasOwner">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+        <rdfs:comment>Provides a reference to the Owner associated with a class.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasSIDCString -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasSIDCString">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString"/>
+        <rdfs:comment>Provides a SIDC string associated with NATO APP-6 Tactical Graphics.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasSide -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasSide">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+        <rdfs:comment>Provides a reference to the ForceSide associated with a class.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasSpecialC2HQ -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasSpecialC2HQ">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Provides a reference to aSpecial Comamnd and Control Headquarter for a military Entity.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Provides a value of Uncertainty Interval for the quantity in a class.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#AbstractObject -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#AbstractObject"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#C2SIMContent -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Code -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Code"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#CollectiveEntity -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#CollectiveEntity"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Duration -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Duration"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSide"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#EntityType -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#MapGraphic -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#MilitaryOrganization -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#MilitaryOrganization">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CollectiveEntity"/>
+        <rdfs:comment>A collective entity that is a military organization (i.e., a unit).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#OperationalStatus -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#OperationalStatus"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#OperationalStatusCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#OperationalStatusCode"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Person -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Person"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Platform -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Platform"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#ReportContent -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#ReportContent"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Task -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Task"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#TimeInstant -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#TimeInstant"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#APP6-SIDC -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#APP6-SIDC">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSIDCString"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Tactical graphic icon code as specified by NATO APP6-C.</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#APP6-SIDC"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSIDCString"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>The string should have restrictions placed on it, e.g. 15 characters, etc.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ActivityObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#ActivityObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActionCode"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ActionCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An observation of the activity of the subject.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Aircraft -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Aircraft">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Platform"/>
+        <rdfs:comment>Air vehicle assembled for military use</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Boundary -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Boundary">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Line"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a boundary line.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CommandRelation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#CommandRelation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Relationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelationCode"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A relationship from some actor to an object actor, describing a relationship where one has some degree of command authority over the other</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>The object of the command relation.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CommandRelationCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#CommandRelationCode">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
+        <rdfs:comment>Enumerations of possible relationships between a unit and the unit that commands it. Obtained from JC3IEDM-v3.0.1.ObjectItemAssociationSubcategoryCode</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#DISEntityType -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#DISEntityType">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCategory"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCountry"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISDomain"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISExtra"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISKind"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISSpecific"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISSubCategory"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Entity Type as specified by SISO-REF-010-2016, Reference for
+Enumerations for Simulation Interoperability, version 27 (2019).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#EchelonCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#EchelonCode">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
+        <rdfs:comment>Enumerations of possible echelons for a military organization from JC3IEDM-v3.0.1.EchelonSizeCode</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ForceSide -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#ForceSide">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AbstractObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasForceSideRelation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#ForceSideRelation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Class for a collection of Entities that have the same allegiance. I.e. they are all friendly to each other. For example, ForceSides could be defined for &quot;BLUFOR&quot;, &quot;OPFOR&quot;, and &quot;CIVILIAN.&quot; Entities could be associated with one of these ForceSides through the hasSide property of their EntityDescriptor object property.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ForceSideRelation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#ForceSideRelation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Relationship"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOtherSide"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This relation describes the hostility relationship of a military force toward another force. The force that has this relationship as its property is the &quot;military force&quot;, while the force named in the hasOtherSide property of this relationship is &quot;another force.&quot;</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#ForceSideRelation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOtherSide"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>The object of the relation--a ForceSide.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HealthObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#HealthObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityHealthStatus"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityHealthStatus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An observation of the health state of a subject; for example operational status or resource count.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HostilityStatusCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#HostilityStatusCode">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
+        <rdfs:comment>Enumerations of possible hostility relationships in a military situation. Derived from JC3IEDM-v3.0.1.ObjectItemHostilityStatusCode</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Line -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Line">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#TacticalGraphic"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a line.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LocationObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#LocationObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDirectionOfMovement"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Orientation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpeed"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An observation of the location of a subject.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#METOCGraphic -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#METOCGraphic">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
+        <rdfs:comment>Specifies the NATO APP6-C-based meteorological conditions of the environment.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageCode"/>
+        <rdfs:comment>A request category from the Joint Consultation Command Control Information Exchange Data Model (JC3IEDM) developed by the Multilateral Interoperability Programme (MIP).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#MIPRequestContent -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#MIPRequestContent">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RequestContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasMIPRequestCategoryCode"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A request whose category is defined by the JC3IEDM request category code.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NBC_Event -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#NBC_Event">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#TacticalGraphic"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a Nuclear/Biological/Chemical event.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NameObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#NameObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasName"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMarking"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSide"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An observation of the unit name, a vehicle marking, a force side, and/or a hostility status of the observed entity.</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#NameObservation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>This code allows representation of temporary and dynamic hostility status to an observed entity.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Observation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Observation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This is an observation of the state of something in the world; generally an actor, but possibly anything that is an entity. Subclasses define specific observations that can be made.
+The subclasses defined here are sufficient to create a report with Size, Activity, Location, Unit Identification, Time, and Equipment, or some subset of that.</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>This is the probabilty that the reported value is correct.
+A value between 0 and 1.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>Uncertainty Interval is an optional qualification on an observation of a real-valued phenomenon. This is the size of the range of values (the reported value is the center) that the phenomenon could actually have. In two or three dimensions, this could be the diameter of a circle of uncertainty. The probability that the observation is in this range should be given by the ConfidenceLevel.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ObservationReportContent -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#ObservationReportContent">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ReportContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasObservation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This report contains an observation of some aspect of a subject--not necessarily including the location, health, or other facts that are in a position report.
+Multiple observations all refer to the same observed actor.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Point -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Point">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#TacticalGraphic"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a point location.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ReinforcedReducedType -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
+        <rdfs:comment>Enumerations of possible reinforcement relationships in a military situation. Dervived from JC3IEDM-v3.0.1.OrganisationStatusReinforcementCode</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ResourceObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#ResourceObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasResource"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Observations on resource availability, e.g. fuel, ammunition</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Route -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Route">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Line"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a route line.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SubjectTypeObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#SubjectTypeObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Describes the type of the subject of an observation.</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#SubjectTypeObservation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>Note that the types in EntityType allow for &quot;wildcards&quot; in some fields, i.e. for aspects of the type to be unspecified.
+Multiple types are permitted so that the type can be expressed in multiple type classes.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SubsurfaceVessel -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#SubsurfaceVessel">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Platform"/>
+        <rdfs:comment>Underwater vehicle assembled for military use</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SurfaceVessel -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#SurfaceVessel">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Platform"/>
+        <rdfs:comment>Water surface vehicle assembled for military use</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TacticalArea -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#TacticalArea">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#TacticalGraphic"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for an area location.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TacticalGraphic -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#TacticalGraphic">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOwner"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TaskGraphic -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#TaskGraphic">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#TacticalGraphic"/>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a Task.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Unit -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Unit">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MilitaryOrganization"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasEchelonCode"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An echelon of platforms, individuals, or other units.</rdfs:comment>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#Unit"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>An optional command relationship, which specifies an object (actor) of the relation and the relation type.</rdfs:comment>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OperationalStatusCode"/>
+        <rdfs:comment>Code indicating capability of unit to perform its mission, over a range of values.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#UnitSymbol -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#UnitSymbol">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOperationalStatus"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OperationalStatus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasReinforcedReducedType"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHigherFormation"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSpecialC2HQ"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Specifies a NATO APP6-C-based tactical graphics symbol for a military unit, equipment, or installation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#Vehicle -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Vehicle">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Platform"/>
+        <rdfs:comment>Vehicle assembled for military use; most often applies to ground vehicle</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#EnemySide -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#EnemySide"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#FriendlySide -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#FriendlySide"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#NeutralSide -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#NeutralSide"/>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ACTION -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ACTION">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Action: To discover the actions of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ADMCON -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ADMCON">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has administrative control of: Direction or exercise of authority over subordinate or other organizations in respect to administrative matters such as personnel</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#AFR -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#AFR">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Assumed friend: An OBJECT-ITEM that is assumed to be a friend because of its characteristics, behaviour or origin.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#AG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#AG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Army group: The largest formation of land forces, normally comprising two or more armies or army corps under a designated commander.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#AHO -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#AHO">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Assumed hostile: An indication that the OBJECT-ITEM in question is likely to belong to enemy forces.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#AIV -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#AIV">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Assumed involved: An indication that the OBJECT-ITEM in question is likely to belong to involved forces different from own, allied and enemy</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ALTFOR -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ALTFOR">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has as alternate: The subject ORGANISATION has the object ORGANISATION as able to execute its functions should the need arise.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ANT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ANT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Assumed neutral: An indication that the OBJECT-ITEM in question is likely to belong to neither own, allied, enemy or otherwise involved forces.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ARMY -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ARMY">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Army: A formation larger than an army corps but smaller than an army group. It usually consists of two or more army corps.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ASGND -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ASGND">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has assigned: An object ORGANISATION is placed in the subject ORGANISATION where such placement is relatively permanent, and/or where such</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ASSOC -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ASSOC">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Association: To discover the relation between two ACTION-OBJECTIVEs (OBJECT-ITEMs) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ATPRCL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ATPRCL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has at priority call: A precedence applied to the task of an artillery unit to provide fire to a formation/unit on a guaranteed basis.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ATTACH -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ATTACH">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has attached: The placement of units in an organisation where such placement is relatively temporary.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#BATGRP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#BATGRP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Battle group: An operational grouping which is based on either an infantry battalion or a tank regiment, each with at least a squadron or</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#BDE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#BDE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Brigade: Unit composed of a headquarters and two or more battalions. It may be part of an army and be charged with only tactical functions,</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#BDEGRP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#BDEGRP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Brigade group: An operational grouping which is based on an infantry or armoured brigade and which has elements of other supporting arms</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#BN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#BN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Battalion: Unit composed of a headquarters and two or more companies or batteries. It may be part of a regiment and be charged with only</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#BNG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#BNG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Battalion group: An operational grouping which is based on an infantry battalion and which has elements of other supporting arms and services</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#BURN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#BURN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Burning: The ACTION objective is alight.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CAPAB -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CAPAB">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Capability: To discover the capability of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CAPTRD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CAPTRD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Captured: The ACTION objective has been captured or acquired and is available for use or interrogation/possession has been taken of</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CASP1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CASP1">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Coordinated air/sea procedure one: An air-defence capable warship ORGANISATION is under tactical control of the Air Defence Commander.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CASP2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CASP2">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Coordinated air/sea procedure two: An air-defence capable warship ORGANISATION is working closely with the shore based Air Defence Commander. Tactical control</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CASP3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CASP3">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Coordinated air/sea procedure three: A warship ORGANISATION that is unable to contribute to the Recognized Air Picture but requires receiving it normally via the</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CASP4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CASP4">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Coordinated air/sea procedure four: An air-defence capable warship ORGANISATION, entering or berthed in a port or anchorage, which is able to assist the SOC/CAOC</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CLSSUP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CLSSUP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in close support: That action of the supporting force against targets or objectives that are sufficiently near the supported force as to require</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#COAUTH -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#COAUTH">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has coordination authority over: The authority granted to a commander or individual assigned responsibility for coordinating specific functions or activities</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#COMD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#COMD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has full command of: The military authority and responsibility of a superior officer to issue orders to subordinates.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CONS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CONS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Consumed: The consumption of specified consumables or CONSUMABLE-MATERIEL-TYPEs.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#CORPS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#CORPS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Corps: A formation larger than a division but smaller than an army or army group. It usually consists to two or more divisions together</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#COY -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#COY">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Company: Basic administrative and tactical unit in most arms and services of the Army. A company is on a command level below a battalion</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#COYG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#COYG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Company group: An operational grouping which is based on either an infantry company or a tank company, which has elements of other supporting</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#DETACH -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#DETACH">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has detached: The subject ORGANISATION has the object ORGANISATION separated from its main organisation for duty elsewhere.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#DETD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#DETD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#DIRSUP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#DIRSUP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in direct support: The support provided by a unit not attached to or under command of the supported unit or formation, but required to give priority</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#DIV -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#DIV">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Division: A tactical unit/formation that is a major administrative and tactical unit/formation that combines in itself the necessary</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#DSTRYK -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#DSTRYK">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Destroyed (K-kill): Cannot function as intended nor be repaired or restored to an operational status.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FAKER -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FAKER">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Faker: An OBJECT-ITEM that is a friendly aircraft simulating a hostile aircraft in an air defence exercise.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FKIL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FKIL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Firepower kill (F-kill): The destruction of a vehicle (or system&apos;s) primary weapon system.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FLEET -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FLEET">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Fleet: An organisation of ships, aircraft, Marine forces, and shore-based fleet activities all under the command of a commander or</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FLIG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FLIG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Forced to flee: The setting to flight of a PERSON or PERSON-TYPEs from their present location.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FLIGHT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FLIGHT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Flight: A specified group of aircraft engaged in a common mission.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FORCE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FORCE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Reinforces: The subject ORGANISATION is made available to the object ORGANISATION commander for the purpose of supplementing an in-place</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#FR -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#FR">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Friend: An OBJECT-ITEM that belongs to a declared friendly nation.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#GENSRI -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#GENSRI">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in general support reinforcing: General Support Reinforcing artillery has the mission of supporting the forces as a whole and, on a secondary basis, of providing</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#GENSUP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#GENSUP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in general support: The support that is given to the supported force as a whole and not to any particular subdivision thereof.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HO -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#HO">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Hostile: An OBJECT-ITEM that is positively identified as enemy.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HOLDNG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#HOLDNG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Holding: To discover the holding of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HOSTIL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#HOSTIL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Hostility: To recognise the friendly or enemy character of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HSCPTD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#HSCPTD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has captured: The subject ORGANISATION has taken possession, as a result of forceful means, of the object ORGANISATION.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#HSNSPT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#HSNSPT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in support of: Term designating the support provided to another unit, formation or organisation while remaining under the initial command.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#IDNT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#IDNT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Identified: The ACTION objective has been either identified (i.e., classified as friend/foe/neutral) or recognised (i.e., the unit designation</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ILLUMN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ILLUMN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Illuminated: The temporary supply of IR or white-light illumination (usually in coordination with direct or indirect fire).</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#INTREC -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#INTREC">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Intact but unrecoverable: An equipment lost in an area unsuitable for recovery due to political, military or geographic/environmental considerations.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ISCPER -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ISCPER">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Is co-operating with: Working or acting together.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#IV -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#IV">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Involved: An indication that the OBJECT-ITEM in question belongs to involved forces different from own, allied and enemy forces.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#JOKER -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#JOKER">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Joker: An OBJECT-ITEM that is acting as a suspect track for exercise purposes only.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#KILL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#KILL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Killed: A casualty who is killed outright or dies as a result of wounds, disease or other injuries.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LDAM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#LDAM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Light damage: The subjective categorisation of the physical effect of an ACTION on buildings, infrastructure and/or equipment by a reporting</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LGTRST -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#LGTRST">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Light resistance: The ACTION-OBJECTIVE reacted against the ACTION using light physical violence.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LOCATN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#LOCATN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Location: To discover the location of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LOGCON -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#LOGCON">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has logistical control of: Logistic Control (LOGCON) is that authority granted to a Commander over assigned logistics units and organizations in the</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#LOST -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#LOST">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Lost: The object is no longer available for military operations.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#MKIL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#MKIL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Mobility kill (M-kill): The rendering of a vehicle as being temporarily or permanently incapable of tactical movement.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#MODDAM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#MODDAM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Moderate damage: The subjective categorisation of the physical effect of an ACTION on buildings, infrastructure and/or equipment by a reporting</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#MOPS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#MOPS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#MUTSUP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#MUTSUP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in mutual support: That support which units render each other against an enemy, because of their assigned tasks, their position relative to each</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NBCAS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NBCAS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Non-battle casualty: A person who is not a battle casualty, but who is lost to his organisation by reason of disease or injury, including persons</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NEUTRL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NEUTRL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Neutral: An OBJECT-ITEM whose characteristics, behaviour, origin or nationality indicate that it is neither supporting friendly nor</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NKN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NKN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode"/>
+        <rdfs:comment>Not known: It is not possible to determine which value is most applicable.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NOP -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NOP">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NORM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NORM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NORSTN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NORSTN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>No resistance: The ACTION-OBJECTIVE did not react against the ACTION.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NOS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NOS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Not otherwise specified: The appropriate value is not in the set of specified values.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NTF -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NTF">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Task force, Navy: A component of a fleet organized by the commander of a task fleet or higher authority for the accomplishment of a specific</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NTG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NTG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Task group, Navy: A component of a task force organized by the commander of the task force or higher authority for accomplishing specific tasks.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NTU -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NTU">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Task unit, Navy: A component of a task group organized by the commander of a task group or higher authority for accomplishing specific tasks.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#NUTRLD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#NUTRLD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Neutralized: The rendering of the ACTION objective temporarily ineffective by the infliction of significant casualties (norm for indirect</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ONCALL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ONCALL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has on call: A term used to specify that a pre-arranged concentration, air strike or final protective fire may be called for.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#OPCOMD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#OPCOMD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has operational command of: The authority granted to a commander to assign missions or tasks to subordinate commanders, to deploy units, to reassign forces,</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#OPCON -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#OPCON">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has operational control of: The authority delegated to a commander to direct forces assigned so that the commander may accomplish specific missions or</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#OPR -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#OPR">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ORGANC -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ORGANC">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has organic: The subject ORGANISATION normally has the object ORGANISATION under command in garrison.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#PENDNG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#PENDNG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Pending: An OBJECT-ITEM for which identification is to be determined.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#PLT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#PLT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Platoon: Basic administrative and tactical unit in most arms and services of the Army.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#PRESNC -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#PRESNC">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Presence: To discover the manifestation of an ACTION-OBJECTIVE in the area of operational interest specified through another ACTION-OBJECTIVE</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#REGION -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#REGION">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Region: A grouping of two or more Army groups.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#REIN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#REIN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#REINFC -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#REINFC">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has reinforcing: In artillery usage, a tactical mission in which one artillery unit augments the fire of another artillery unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#RESERV -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#RESERV">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has in reserve: The object ORGANISATION constitutes a force that may be committed into combat only on the order of the commander of the subject</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#RGT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#RGT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Regiment: Administrative and tactical unit, on a command level below a division or brigade and above a battalion, the entire organisation</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#RIDT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#RIDT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ROLE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ROLE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Plays the role of: The subject ORGANISATION plays the role of an object ORGANISATION.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#ReinforcementNKN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#ReinforcementNKN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#ReinforcedReducedType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SAME -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SAME">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Is the same as: The subject ORGANISATION is deemed to be the same as the object ORGANISATION.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SDAM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SDAM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Severe damage: The subjective categorisation of the physical effect of an ACTION on buildings, infrastructure and/or equipment by a reporting</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SECT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SECT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Section: A small tactical unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SOPS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SOPS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTAMM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTAMM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - ammunition: Supporting unit satisfies all ammunition resupply requirements of the supported unit including crew-served weapons and artillery.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTENG -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTENG">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - engineering: Supporting unit satisfies engineering support requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTMED -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTMED">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - medical: Supporting unit satisfies medical requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTMVT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTMVT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - movement: Supporting unit coordinates and provides road credits for the movement of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTPAR -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTPAR">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - per adm rpl: Supporting unit satisfies all personnel administration and replacement requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTPOL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTPOL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - POL: Supporting unit satisfies fuel/POL supply requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTPST -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTPST">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - postal: Supporting unit satisfies postal requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTRAT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTRAT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - rations: Supporting unit satisfies food replenishment requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTRRE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTRRE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - rep, rec, evc: Supporting unit satisfies 2nd and 3rd line repair, recovery and evacuation requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTSPL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTSPL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - supply: Supporting unit satisfies supply requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SPTTRN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SPTTRN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Support services - transport: Supporting unit satisfies 2nd and 3rd line transport requirements of the supported unit.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SQDRNA -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SQDRNA">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Squadron, air: An administrative or tactical organisation normally but not necessarily composed of aircraft of the same type.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SQDRNM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SQDRNM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Squadron, maritime: An administrative or tactical organisation consisting of two or more divisions of ships, plus such additional ships as may</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SQUAD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SQUAD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Squad: A small number of men, a subdivision or section of a company, formed for drill.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#STATUS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#STATUS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Status: To recognise the status of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SUPRSD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SUPRSD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Suppressed: Reduction of the effectiveness of the ACTION objective for a specific period or purpose (normally to prevent an enemy from</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#SUSPCT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#SUSPCT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Suspect: An OBJECT-ITEM that is potentially hostile because of its characteristics, behaviour or origin.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TACCNT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#TACCNT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has tactical control of: The detailed, and, usually, local direction and control of movements or manoeuvres necessary to accomplish missions or tasks</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TACCOM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#TACCOM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
+        <rdfs:comment>Has tactical command of: The authority delegated to a commander to assign tasks to forces under his command for the accomplishment of the mission assigned</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TEAM -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#TEAM">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Team/fire team/crew: Any unit smaller than a squad that will be denoted by a vehicle or weapon symbol in a graphical representation.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TNOPS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#TNOPS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#UnitOperationalStatusCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TSKELN -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#TSKELN">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Task element, Navy: A component of a task unit organized by the commander of the task unit or higher authority for accomplishing a specific task.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#TYPE -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#TYPE">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#MIPRequestCategoryCode"/>
+        <rdfs:comment>Type: To recognise the type of an ACTION-OBJECTIVE (OBJECT-ITEM) by any means.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#UNK -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#UNK">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+        <rdfs:comment>Unknown: An OBJECT-ITEM for which its hostility status information is not available.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#VLNRST -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#VLNRST">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Violent resistance: The ACTION-OBJECTIVE reacted against the ACTION using heavy physical violence.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#VRBPRT -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#VRBPRT">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Verbal protest: The ACTION-OBJECTIVE reacted against the ACTION using verbal abuse.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#WING -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#WING">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/smx#EchelonCode"/>
+        <rdfs:comment>Wing: An aviation unit composed normally of one primary mission group and the necessary supporting organisations.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#WNDD -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/smx#WNDD">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DesiredEffectCode"/>
+        <rdfs:comment>Wounded: A casualty other than &quot;killed&quot; who has incurred an injury due to an external agent or cause.</rdfs:comment>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:comment>Superclass of all classes in this ontology.</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
