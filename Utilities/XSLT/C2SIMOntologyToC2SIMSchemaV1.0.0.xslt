@@ -4,7 +4,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:math="http://www.w3.org/
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	<!-- This XSLT operates on ontology file(s) forming the the Simulation Interoperability Standards Organization (SISO) Command and Control System to Simulation System 
           Interoperation (C2SIM) standard to create an XML schema file for use in implementation of the standard. The input file must be in rdf/xml format as generated from
-          source ontology file(s) by the Protege ontology editing tool developed and maintained by Stanford University (http://protege.stanford.edu). -->
+          source ontology file(s) by the Protege ontology editing tool developed and maintained by Stanford University (http://protege.stanford.edu). working on learning git-->
           
     <!-- The following XSLT template is the starting point for processing, matching the root of the input file. -->
 	<xsl:template match="/" name="xsl:initial-template">
