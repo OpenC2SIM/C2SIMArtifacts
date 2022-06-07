@@ -1,2 +1,2 @@
 # C2SIMArtifacts
-C2SIM Artifacts
+This repository contains artifacts supporting the Command and Control Systems - Simulation Systems Interoperation (C2SIM) international standard produced by the Simulation Interoperability Standards Organization (SISO) C2SIM Product Development Group / Product Support Group. 
