@@ -9,6 +9,8 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:math="http://www.w3.org/
 	Version 1.0.0: initial version 
 	
 	Version 1.0.1 - 13/10/2021: correction in the transformation logic to handle issue about tactical graphics (classes without property restrictions), and addition of annotation information
+	
+	Version 1.0.2 - 13/09/2022: correction in the transformation logic to handle leaf classes without property restrictions, and addition of annotation information
 	-->
 
     <!-- The following XSLT template is the starting point for processing, matching the root of the input file. -->
@@ -332,7 +334,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:math="http://www.w3.org/
 					             call CreateChoiceOfSubclasses
 					        END IF 
 					   ELSE IF (class has NOT superclasses with property axioms)  
-					        create a simple type restricting xs:string
+					        create an empty complex type and its element 
 					   ELSE 
 					        call ExamineSubclassNodeSet
 					   END IF 
@@ -356,16 +358,28 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:math="http://www.w3.org/
 						<xsl:otherwise>
 							<xsl:choose>
 								<xsl:when test="fn:contains($hasSuperclassWithPropAxioms, 'failure')">
-									<!-- class has no inherited properties, no properties of its own, and no subclasses, so create a simple type restricting xs:string -->
-									<xsl:element name="xs:simpleType">
+									<!-- class has no inherited properties, no properties of its own, and no subclasses, so create an empty type with its element -->
+									<xsl:element name="xs:complexType">
 										<xsl:attribute name="name">
 											<xsl:value-of select="fn:concat($thisClassName, 'Type')"/>
 										</xsl:attribute>
-										<xsl:element name="xs:restriction">
-											<xsl:attribute name="base">
-												<xsl:text>xs:string</xsl:text>
-											</xsl:attribute>
-										</xsl:element>
+										<!-- if there is rdfs:comment information, add it as an annotation element in the schema -->
+										<xsl:call-template name="AddAnnotationInformation">
+											<xsl:with-param name="ontologyComponent" select="."/>
+										</xsl:call-template>
+									</xsl:element>
+									<!-- also declare an element of that type for reference elsewhere -->
+									<xsl:element name="xs:element">
+										<xsl:attribute name="name">
+											<xsl:call-template name="RemovePrefixOnPropertyName">
+												<xsl:with-param name="propertyNameString" select="$thisClassName"/>
+											</xsl:call-template>
+										</xsl:attribute>
+										<xsl:attribute name="type">
+											<xsl:call-template name="RemovePrefixOnPropertyName">
+												<xsl:with-param name="propertyNameString" select="fn:concat($thisClassName, 'Type')"/>
+											</xsl:call-template>
+										</xsl:attribute>
 									</xsl:element>
 								</xsl:when>
 								<xsl:otherwise>
@@ -396,6 +410,12 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:math="http://www.w3.org/
 					<xsl:value-of select="$ontologyComponent/rdfs:comment"/>
 				</xsl:element>
 			</xsl:if>
+			<!-- check if there is some global rdf:Description, and add them as an annotation element in the schema -->
+			<xsl:for-each select="/rdf:RDF/rdf:Description[@rdf:about=$ontologyComponent/@rdf:about]">
+				<xsl:element name="xs:documentation">
+					<xsl:value-of select="./rdfs:comment"/>
+				</xsl:element>
+			</xsl:for-each>
 			<!-- create a documentation element to show the source ontology namespace for this concept -->
 			<xsl:element name="xs:documentation">
 				<xsl:value-of select="$ontologyComponent/@rdf:about"/>
