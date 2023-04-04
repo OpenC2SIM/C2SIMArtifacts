@@ -161,6 +161,24 @@
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#playbackRealtimeMultiple -->
+
+    <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/C2SIM#playbackRealtimeMultiple">
+        <rdfs:comment>playbackRealtimeMultiple is a datatype for setting the simulation time to realtime multiplier for the rate of playing back recorded messages in a C2SIM coalition of systems. It is defined as a positive decimal type. For example, a value of 2.5 indicates playback of recorded messages at 2.5 times faster than realtime. A value of 0.5 indicates playback of recorded messages at half the realtime clock, or running half the speed of realtime.</rdfs:comment>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</xsd:minExclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#simulationRealtimeMultiple -->
 
     <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/C2SIM#simulationRealtimeMultiple">
@@ -530,6 +548,15 @@
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasRefreshInitSelection -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasRefreshInitSelection">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasReligionCode -->
 
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasReligionCode">
@@ -704,6 +731,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasReference"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
         <rdfs:comment>The reference is to some abstract object.</rdfs:comment>
     </owl:DatatypeProperty>
     
@@ -1071,6 +1099,15 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasPlaybackPosition">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment>Gives the string value of the position of the playback in the file of recorded messages from execution of a C2SIM coalition of systems.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasPlaybackRealtimeMultiple -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasPlaybackRealtimeMultiple">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#playbackRealtimeMultiple"/>
+        <rdfs:comment>Decimal rate indicating ratio of simulation time to real time for playback of recorded messages (e.g., value of 2.0 indicates messages are played back at 2:1 simulation time to realtime [i.e., faster than realtime]; 0.5 indicates message playback at half realtime [i.e., slower than realtime]).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -2125,24 +2162,24 @@ It is one subclass of MessageBody (other subclasses perform administrative funct
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class OR an individual of the CommunicationNetwork class that is the intended recipient of this message. If the recipient is a CommunicationsNetwork, then all ActorEntities that have this network will receive the message.</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
         </owl:annotatedTarget>
         <rdfs:comment>This is the unique indentifier of an individual of the ActorEntity class who is the sender of this message. The individual is defined elsewhere.</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class OR an individual of the CommunicationNetwork class that is the intended recipient of this message. If the recipient is a CommunicationsNetwork, then all ActorEntities that have this network will receive the message.</rdfs:comment>
     </owl:Axiom>
     
 
@@ -3030,6 +3067,15 @@ The entity issuing the order might not  be the same as the Sender, if the order 
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#PauseScenario -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#PauseScenario">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
+        <rdfs:comment>A system command to pause the execution of a scenario across a C2SIM coalition of systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#Person -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Person">
@@ -3165,10 +3211,20 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#PlaybackRealtimeMultipleReport -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#PlaybackRealtimeMultipleReport">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
+        <rdfs:comment>System command for reporting the current setting of the playbackRealtimeMultiple value indicating the multiple of simulation time to realtime currently set for the playback of recorded messages in the C2SIM coalition of systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#PlaybackStatusCode -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#PlaybackStatusCode">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageCode"/>
+        <rdfs:comment>Enumeration of states of the playback of recorded messages.</rdfs:comment>
     </owl:Class>
     
 
@@ -3193,7 +3249,7 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSimulationRealtimeMultiple"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPlaybackRealtimeMultiple"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
             </owl:Restriction>
@@ -3212,7 +3268,7 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#IsoTimeDurationBase"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>System command for reporting the status of the playback of recorded C2SIM messages in a C2SIM coalition of systems. The name refers to the name of the recording being played back at the time of this report. Playback position may be  something like sequence number in the recording file. The format and the meaning of the string value is out of the scope of the C2SIM standard, and should be defined at the Federation level (interoperability across different Federations is not guaranteed). The time since playback start gives the time duration (isoTimeDurationBase) since the start time of the current playback (i.e., the message timestamp that the playback has reached).</rdfs:comment>
+        <rdfs:comment>System command for reporting the status of the playback of recorded C2SIM messages in a C2SIM coalition of systems. The name refers to the name of the recording being played back at the time of this report. Playback position may be  something like sequence number in the recording file. The format and the meaning of the string value is out of the scope of the C2SIM standard, and should be defined at the Federation level (interoperability across different Federations is not guaranteed). The time since playback start gives the time duration (isoTimeDurationBase) since the start time of the current playback (i.e., the message timestamp that the playback has reached). The playbackRealtimeMultiple is the current setting of the rate at which recorded messages are being played back.</rdfs:comment>
     </owl:Class>
     
 
@@ -3263,6 +3319,7 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#RecordingStatusCode">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageCode"/>
+        <rdfs:comment>Enumeration of states of the recording of messages sent during execution of a C2SIM coalition of systems.</rdfs:comment>
     </owl:Class>
     
 
@@ -3293,6 +3350,31 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>System command for reporting the status of the recording of C2SIM messages in a C2SIM coalition of systems. The name refers to the name given to this recording. The file size is the size of the recording file in bytes (could be a &quot;current&quot; file size if a recording is in progress at the time of this report).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#RefreshInit -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#RefreshInit">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasRefreshInitSelection"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This system command supports late joiners to the C2SIM coalition of systems. It causes a fresh copy of the C2SIMInitialization message to be sent to the requesting system. Command parameters indicate that either a copy of the startup initialization (INITIALIZATION_ORIGINAL) or an updated version with latest reported positions of each ActorEntity (INITIALIZATION_LATEST_POSITIONS) be sent to the requesting system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageCode"/>
+        <rdfs:comment>Enumeration of initialization request options for a late joiner to a C2SIM coalition of systems.</rdfs:comment>
     </owl:Class>
     
 
@@ -3502,6 +3584,15 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#RequestPlaybackRealtimeMultiple -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#RequestPlaybackRealtimeMultiple">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
+        <rdfs:comment>System command for requesting the current setting of the playbackRealtimeMultiple value indicating the multiple of simulation time to realtime currently set for recording playback in the C2SIM coalition of systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#RequestPlaybackStatus -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#RequestPlaybackStatus">
@@ -3525,6 +3616,14 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#RequestSimulationRealtimeMultiple">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
         <rdfs:comment>System command for requesting the current setting of the simuationRealtimeMultiple value indicating the multiple of simulation time to realtime currently set for the simulation systems in the C2SIM coalition of systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#ResetScenario -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#ResetScenario">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
     </owl:Class>
     
 
@@ -3594,6 +3693,15 @@ Resources may include consumable material such as ammunition and fuel; equipment
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#ResumeScenario -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#ResumeScenario">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
+        <rdfs:comment>A system command to resume the paused execution of a scenario across a C2SIM coalition of systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#ScenarioSetting -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#ScenarioSetting">
@@ -3622,6 +3730,22 @@ Resources may include consumable material such as ammunition and fuel; equipment
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
         <rdfs:comment>Alphabetic text descriptions used by the USA-Department of Defense to identify the level of sensitivity of information</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#SetPlaybackRealtimeMultiple -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#SetPlaybackRealtimeMultiple">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPlaybackRealtimeMultiple"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#playbackRealtimeMultiple"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>System command for setting the playbackRealtimeMultiple value indicating the  multiple of simulation time to realtime for playback of recorded messages in the C2SIM coalition of systems.The SetPlaybackRealtimeMultiple enables a user in a C2SIM coalition to direct playback of recorded messages at a rate faster or slower than realtime. For example, a playbackRealtimeMultiple value of 2.0 directs recording playback at 2:1 simulation time to realtime (i.e., faster than realtime); a value of 0.5 directs recording playback at half realtime (i.e., slower than realtime).</rdfs:comment>
     </owl:Class>
     
 
@@ -7876,6 +8000,24 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#INDOSN">
         <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EthnicGroupCode"/>
         <rdfs:comment>Indonesian (incl Javanese/Sundanese/Sumatran): The ethnic group of Indonesian (incl Javanese/Sundanese/Sumatran) people.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#INITIALIZATION_LATEST_POSITIONS -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#INITIALIZATION_LATEST_POSITIONS">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection"/>
+        <rdfs:comment>Option for a late joiner to request initialization messages to include current positions of entities.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#INITIALIZATION_ORIGINAL -->
+
+    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#INITIALIZATION_ORIGINAL">
+        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection"/>
+        <rdfs:comment>Option for a late joiner to request the oritinal initialization message used to initialize the C2SIM coalition of systems.</rdfs:comment>
     </owl:NamedIndividual>
     
 
