@@ -73,6 +73,15 @@
 			<xs:maxInclusive value="100"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="playbackRealtimeMultipleType">
+		<xs:annotation>
+			<xs:documentation>playbackRealtimeMultiple is a datatype for setting the simulation time to realtime multiplier for the rate of playing back recorded messages in a C2SIM coalition of systems. It is defined as a positive decimal type. For example, a value of 2.5 indicates playback of recorded messages at 2.5 times faster than realtime. A value of 0.5 indicates playback of recorded messages at half the realtime clock, or running half the speed of realtime.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#playbackRealtimeMultiple</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minExclusive value="0.0"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="simulationRealtimeMultipleType">
 		<xs:annotation>
 			<xs:documentation>simulationRealtimeMultiple is a datatype for setting the simulation time to realtime multiplier. It is defined as a positive decimal type. For example, a value of 2.5 indicates a simulation is advancing the simulation time 2.5 times faster than realtime. A value of 0.5 indicates a simulation is advancing the simulation time at half the realtime clock, or running half the speed of realtime. For example, a slower rate is sometimes used to slow down a simulation to allow more time for human operator interaction.</xs:documentation>
@@ -404,6 +413,14 @@
 		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
 	<xs:element name="PlaybackPosition" type="PlaybackPositionType"/>
+	<xs:simpleType name="PlaybackRealtimeMultipleType">
+		<xs:annotation>
+			<xs:documentation>Decimal rate indicating ratio of simulation time to real time for playback of recorded messages (e.g., value of 2.0 indicates messages are played back at 2:1 simulation time to realtime [i.e., faster than realtime]; 0.5 indicates message playback at half realtime [i.e., slower than realtime]).</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasPlaybackRealtimeMultiple</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="playbackRealtimeMultipleType"/>
+	</xs:simpleType>
+	<xs:element name="PlaybackRealtimeMultiple" type="PlaybackRealtimeMultipleType"/>
 	<xs:simpleType name="ProtocolType">
 		<xs:annotation>
 			<xs:documentation>Instances of the class have a code identifying a protocol applicable to that class.</xs:documentation>
@@ -1052,6 +1069,11 @@
 	<xs:element name="RecordingStatusCode" type="RecordingStatusCodeType">
 		<xs:annotation>
 			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasRecordingStatusCode</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="RefreshInitSelection" type="RefreshInitSelectionType">
+		<xs:annotation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#hasRefreshInitSelection</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="ReligionCode" type="ReligionCodeType">
@@ -2813,6 +2835,7 @@ The location of a CollectiveEntity may represent the center of mass or headquart
 			<xs:element ref="MIPRequestCategoryCode"/>
 			<xs:element ref="PlaybackStatusCode"/>
 			<xs:element ref="RecordingStatusCode"/>
+			<xs:element ref="RefreshInitSelection"/>
 			<xs:element ref="TaskStatusCode"/>
 		</xs:choice>
 	</xs:complexType>
@@ -3027,6 +3050,13 @@ An order generally comes from an entity with command authority and thus is expec
 		</xs:annotation>
 	</xs:complexType>
 	<xs:element name="PauseRecording" type="PauseRecordingType"/>
+	<xs:complexType name="PauseScenarioType">
+		<xs:annotation>
+			<xs:documentation>A system command to pause the execution of a scenario across a C2SIM coalition of systems.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PauseScenario</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="PauseScenario" type="PauseScenarioType"/>
 	<xs:complexType name="PersonType">
 		<xs:annotation>
 			<xs:documentation>An Entity that is an individual human being</xs:documentation>
@@ -3116,8 +3146,16 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
 		</xs:choice>
 	</xs:complexType>
 	<xs:element name="Platform" type="PlatformType"/>
+	<xs:complexType name="PlaybackRealtimeMultipleReportType">
+		<xs:annotation>
+			<xs:documentation>System command for reporting the current setting of the playbackRealtimeMultiple value indicating the multiple of simulation time to realtime currently set for the playback of recorded messages in the C2SIM coalition of systems.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PlaybackRealtimeMultipleReport</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="PlaybackRealtimeMultipleReport" type="PlaybackRealtimeMultipleReportType"/>
 	<xs:simpleType name="PlaybackStatusCodeType">
 		<xs:annotation>
+			<xs:documentation>Enumeration of states of the playback of recorded messages.</xs:documentation>
 			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PlaybackStatusCode</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -3128,14 +3166,14 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
 	</xs:simpleType>
 	<xs:complexType name="PlaybackStatusReportType">
 		<xs:annotation>
-			<xs:documentation>System command for reporting the status of the playback of recorded C2SIM messages in a C2SIM coalition of systems. The name refers to the name of the recording being played back at the time of this report. Playback position may be  something like sequence number in the recording file. The format and the meaning of the string value is out of the scope of the C2SIM standard, and should be defined at the Federation level (interoperability across different Federations is not guaranteed). The time since playback start gives the time duration (isoTimeDurationBase) since the start time of the current playback (i.e., the message timestamp that the playback has reached).</xs:documentation>
+			<xs:documentation>System command for reporting the status of the playback of recorded C2SIM messages in a C2SIM coalition of systems. The name refers to the name of the recording being played back at the time of this report. Playback position may be  something like sequence number in the recording file. The format and the meaning of the string value is out of the scope of the C2SIM standard, and should be defined at the Federation level (interoperability across different Federations is not guaranteed). The time since playback start gives the time duration (isoTimeDurationBase) since the start time of the current playback (i.e., the message timestamp that the playback has reached). The playbackRealtimeMultiple is the current setting of the rate at which recorded messages are being played back.</xs:documentation>
 			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#PlaybackStatusReport</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element ref="Name" minOccurs="1" maxOccurs="1"/>
 			<xs:element ref="PlaybackPosition" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="PlaybackRealtimeMultiple" minOccurs="1" maxOccurs="1"/>
 			<xs:element ref="PlaybackStatusCode" minOccurs="1" maxOccurs="1"/>
-			<xs:element ref="SimulationRealtimeMultiple" minOccurs="1" maxOccurs="1"/>
 			<xs:element ref="TimeSincePlaybackStart" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -3155,6 +3193,7 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
 	<xs:element name="PositionReportContent" type="PositionReportContentType"/>
 	<xs:simpleType name="RecordingStatusCodeType">
 		<xs:annotation>
+			<xs:documentation>Enumeration of states of the recording of messages sent during execution of a C2SIM coalition of systems.</xs:documentation>
 			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RecordingStatusCode</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -3175,6 +3214,26 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="RecordingStatusReport" type="RecordingStatusReportType"/>
+	<xs:complexType name="RefreshInitType">
+		<xs:annotation>
+			<xs:documentation>This system command supports late joiners to the C2SIM coalition of systems. It causes a fresh copy of the C2SIMInitialization message to be sent to the requesting system. Command parameters indicate that either a copy of the startup initialization (INITIALIZATION_ORIGINAL) or an updated version with latest reported positions of each ActorEntity (INITIALIZATION_LATEST_POSITIONS) be sent to the requesting system.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RefreshInit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="RefreshInitSelection" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RefreshInit" type="RefreshInitType"/>
+	<xs:simpleType name="RefreshInitSelectionType">
+		<xs:annotation>
+			<xs:documentation>Enumeration of initialization request options for a late joiner to a C2SIM coalition of systems.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RefreshInitSelection</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="INITIALIZATION_LATEST_POSITIONS"/>
+			<xs:enumeration value="INITIALIZATION_ORIGINAL"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="RelationshipType">
 		<xs:annotation>
 			<xs:documentation>This class describes a relationship to some entity. The type of relationship is defined by a subclass, which has a code property that specifies what the relationship is.</xs:documentation>
@@ -3391,6 +3450,13 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
 			<xs:element ref="TaskRequestContent"/>
 		</xs:choice>
 	</xs:complexType>
+	<xs:complexType name="RequestPlaybackRealtimeMultipleType">
+		<xs:annotation>
+			<xs:documentation>System command for requesting the current setting of the playbackRealtimeMultiple value indicating the multiple of simulation time to realtime currently set for recording playback in the C2SIM coalition of systems.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#RequestPlaybackRealtimeMultiple</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="RequestPlaybackRealtimeMultiple" type="RequestPlaybackRealtimeMultipleType"/>
 	<xs:complexType name="RequestPlaybackStatusType">
 		<xs:annotation>
 			<xs:documentation>System command for requesting information about the current playback of recorded C2SIM messages in a C2SIM coalition of systems.</xs:documentation>
@@ -3412,6 +3478,12 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
 		</xs:annotation>
 	</xs:complexType>
 	<xs:element name="RequestSimulationRealtimeMultiple" type="RequestSimulationRealtimeMultipleType"/>
+	<xs:complexType name="ResetScenarioType">
+		<xs:annotation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ResetScenario</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="ResetScenario" type="ResetScenarioType"/>
 	<xs:complexType name="ResourceType">
 		<xs:annotation>
 			<xs:documentation>This is a resource that can be part of, transferred to, or removed from an object (Entity), but is not an entity itself; therefore it does not have a location, extent, or other physical attributes.
@@ -3448,6 +3520,13 @@ Resources may include consumable material such as ammunition and fuel; equipment
 		</xs:annotation>
 	</xs:complexType>
 	<xs:element name="ResumeRecording" type="ResumeRecordingType"/>
+	<xs:complexType name="ResumeScenarioType">
+		<xs:annotation>
+			<xs:documentation>A system command to resume the paused execution of a scenario across a C2SIM coalition of systems.</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#ResumeScenario</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="ResumeScenario" type="ResumeScenarioType"/>
 	<xs:complexType name="ScenarioSettingType">
 		<xs:annotation>
 			<xs:documentation>Information describing the setting of the scenario, including the date, time, physical extent of the terrain, and a version string.</xs:documentation>
@@ -3470,6 +3549,16 @@ Resources may include consumable material such as ammunition and fuel; equipment
 			<xs:enumeration value="Unclassified"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:complexType name="SetPlaybackRealtimeMultipleType">
+		<xs:annotation>
+			<xs:documentation>System command for setting the playbackRealtimeMultiple value indicating the  multiple of simulation time to realtime for playback of recorded messages in the C2SIM coalition of systems.The SetPlaybackRealtimeMultiple enables a user in a C2SIM coalition to direct playback of recorded messages at a rate faster or slower than realtime. For example, a playbackRealtimeMultiple value of 2.0 directs recording playback at 2:1 simulation time to realtime (i.e., faster than realtime); a value of 0.5 directs recording playback at half realtime (i.e., slower than realtime).</xs:documentation>
+			<xs:documentation>http://www.sisostds.org/ontologies/C2SIM#SetPlaybackRealtimeMultiple</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PlaybackRealtimeMultiple" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SetPlaybackRealtimeMultiple" type="SetPlaybackRealtimeMultipleType"/>
 	<xs:complexType name="SetSimulationRealtimeMultipleType">
 		<xs:annotation>
 			<xs:documentation>System command for setting the simuationRealtimeMultiple value indicating the  multiple of simulation time to realtime for the simulation systems in the C2SIM coalition of systems.The SetSimulationRealtimeMultiple enables a user in a C2SIM coalition to direct participating simulations to execute at a rate faster or slower than realtime. For example, a simulationRealtimeMultiple value of 2.0 directs participating simulations to operate at 2:1 simulation time to realtime (i.e., faster than realtime); a value of 0.5 directs participating simulations to operate at half realtime (i.e., slower than realtime).</xs:documentation>
@@ -3616,13 +3705,20 @@ Systems can build a map from this and other lists to get the system from a given
 			<xs:element ref="MagicMove"/>
 			<xs:element ref="PausePlayback"/>
 			<xs:element ref="PauseRecording"/>
+			<xs:element ref="PauseScenario"/>
+			<xs:element ref="PlaybackRealtimeMultipleReport"/>
 			<xs:element ref="PlaybackStatusReport"/>
 			<xs:element ref="RecordingStatusReport"/>
+			<xs:element ref="RefreshInit"/>
+			<xs:element ref="RequestPlaybackRealtimeMultiple"/>
 			<xs:element ref="RequestPlaybackStatus"/>
 			<xs:element ref="RequestRecordingStatus"/>
 			<xs:element ref="RequestSimulationRealtimeMultiple"/>
+			<xs:element ref="ResetScenario"/>
 			<xs:element ref="ResumePlayback"/>
 			<xs:element ref="ResumeRecording"/>
+			<xs:element ref="ResumeScenario"/>
+			<xs:element ref="SetPlaybackRealtimeMultiple"/>
 			<xs:element ref="SetSimulationRealtimeMultiple"/>
 			<xs:element ref="ShareScenario"/>
 			<xs:element ref="SimulationRealtimeMultipleReport"/>
