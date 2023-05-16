@@ -9,14 +9,3 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-  - type: dropdown
-    id: type
-    attributes:
-      label: Issue Type
-      description: WIs this a Problem report or a change request
-      options:
-        - Problem Report
-        - Change Request
-    validations:
-      required: true
-   - type: input
