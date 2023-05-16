@@ -1,7 +1,7 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: C2SIM Problem Report / Change Request
+description: Please use this template to create a new C2SIM issue.
+title: "[C2SIM Issue]: "
+labels: ["issue", "triage"]
 assignees:
   - octocat
 body:
