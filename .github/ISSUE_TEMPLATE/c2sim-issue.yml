@@ -8,4 +8,73 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Thank you for taking the time to fill out this C2SIM Issue!
+  - type: dropdown
+    id: issuetype
+    attributes:
+      label: Issue Type
+      description: Is this a Problem report or a change request
+      options:
+        - Problem Report 
+        - Change Request
+    validations:
+      required: true
+  - type: input
+    id: submitterName
+    attributes:
+      label: Submitter Name
+      description: Submitter Name(s)
+      placeholder: Submitter Name(s)
+    validations:
+      required: true
+  - type: input
+    id: contactemail
+    attributes:
+      label: Contact Email
+      description: Contact Email Address
+      placeholder: ex. email@example.com
+    validations:
+      required: true
+  - type: input
+    id: submitterorg
+    attributes:
+      label: Submitter Organization
+      description: Submitter Organization
+      placeholder: 
+    validations:
+      required: true
+  - type: input
+    id: submitdate
+    attributes:
+      label: Date of Submission
+      description: Date of Submission
+      placeholder: ex. 01 January 2023
+    validations:
+      required: true
+  - type: dropdown
+    id: producttype
+    attributes:
+      label: Product
+      description: To which product does this issue pertain?
+      options:
+        - C2SIM Core
+        - SMX
+        - LOX
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please provide a detailed description
+      placeholder: Issue description
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Consent
+      description: By submitting this issue, you agree to be contacted regarding this issue
+      options:
+        - label: I agree to be contacted regarding this issue
+          required: true
