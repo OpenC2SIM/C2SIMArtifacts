@@ -1,63 +1,87 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: C2SIM Problem Report / Change Request
+description: Please use this template to create a new C2SIM issue.
+title: "[C2SIM Issue]: "
+labels: ["issue", "triage"]
 assignees:
   - octocat
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Thank you for taking the time to fill out this C2SIM Issue!
+   - type: dropdown
+    id: type
+    attributes:
+      label: Issue Type
+      description: WIs this a Problem report or a change request
+      options:
+        - Problem Report
+        - Change Request
+    validations:
+      required: true
   - type: input
-    id: contact
+    id: submitterName
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: Submitter Name
+      description: Submitter Name(s)
+      placeholder: Submitter Name(s)
     validations:
       required: true
-  - type: dropdown
-    id: version
+   
+   - type: input
+    id: contactemail
     attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+      label: Contact Email
+      description: Contact Email Address
+      placeholder: ex: email@example.com
     validations:
       required: true
-  - type: dropdown
-    id: browsers
+      
+    - type: input
+    id: submitterorg
     attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
+      label: Submitter Organization
+      description: Submitter Organization
+      placeholder: 
+    validations:
+      required: true
+      
+      - type: input
+    id: submitdate
+    attributes:
+      label: Date of Submission
+      description: Date of Submission
+      placeholder: ex: 01 January 2023
+    validations:
+      required: true
+      
+     - type: dropdown
+    id: type
+    attributes:
+      label: Product
+      description: To which product does this issue pertain?
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-  - type: textarea
-    id: logs
+        - C2SIM Core
+        - SMX
+        - LOX
+    validations:
+      required: true
+      
+    - type: textarea
+    id: description
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+      label: Description
+      description: Please provide a detailed description
+      placeholder: Issue description
+    validations:
+      required: true  
+      
   - type: checkboxes
-    id: terms
+    id: consent
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      label: Consent for contact
+      description: By submitting this issue, you agree to be contacted in relation to this issue
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I agree to be contacted in relation to this issue
           required: true
 
