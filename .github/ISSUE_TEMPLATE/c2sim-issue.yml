@@ -5,11 +5,11 @@ labels: ["issue", "triage"]
 assignees:
   - octocat
 body:
-  - type: markdown
+ - type: markdown
     attributes:
       value: |
         Thank you for taking the time to fill out this C2SIM Issue!
-   - type: dropdown
+ - type: dropdown
     id: type
     attributes:
       label: Issue Type
