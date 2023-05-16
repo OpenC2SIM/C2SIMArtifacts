@@ -19,7 +19,7 @@ body:
         - Change Request
     validations:
       required: true
-  - type: input
+   - type: input
     id: submitterName
     attributes:
       label: Submitter Name
