@@ -1,6 +1,6 @@
 name: C2SIM Problem Report / Change Request
 description: Please use this template to create a new C2SIM issue.
-title: "[C2SIM Issue]: "
+title: "[C2SIM Issue Title]: "
 labels: ["issue", "triage"]
 assignees:
   - octocat
@@ -60,6 +60,8 @@ body:
         - C2SIM Core
         - SMX
         - LOX
+        - Transformation (XSLT/Java)
+        - Documentation
     validations:
       required: true
   - type: textarea
