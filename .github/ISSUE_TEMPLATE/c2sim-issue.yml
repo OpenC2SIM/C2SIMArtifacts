@@ -19,6 +19,18 @@ body:
         - Change Request
     validations:
       required: true
+  - type: dropdown
+    id: perceivedUrgency
+    attributes:
+      label: Percieved Urgency
+      description: What is the perceived urgency of this issue/request?
+      options:
+        - Very urgent
+        - Urgent
+        - Moderate
+        - Not urgent
+    validations:
+      required: true
   - type: input
     id: submitterName
     attributes:
