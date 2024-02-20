@@ -910,7 +910,7 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasResource"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ResourceHolder"/>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Observations on resource availability, e.g. fuel, ammunition</rdfs:comment>

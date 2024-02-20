@@ -587,7 +587,7 @@
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasResource -->
 
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasResource">
-        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ResourceHolder"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
         <rdfs:comment>Provides a reference to a Resource class associated with an Object.</rdfs:comment>
     </owl:ObjectProperty>
     
@@ -1165,16 +1165,16 @@
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasOnHandQuantity">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment>Number of specific resources that a ResourceHolder has available.</rdfs:comment>
+        <rdfs:comment>Number of specific resources that a Resource has available.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#hasOperationalCount -->
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasOperationalQuantity -->
 
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasOperationalCount">
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasOperationalQuantity">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment>Number of specific resources that a ResourceHolder has available for operations.</rdfs:comment>
+        <rdfs:comment>Number of specific resources that a Resource has available for operations.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1307,7 +1307,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasRequiredOnHandQuantity">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment>Required number of specific resources that a ResourceHolder must have available for operations.</rdfs:comment>
+        <rdfs:comment>Required number of specific resources that a Resource must have available for operations.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1800,7 +1800,7 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasResource"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ResourceHolder"/>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3749,9 +3749,9 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#ResourceHolder -->
+    <!-- http://www.sisostds.org/ontologies/C2SIM#Resource -->
 
-    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#ResourceHolder">
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Resource">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -3762,7 +3762,7 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOperationalCount"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOperationalQuantity"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
@@ -3788,9 +3788,9 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>This is a resource holder that can be part of, transferred to, or removed from an object (Entity), but is not an entity itself; therefore it does not have a location, extent, or other physical attributes.
-Resource holders can be used to manage (a) consumable material (such as ammunition and fuel); (b) equipment (such as weapons, vehicles, and communication devices); and (c) personnel.
-A resource holder is defined by the SISO entity type of the resource, the operational count of the resource (available for operations), and optionnaly with required and &quot;on hand&quot; quantities.</rdfs:comment>
+        <rdfs:comment>This is a resource that can be part of, transferred to, or removed from an object (Entity), but is not an entity itself; therefore it does not have a location, extent, or other physical attributes.
+Resource can be used to manage (a) consumable material (such as ammunition and fuel); (b) equipment (such as weapons, vehicles, and communication devices); and (c) personnel.
+A resource is defined by the SISO entity type of the resource, the operational quantity of the resource (available for operations), and optionnaly with required and &quot;on hand&quot; quantities.</rdfs:comment>
     </owl:Class>
     
 
@@ -3803,7 +3803,7 @@ A resource holder is defined by the SISO entity type of the resource, the operat
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasResource"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ResourceHolder"/>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>A level of personnel, equipment, ammunition, fuel, etc. The user must compare this to the full strength of the unit.</rdfs:comment>
