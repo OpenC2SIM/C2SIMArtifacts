@@ -9,7 +9,7 @@
      xmlns:C2SIM="http://www.sisostds.org/ontologies/C2SIM#">
     <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/C2SIM">
         <rdfs:comment>CWIX 2023 built on Version 1.0.1 SISO Standard, April 2022</rdfs:comment>
-        <owl:versionInfo>C2SIM Core Ontology vCWIX2023</owl:versionInfo>
+        <owl:versionInfo>C2SIM Core Ontology vCWIX2024</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -3414,9 +3414,9 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubjectEntity"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasHeadingAngle"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3424,6 +3424,13 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpeed"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubjectEntity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>The content of a report that is used primarily to convey the position of an entity.</rdfs:comment>

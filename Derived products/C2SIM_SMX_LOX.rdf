@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://www.sisostds.org/ontologies/C2SIM/cwix2023#"
-     xml:base="https://www.sisostds.org/ontologies/C2SIM/cwix2023"
+<rdf:RDF xmlns="https://www.sisostds.org/ontologies/C2SIM/cwix2024#"
+     xml:base="https://www.sisostds.org/ontologies/C2SIM/cwix2024"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="https://www.sisostds.org/ontologies/C2SIM/cwix2023">
+    <owl:Ontology rdf:about="https://www.sisostds.org/ontologies/C2SIM/cwix2024">
         <rdfs:comment>CWIX 2023 built on Version 1.0.1 SISO Standard, April 2022</rdfs:comment>
         <rdfs:comment>Version 1.0.0 SISO Standard, May 2020</rdfs:comment>
-        <owl:versionInfo>C2SIM Core Ontology vCWIX2023</owl:versionInfo>
+        <owl:versionInfo>C2SIM Core Ontology vCWIX2024</owl:versionInfo>
         <owl:versionInfo>C2SIM Land Operations Extension v1.0.0</owl:versionInfo>
-        <owl:versionInfo>C2SIM Standard Military Extension v1.0.0</owl:versionInfo>
+        <owl:versionInfo>C2SIM Standard Military Extension vCWIX-2024</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -76,7 +76,7 @@
     <!-- http://www.sisostds.org/ontologies/C2SIM#IsoTimeDurationBase -->
 
     <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/C2SIM#IsoTimeDurationBase">
-        <rdfs:comment>Reference UUID to the entity ordering some other entity to perform a task.</rdfs:comment>
+        <rdfs:comment>Time duration in ISO format.</rdfs:comment>
         <owl:equivalentClass>
             <rdfs:Datatype>
                 <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -485,15 +485,6 @@
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEntityType -->
-
-    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEntityType">
-        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
-        <rdfs:comment>Provide a value for the Type of an Entity.</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasEthnicGroupCode -->
 
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEthnicGroupCode">
@@ -545,6 +536,15 @@
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasMessageBody">
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageBody"/>
         <rdfs:comment>Reference to a Body class for a Message.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasNamedEntityType -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasNamedEntityType">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#NamedEntityType"/>
+        <rdfs:comment>Property to specify additional (and more specific) information about the type of an entity.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -652,6 +652,15 @@
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasResource">
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Resource"/>
         <rdfs:comment>Provides a reference to a Resource class associated with an Object.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasSISOEntityType -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasSISOEntityType">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SISOEntityType"/>
+        <rdfs:comment>Provide a value for the SISO Entity Type of a C2SIM Entity or a C2SIM Resource.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -861,12 +870,12 @@
     
 
 
-    <!-- http://www.sisostds.org/ontologies/smx#hasAPP6-SIDC -->
+    <!-- http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol -->
 
-    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasAPP6-SIDC">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
-        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#APP6-SIDC"/>
-        <rdfs:comment>indiicates the NATO APP-6 tactical graphic code property for a class.</rdfs:comment>
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
+        <rdfs:comment>Indicates the NATO APP-6-C tactical graphic symbol.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -1111,6 +1120,84 @@
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISCategory -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISCategory">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Category Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISCode">
+        <rdfs:comment>Provides an entity type code from IEEE 1516-2010 Distributed Interactive Simulation.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISCountry -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISCountry">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Provides a Country Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISDomain -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISDomain">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Domain Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISExtra -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISExtra">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides an Extra Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISKind -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISKind">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Kind Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISSpecific -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISSpecific">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a Specific Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasDISSubCategory -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDISSubCategory">
+        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+        <rdfs:comment>Provides a SubCategory Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasDistance -->
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasDistance">
@@ -1141,11 +1228,20 @@
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeString -->
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeName -->
 
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeString">
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeName">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>String describing the type of an entity.</rdfs:comment>
+        <rdfs:comment>Name of an NamedEntityType.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeNamespace -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeNamespace">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Namespace of an NamedEntityType.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1302,6 +1398,24 @@
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasOnHandQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasOnHandQuantity">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Number of specific resources that a Resource has available.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasOperationalQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasOperationalQuantity">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Number of specific resources that a Resource has available for operations.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasOrderID -->
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasOrderID">
@@ -1378,15 +1492,6 @@
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#hasQuantity -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasQuantity">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <rdfs:comment>Instances of the class have data identifying a numeric value associated with the quantity for that instance.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasReference -->
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasReference">
@@ -1431,6 +1536,15 @@
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
         <rdfs:comment>The reference is to an instance of RequestingEntity.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasRequiredOnHandQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasRequiredOnHandQuantity">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Required number of specific resources that a Resource must have available for operations.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1725,89 +1839,20 @@
     
 
 
+    <!-- http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC">
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString"/>
+        <rdfs:comment>Provides a SIDC (Symbol Identification Code) string associated with the NATO APP-6-C Tactical Graphics symbol.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/smx#hasConfidenceLevel -->
 
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
         <rdfs:comment>Provides a confidence level associated with a class, from a range of values.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISCategory -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISCategory">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-        <rdfs:comment>Provides a Category Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISCode -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISCode">
-        <rdfs:comment>Provides an entity type code from IEEE 1516-2010 Distributed Interactive Simulation.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISCountry -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISCountry">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:comment>Provides a Country Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISDomain -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISDomain">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-        <rdfs:comment>Provides a Domain Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISExtra -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISExtra">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-        <rdfs:comment>Provides an Extra Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISKind -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISKind">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-        <rdfs:comment>Provides a Kind Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISSpecific -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISSpecific">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-        <rdfs:comment>Provides a Specific Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasDISSubCategory -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasDISSubCategory">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-        <rdfs:comment>Provides a SubCategory Code from the DIS standard IEEE 1516-2010.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1836,15 +1881,6 @@
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAbstractObjectReference"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
         <rdfs:comment>Provides a reference to the Owner associated with a class.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#hasSIDCString -->
-
-    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/smx#hasSIDCString">
-        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString"/>
-        <rdfs:comment>Provides a SIDC string associated with NATO APP-6 Tactical Graphics.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -2643,9 +2679,23 @@ It is one subclass of MessageBody (other subclasses perform administrative funct
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasNamedEntityType"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#NamedEntityType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSISOEntityType"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SISOEntityType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2787,15 +2837,6 @@ C2 structures can be defined by using the hasSuperior property.</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Dynamic state information for entities in the exercise.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#EntityType -->
-
-    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#EntityType">
-        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
-        <rdfs:comment>This is a set of category enumerations, e.g. a DIS type specification, or other set of unique values defining the type of an Entity for representation in simulations and depiction on C2 displays.</rdfs:comment>
     </owl:Class>
     
 
@@ -3176,15 +3217,23 @@ The location of a CollectiveEntity may represent the center of mass or headquart
     <!-- http://www.sisostds.org/ontologies/C2SIM#NamedEntityType -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#NamedEntityType">
-        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeString"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeName"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>An EntityType that can be identified by a unique name</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityTypeNamespace"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The definition of an entity type with a unique identifier defined with a pair: namespace, name. 
+The namespace and the name are free strings, and must be agreed in advance in the federation agreement template among the systems. For example the namespace could reference a standard, a format, or a simulation involved in the federation: openflight, app6d-sidc, sword, etc.</rdfs:comment>
     </owl:Class>
     
 
@@ -3627,7 +3676,7 @@ The entity issuing the order might not  be the same as the Sender, if the order 
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpeed"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Description of the physical state of an entity, including location, orientation, health, speed, etc.
@@ -3749,6 +3798,20 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasHeadingAngle"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpeed"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -4094,14 +4157,14 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSISOEntityType"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SISOEntityType"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasQuantity"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOperationalQuantity"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
@@ -4113,8 +4176,23 @@ A request is fulfilled at the discretion of the entity to which it is directed.<
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOnHandQuantity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasRequiredOnHandQuantity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>This is a resource that can be part of, transferred to, or removed from an object (Entity), but is not an entity itself; therefore it does not have a location, extent, or other physical attributes.
-Resources may include consumable material such as ammunition and fuel; equipment such as weapons, vehicles, and communication devices; and personnel.</rdfs:comment>
+Resource can be used to manage (a) consumable material (such as ammunition and fuel); (b) equipment (such as weapons, vehicles, and communication devices); and (c) personnel.
+A resource is defined by the SISO entity type of the resource, the operational quantity of the resource (available for operations), and optionnaly with required and &quot;on hand&quot; quantities.</rdfs:comment>
     </owl:Class>
     
 
@@ -4158,6 +4236,65 @@ Resources may include consumable material such as ammunition and fuel; equipment
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#ResumeScenario">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
         <rdfs:comment>A system command to resume the paused execution of a scenario across a C2SIM coalition of systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#SISOEntityType -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#SISOEntityType">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCategory"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISCountry"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISDomain"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISExtra"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISKind"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISSpecific"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDISSubCategory"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Simulation Entity Type as specified by SISO-REF-010-2016, Reference for Enumerations for Simulation Interoperability, version 27 (2019). 
+Used to define the type of an Entity for its representation and modeling in simulations.</rdfs:comment>
     </owl:Class>
     
 
@@ -4868,25 +5005,26 @@ Phases have trigger conditions that indicate when they start.  Phases may start 
     
 
 
-    <!-- http://www.sisostds.org/ontologies/smx#APP6-SIDC -->
+    <!-- http://www.sisostds.org/ontologies/smx#APP6CSymbol -->
 
-    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#APP6-SIDC">
-        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#APP6CSymbol">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSIDCString"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>Tactical graphic icon code as specified by NATO APP6-C.</rdfs:comment>
+        <rdfs:comment>Tactical graphic symbol as specified by NATO APP-6-C.
+Used to define the type of an Entity for its representation and depiction on C2 displays.</rdfs:comment>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#APP6-SIDC"/>
+        <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasSIDCString"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
@@ -4970,65 +5108,6 @@ Phases have trigger conditions that indicate when they start.  Phases may start 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#CommandRelationCode">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
         <rdfs:comment>Enumerations of possible relationships between a unit and the unit that commands it. Obtained from JC3IEDM-v3.0.1.ObjectItemAssociationSubcategoryCode</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/smx#DISEntityType -->
-
-    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#DISEntityType">
-        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCategory"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISCountry"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISDomain"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISExtra"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISKind"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISSpecific"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasDISSubCategory"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment>Entity Type as specified by SISO-REF-010-2016, Reference for
-Enumerations for Simulation Interoperability, version 27 (2019).</rdfs:comment>
     </owl:Class>
     
 
@@ -5149,7 +5228,7 @@ Enumerations for Simulation Interoperability, version 27 (2019).</rdfs:comment>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpeed"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>An observation of the location of a subject.</rdfs:comment>
@@ -5371,9 +5450,9 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Describes the type of the subject of an observation.</rdfs:comment>
@@ -5383,13 +5462,12 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityType"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityType"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <rdfs:comment>Note that the types in EntityType allow for &quot;wildcards&quot; in some fields, i.e. for aspects of the type to be unspecified.
-Multiple types are permitted so that the type can be expressed in multiple type classes.</rdfs:comment>
+        <rdfs:comment>Note that the symbol SIDC allow for &quot;wildcards&quot; in some fields, i.e. for aspects of the type to be unspecified.</rdfs:comment>
     </owl:Axiom>
     
 
@@ -20567,30 +20645,6 @@ Multiple types are permitted so that the type can be expressed in multiple type 
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
@@ -20606,6 +20660,18 @@ Multiple types are permitted so that the type can be expressed in multiple type 
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
@@ -20633,7 +20699,19 @@ Multiple types are permitted so that the type can be expressed in multiple type 
         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>

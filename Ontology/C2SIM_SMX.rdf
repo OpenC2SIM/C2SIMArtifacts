@@ -10,7 +10,7 @@
     <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/smx">
         <owl:imports rdf:resource="http://www.sisostds.org/ontologies/C2SIM"/>
         <rdfs:comment>Version 1.0.0 SISO Standard, May 2020</rdfs:comment>
-        <owl:versionInfo>C2SIM Standard Military Extension v1.0.0</owl:versionInfo>
+        <owl:versionInfo>C2SIM Standard Military Extension vCWIX-2024</owl:versionInfo>
     </owl:Ontology>
     
 
