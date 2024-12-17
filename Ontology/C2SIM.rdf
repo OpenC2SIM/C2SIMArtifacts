@@ -8,8 +8,8 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:C2SIM="http://www.sisostds.org/ontologies/C2SIM#">
     <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/C2SIM">
-        <rdfs:comment>CWIX 2023 built on Version 1.0.1 SISO Standard, April 2022</rdfs:comment>
-        <owl:versionInfo>C2SIM Core Ontology vCWIX2024</owl:versionInfo>
+        <rdfs:comment>CWIX 2025 built on CWIX 2024 branch, based on version 1.0.1 SISO Standard, April 2022.</rdfs:comment>
+        <owl:versionInfo>C2SIM Core Ontology version CWIX2025</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -278,6 +278,16 @@
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAllegianceRelationshipCode">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationshipCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationHeader -->
+
+    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationHeader">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AuthorizationHeader"/>
+        <rdfs:comment>The authentication header of a C2SIM header.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -822,6 +832,24 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAngle">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSpatialMeasure"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationCredentials -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationCredentials">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The actual authentication tokens or encoded user credentials. The format and content depend on the authentication scheme (see property hasAuthorizationType).</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationType">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The authentication scheme (or type), such as Basic, Bearer, Digest, etc. It indicates the method used for encoding or handling the credentials.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1878,6 +1906,29 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
     
 
 
+    <!-- http://www.sisostds.org/ontologies/C2SIM#AuthorizationHeader -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#AuthorizationHeader">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationCredentials"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationType"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The Authorization header is a part of the C2SIM headers used in client-server communications. Its primary function is to authenticate a user-agent with a server, typically by carrying credentials in the form of a token or a set of credentials like username and password. This header is fundamental in implementing security measures for web applications and APIs.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.sisostds.org/ontologies/C2SIM#C2SIMContent -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent">
@@ -1895,6 +1946,13 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCommunicativeActTypeCode"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationHeader"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AuthorizationHeader"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
