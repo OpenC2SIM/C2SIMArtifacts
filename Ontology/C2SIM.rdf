@@ -8,8 +8,8 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:C2SIM="http://www.sisostds.org/ontologies/C2SIM#">
     <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/C2SIM">
-        <rdfs:comment>CWIX 2025 built on CWIX 2024 branch, based on version 1.0.1 SISO Standard, April 2022.</rdfs:comment>
-        <owl:versionInfo>C2SIM Core Ontology version CWIX2025</owl:versionInfo>
+        <rdfs:comment>CWIX 2026 built from previous CWIX versions, and based on version 1.0.1 SISO Standard, April 2022.</rdfs:comment>
+        <owl:versionInfo>C2SIM Core Ontology version CWIX-2026</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -306,15 +306,6 @@
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasCode">
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
         <rdfs:comment>Provides value of some Code associated with a class.</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#hasCommunicativeActTypeCode -->
-
-    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasCommunicativeActTypeCode">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
-        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
     </owl:ObjectProperty>
     
 
@@ -621,21 +612,12 @@
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#hasSecurityClassificationCode -->
-
-    <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasSecurityClassificationCode">
-        <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCode"/>
-        <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#hasSendingTime -->
 
     <owl:ObjectProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasSendingTime">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDateTime"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DateTime"/>
-        <rdfs:comment>The DateTime that the message is sent.</rdfs:comment>
+        <rdfs:comment>The DateTime of the host computer from which the message is sent. Should be the system time (not the simulation time).</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -888,7 +870,7 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasConversationID">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessagingDataProperty"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-        <rdfs:comment>FIPA identifer unique to a particular thread of messages for a particular sender.</rdfs:comment>
+        <rdfs:comment>UUID. Unique identifier for a particular thread of messages for a particular sender.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1157,7 +1139,7 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasMessageID">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessagingDataProperty"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-        <rdfs:comment>FIPA identifer unique to an individual message for a particular sender.</rdfs:comment>
+        <rdfs:comment>UUID. Unique identifier for an individual message of a particular sender.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1297,7 +1279,7 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#hasReplyToSystem">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessagingDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>Unique FIPA identifer of the system to which individual message reply is to be made.</rdfs:comment>
+        <rdfs:comment>String. Name of the system to which individual message reply is to be made.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1538,7 +1520,8 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#isFromSender">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-        <rdfs:comment>The reference is to an instance of Entity that sent associated information.</rdfs:comment>
+        <rdfs:comment>UUIDBase. Reference to an instance of Entity.  
+This property should reference the operational entity that sends the message.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1548,7 +1531,7 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#isFromSendingSystem">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessagingDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>Unique FIPA identifer of the system from which individual message is sent.</rdfs:comment>
+        <rdfs:comment>String. Name of the system from which individual message is sent.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1558,7 +1541,7 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#isInReplyToMessageID">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessagingDataProperty"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-        <rdfs:comment>Unique FIPA identifer of the message to be identified in a message reply.</rdfs:comment>
+        <rdfs:comment>UUID. Unique identifier of the message to be identified in a message reply.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1568,7 +1551,9 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#isToReceiver">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
         <rdfs:range rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-        <rdfs:comment>The reference is to an instance of Entity that intended to receive the associated information.</rdfs:comment>
+        <rdfs:comment>UUIDBase. List of references to instances of Entity.  
+If this property is set, then the sender considers that this message should only be distributed to these referenced operational entities. 
+If this property is not set, then the sender considers that the message should be broadcast to all units on the same side as the sender.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1578,7 +1563,10 @@
     <owl:DatatypeProperty rdf:about="http://www.sisostds.org/ontologies/C2SIM#isToReceivingSystem">
         <rdfs:subPropertyOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessagingDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>Unique FIPA identifer of the system to which individual message is sent.</rdfs:comment>
+        <rdfs:comment>List of strings. Name(s) of the system(s) to which the individual message is addressed, for example in a reply message by using the ReplyToSystem property value of the request message.  
+If one or more system is set in the message header, then the message MUST be distributed ONLY to these systems. If no system is set in the message header, the message MUST be distributed to ALL systems potentially interested by it.  
+The definition of “interest” may vary depending on the capabilities actually available in the system distributing the messages (server in a client/server architecture, message broker, etc.), and is therefore left to the discretion of the system distributing the messages. In some cases, messages could be distributed to all C2SIM participants.  
+For operational messages (with a DomainMessageBody), the concept of interest (implemented by a server or a message-broker) MUST only be defined with operational data, such as the type of message, the sender (operational unit), the receiver (operational unit) or the network (operational communication network).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1943,23 +1931,9 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageConcept"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCommunicativeActTypeCode"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAuthorizationHeader"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AuthorizationHeader"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSecurityClassificationCode"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1983,6 +1957,13 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceivingSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasConversationID"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
@@ -1998,13 +1979,6 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSendingSystem"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceivingSystem"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
@@ -2257,15 +2231,6 @@ Networks are part of an EntityDescriptor. If a message is sent to a Communicatio
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode -->
-
-    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode">
-        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageCode"/>
-        <rdfs:comment>Enumeration of different types of communications.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#CountryCode -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#CountryCode">
@@ -2315,14 +2280,14 @@ Networks are part of an EntityDescriptor. If a message is sent to a Communicatio
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageBody"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
@@ -2335,24 +2300,25 @@ It is one subclass of MessageBody (other subclasses perform administrative funct
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <rdfs:comment>This is the unique indentifier of an individual of the ActorEntity class who is the sender of this message. The individual is defined elsewhere.</rdfs:comment>
+        <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class OR an individual of the CommunicationNetwork class that is the intended recipient of this message. If the recipient is a CommunicationsNetwork, then all ActorEntities that have this network will receive the message.
+If this property is not set, then the sender considers that the message should be broadcast to all units on the same side as the sender.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class OR an individual of the CommunicationNetwork class that is the intended recipient of this message. If the recipient is a CommunicationsNetwork, then all ActorEntities that have this network will receive the message.</rdfs:comment>
+        <rdfs:comment>This is the unique indentifier of an individual of the ActorEntity class who is the sender of this message. The individual is defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     
 
@@ -3992,15 +3958,6 @@ Used to define the type of an Entity for its representation and modeling in simu
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode -->
-
-    <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode">
-        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Code"/>
-        <rdfs:comment>Alphabetic text descriptions used by the USA-Department of Defense to identify the level of sensitivity of information</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#SetPlaybackRealtimeMultiple -->
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#SetPlaybackRealtimeMultiple">
@@ -5372,22 +5329,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Accept -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Accept">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Agree -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Agree">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#AssistOtherUnit -->
 
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#AssistOtherUnit">
@@ -6750,22 +6691,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#CZECH">
         <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EthnicGroupCode"/>
         <rdfs:comment>Czech: The ethnic group of Czech people.</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Confidential -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Confidential">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Confirm -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Confirm">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
     </owl:NamedIndividual>
     
 
@@ -8492,14 +8417,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#ITALSL">
         <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EthnicGroupCode"/>
         <rdfs:comment>Italian-Slovene: The ethnic group of Italian-Slovene people.</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Inform -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Inform">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
     </owl:NamedIndividual>
     
 
@@ -11400,14 +11317,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Propose -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Propose">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#QAT -->
 
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#QAT">
@@ -11631,14 +11540,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Refuse -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Refuse">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#ReportPosition -->
 
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#ReportPosition">
@@ -11650,14 +11551,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
         <owl:annotatedTarget rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TaskActionCode"/>
         <rdfs:comment>Requests the receiving entity to reply with a position report.</rdfs:comment>
     </owl:Axiom>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Request -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Request">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CommunicativeActTypeCode"/>
-    </owl:NamedIndividual>
     
 
 
@@ -12563,14 +12456,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Secret -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Secret">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#TAHITN -->
 
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#TAHITN">
@@ -13099,14 +12984,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     
 
 
-    <!-- http://www.sisostds.org/ontologies/C2SIM#TopSecret -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#TopSecret">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.sisostds.org/ontologies/C2SIM#UGA -->
 
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#UGA">
@@ -13301,14 +13178,6 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#UZBEK">
         <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EthnicGroupCode"/>
         <rdfs:comment>Uzbek: The ethnic group of Uzbek people.</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sisostds.org/ontologies/C2SIM#Unclassified -->
-
-    <owl:NamedIndividual rdf:about="http://www.sisostds.org/ontologies/C2SIM#Unclassified">
-        <rdf:type rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SecurityClassificationCode"/>
     </owl:NamedIndividual>
     
 
