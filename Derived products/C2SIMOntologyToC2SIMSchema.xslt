@@ -16,7 +16,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:math="http://www.w3.org/
     <!-- The following XSLT template is the starting point for processing, matching the root of the input file. -->
 	<xsl:template match="/" name="xsl:initial-template">
 		<!-- output the xs:schema root element and initial annotations in the generated XML schema document -->
-		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns="http://www.sisostds.org/schemas/C2SIM/1.1" targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns="http://www.sisostds.org/schemas/C2SIM/2.0.0-cwix2026" targetNamespace="http://www.sisostds.org/schemas/C2SIM/2.0.0-cwix2026" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
 			<xsl:element name="xs:annotation">
 				<xsl:element name="xs:documentation">
 					<xsl:attribute name="xml:lang">

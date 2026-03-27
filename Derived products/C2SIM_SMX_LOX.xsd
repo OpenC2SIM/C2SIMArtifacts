@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-           xmlns="http://www.sisostds.org/schemas/C2SIM/1.1"
+           xmlns="http://www.sisostds.org/schemas/C2SIM/2.0.0-cwix2026"
            xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.sisostds.org/schemas/C2SIM/1.1"
+           targetNamespace="http://www.sisostds.org/schemas/C2SIM/2.0.0-cwix2026"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
            vc:minVersion="1.1">
@@ -3715,7 +3715,7 @@ Used to define the type of an Entity for its representation and modeling in simu
    <xs:element name="StopRecording" type="StopRecordingType"/>
    <xs:complexType name="StopScenarioType">
       <xs:annotation>
-         <xs:documentation>This C2SIM message is sent to all subscribed systems indicating that the simulation should be stopped and won’t be restarted. All initialization data should be discarded, and all systems should prepare to reinitialize.</xs:documentation>
+         <xs:documentation>This C2SIM message is sent to all subscribed systems indicating that the simulation should be stopped and will not be restarted. All initialization data should be discarded, and all systems should prepare to reinitialize.</xs:documentation>
          <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#StopScenario</xs:documentation>
       </xs:annotation>
    </xs:complexType>

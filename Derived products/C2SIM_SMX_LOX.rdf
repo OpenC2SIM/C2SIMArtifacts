@@ -4498,7 +4498,7 @@ Used to define the type of an Entity for its representation and modeling in simu
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#StopScenario">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemMessageBody"/>
-        <rdfs:comment>This C2SIM message is sent to all subscribed systems indicating that the simulation should be stopped and won’t be restarted. All initialization data should be discarded, and all systems should prepare to reinitialize.</rdfs:comment>
+        <rdfs:comment>This C2SIM message is sent to all subscribed systems indicating that the simulation should be stopped and will not be restarted. All initialization data should be discarded, and all systems should prepare to reinitialize.</rdfs:comment>
     </owl:Class>
     
 
