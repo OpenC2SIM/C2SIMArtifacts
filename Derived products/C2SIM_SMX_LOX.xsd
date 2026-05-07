@@ -804,7 +804,7 @@ If this property is not set, then the sender considers that the message should b
       <xs:annotation>
          <xs:documentation>List of strings. Name(s) of the system(s) to which the individual message is addressed, for example in a reply message by using the ReplyToSystem property value of the request message.  
 If one or more system is set in the message header, then the message MUST be distributed ONLY to these systems. If no system is set in the message header, the message MUST be distributed to ALL systems potentially interested by it.  
-The definition of â€œinterestâ€? may vary depending on the capabilities actually available in the system distributing the messages (server in a client/server architecture, message broker, etc.), and is therefore left to the discretion of the system distributing the messages. In some cases, messages could be distributed to all C2SIM participants.  
+The definition of "interest" may vary depending on the capabilities actually available in the system distributing the messages (server in a client/server architecture, message broker, etc.), and is therefore left to the discretion of the system distributing the messages. In some cases, messages could be distributed to all C2SIM participants.  
 For operational messages (with a DomainMessageBody), the concept of interest (implemented by a server or a message-broker) MUST only be defined with operational data, such as the type of message, the sender (operational unit), the receiver (operational unit) or the network (operational communication network).</xs:documentation>
          <xs:documentation>http://www.sisostds.org/ontologies/C2SIM#isToReceivingSystem</xs:documentation>
       </xs:annotation>
