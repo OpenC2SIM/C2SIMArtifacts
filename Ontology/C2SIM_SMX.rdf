@@ -64,30 +64,20 @@
     <!-- http://www.sisostds.org/ontologies/smx#SymbolIDCodeString -->
 
     <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                <owl:withRestrictions rdf:parseType="Collection">
-                    <rdf:Description>
-                        <xsd:pattern>[SGIWMO]{1}[PUAFNSHJKO\-]{1}[PAGMOSTUFVXLIZ\-]{1}[AP\-]{1}[A-Z\-]{6}[A-Z\-\*]{2}[\-]{2}[AECGNSX\-\*]{1}</xsd:pattern>
-                    </rdf:Description>
-                </owl:withRestrictions>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
+        <owl:equivalentClass rdf:nodeID="genid1"/>
+    </rdfs:Datatype>
+    <rdfs:Datatype rdf:nodeID="genid1">
+        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:withRestrictions rdf:parseType="Collection">
+            <rdf:Description>
+                <xsd:pattern>[SGIWMO]{1}[PUAFNSHJKO\-]{1}[PAGMOSTUFVXLIZ\-]{1}[AP\-]{1}[A-Z\-]{6}[A-Z\-\*]{2}[\-]{2}[AECGNSX\-\*]{1}</xsd:pattern>
+            </rdf:Description>
+        </owl:withRestrictions>
     </rdfs:Datatype>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#SymbolIDCodeString"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-        <owl:annotatedTarget>
-            <rdfs:Datatype>
-                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                <owl:withRestrictions rdf:parseType="Collection">
-                    <rdf:Description>
-                        <xsd:pattern>[SGIWMO]{1}[PUAFNSHJKO\-]{1}[PAGMOSTUFVXLIZ\-]{1}[AP\-]{1}[A-Z\-]{6}[A-Z\-\*]{2}[\-]{2}[AECGNSX\-\*]{1}</xsd:pattern>
-                    </rdf:Description>
-                </owl:withRestrictions>
-            </rdfs:Datatype>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid1"/>
         <rdfs:comment>This pattern permits the full range of symbols for units, including their affiliation (position 2), status (position 4) and country (positions 13-14), even though this information is either a dynamic attribute and not part of the basic type of an entity (e.g., position 2) or redundant with information specified elsewhere in the ontology (positions 13-14). C2SIM systems should ignore characters in these fields.</rdfs:comment>
     </owl:Axiom>
     
@@ -492,26 +482,19 @@
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#APP6CSymbol">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMContent"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid7"/>
         <rdfs:comment>Tactical graphic symbol as specified by NATO APP-6-C.
 Used to define the type of an Entity for its representation and depiction on C2 displays.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid7">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6C-SIDC"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid7"/>
         <rdfs:comment>The string should have restrictions placed on it, e.g. 15 characters, etc.</rdfs:comment>
     </owl:Axiom>
     
@@ -562,25 +545,18 @@ Used to define the type of an Entity for its representation and depiction on C2 
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelationCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid11"/>
         <rdfs:comment>A relationship from some actor to an object actor, describing a relationship where one has some degree of command authority over the other</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid11">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid11"/>
         <rdfs:comment>The object of the command relation.</rdfs:comment>
     </owl:Axiom>
     
@@ -631,25 +607,18 @@ Used to define the type of an Entity for its representation and depiction on C2 
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOtherSide"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid15"/>
         <rdfs:comment>This relation describes the hostility relationship of a military force toward another force. The force that has this relationship as its property is the &quot;military force&quot;, while the force named in the hasOtherSide property of this relationship is &quot;another force.&quot;</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid15">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOtherSide"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#ForceSideRelation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasOtherSide"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid15"/>
         <rdfs:comment>The object of the relation--a ForceSide.</rdfs:comment>
     </owl:Axiom>
     
@@ -766,13 +735,7 @@ Used to define the type of an Entity for its representation and depiction on C2 
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#NameObservation">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid22"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasName"/>
@@ -796,16 +759,15 @@ Used to define the type of an Entity for its representation and depiction on C2 
         </rdfs:subClassOf>
         <rdfs:comment>An observation of the unit name, a vehicle marking, a force side, and/or a hostility status of the observed entity.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid22">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#NameObservation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasHostilityStatusCode"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#HostilityStatusCode"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid22"/>
         <rdfs:comment>This code allows representation of temporary and dynamic hostility status to an observed entity.</rdfs:comment>
     </owl:Axiom>
     
@@ -822,46 +784,32 @@ Used to define the type of an Entity for its representation and depiction on C2 
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid28"/>
+        <rdfs:subClassOf rdf:nodeID="genid30"/>
         <rdfs:comment>This is an observation of the state of something in the world; generally an actor, but possibly anything that is an entity. Subclasses define specific observations that can be made.
 The subclasses defined here are sufficient to create a report with Size, Activity, Location, Unit Identification, Time, and Equipment, or some subset of that.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid28">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid30">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasConfidenceLevel"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid28"/>
         <rdfs:comment>This is the probabilty that the reported value is correct.
 A value between 0 and 1.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasUncertaintyInterval"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid30"/>
         <rdfs:comment>Uncertainty Interval is an optional qualification on an observation of a real-valued phenomenon. This is the size of the range of values (the reported value is the center) that the phenomenon could actually have. In two or three dimensions, this could be the diameter of a circle of uncertainty. The probability that the observation is in this range should be given by the ConfidenceLevel.</rdfs:comment>
     </owl:Axiom>
     
@@ -880,6 +828,22 @@ A value between 0 and 1.</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:comment>This report contains an observation of some aspect of a subject--not necessarily including the location, health, or other facts that are in a position report.
 Multiple observations all refer to the same observed actor.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sisostds.org/ontologies/smx#PersonObservation -->
+
+    <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#PersonObservation">
+        <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The observation of a person.</rdfs:comment>
     </owl:Class>
     
 
@@ -931,25 +895,18 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#SubjectTypeObservation">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/smx#Observation"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid35"/>
         <rdfs:comment>Describes the type of the subject of an observation.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid35">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#SubjectTypeObservation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasAPP6CSymbol"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#APP6CSymbol"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid35"/>
         <rdfs:comment>Note that the symbol SIDC allow for &quot;wildcards&quot; in some fields, i.e. for aspects of the type to be unspecified.</rdfs:comment>
     </owl:Axiom>
     
@@ -1011,13 +968,7 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/smx#Unit">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MilitaryOrganization"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelation"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid38"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasEchelonCode"/>
@@ -1027,16 +978,15 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:comment>An echelon of platforms, individuals, or other units.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid38">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelation"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/smx#Unit"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/smx#hasCommandRelation"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/smx#CommandRelation"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid38"/>
         <rdfs:comment>An optional command relationship, which specifies an object (actor) of the relation and the relation type.</rdfs:comment>
     </owl:Axiom>
     
@@ -2266,10 +2216,7 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -2290,7 +2237,10 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
-        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -2316,5 +2266,5 @@ Multiple observations all refer to the same observed actor.</rdfs:comment>
 
 
 
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
 

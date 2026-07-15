@@ -8,7 +8,6 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:C2SIM="http://www.sisostds.org/ontologies/C2SIM#">
     <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/C2SIM">
-        <owl:imports rdf:resource="http://www.sisostds.org/ontologies/smx"/>
         <rdfs:comment>CWIX 2025 built on CWIX 2024 branch, based on version 1.0.1 SISO Standard, April 2022.</rdfs:comment>
         <owl:versionInfo>C2SIM Core Ontology version CWIX2025</owl:versionInfo>
     </owl:Ontology>
