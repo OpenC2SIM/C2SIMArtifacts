@@ -8,6 +8,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:C2SIM="http://www.sisostds.org/ontologies/C2SIM#">
     <owl:Ontology rdf:about="http://www.sisostds.org/ontologies/C2SIM">
+        <owl:imports rdf:resource="http://www.sisostds.org/ontologies/smx"/>
         <rdfs:comment>CWIX 2025 built on CWIX 2024 branch, based on version 1.0.1 SISO Standard, April 2022.</rdfs:comment>
         <owl:versionInfo>C2SIM Core Ontology version CWIX2025</owl:versionInfo>
     </owl:Ontology>
@@ -30,7 +31,7 @@
     <rdfs:Datatype rdf:about="http://www.sisostds.org/ontologies/C2SIM#IsoDateTimeBase">
         <owl:equivalentClass>
             <rdfs:Datatype>
-                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
                         <xsd:pattern>[0-9]{4}-[0-9]{2}-[0-9]{2}[T]{1}[0-9]{2}:[0-9]{2}:[0-9]{2}[Z]{1}</xsd:pattern>
@@ -1605,25 +1606,18 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid35"/>
         <rdfs:comment>An AbstractObject is an object in the system that does not have the full characteristics of an entity. For example, it does not have a location or an extent. It does however have a unique identifier.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid35">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AbstractObject"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid35"/>
         <rdfs:comment>This is the unique identifier of an individual in this class.</rdfs:comment>
     </owl:Axiom>
     
@@ -1703,27 +1697,9 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ActionTemporalRelationship"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Location"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMapGraphicID"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid43"/>
+        <rdfs:subClassOf rdf:nodeID="genid45"/>
+        <rdfs:subClassOf rdf:nodeID="genid47"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasName"/>
@@ -1733,40 +1709,37 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
         </rdfs:subClassOf>
         <rdfs:comment>Any occurrence that occurs at a moment in time or over a period of time.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid43">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Location"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid45">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMapGraphicID"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid47">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Action"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Location"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid43"/>
         <rdfs:comment>The general location of the task, if that makes sense. Specification of multiple locations where events of the task take place is normally done with map graphics.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Action"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMapGraphicID"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid45"/>
         <rdfs:comment>This is a reference to a MapGraphic individual defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Action"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid47"/>
         <rdfs:comment>This is the unique identifier of an individual in this class.</rdfs:comment>
     </owl:Axiom>
     
@@ -1838,25 +1811,18 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid55"/>
         <rdfs:comment>An ActorEntity is an entity that can send/receive orders and reports and/or perform tasks.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid55">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ActorEntity"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid55"/>
         <rdfs:comment>This is the unique identifier of an individual of the Task class. The individual is defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     
@@ -1873,25 +1839,18 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationshipCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid58"/>
         <rdfs:comment>This is a relationship of friendly, hostile, or neutral toward an actor entity. It is part of the definition of the hasAllegianceTo property of an EntityDescriptor.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid58">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationship"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid58"/>
         <rdfs:comment>The object of the relation.</rdfs:comment>
     </owl:Axiom>
     
@@ -1981,20 +1940,8 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:hasValue>1.0.0</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasConversationID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessageID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid68"/>
+        <rdfs:subClassOf rdf:nodeID="genid70"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSendingSystem"/>
@@ -2016,49 +1963,40 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isInReplyToMessageID"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid75"/>
         <rdfs:comment>Indicates that the receiving system should submit its initialization data to the system identified in the</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid68">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasConversationID"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid70">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessageID"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid75">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isInReplyToMessageID"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMHeader"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasConversationID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid68"/>
         <rdfs:comment>This is the unique identifier of a conversation. A conversation is a concept outside of the C2SIM data model.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMHeader"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasMessageID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid70"/>
         <rdfs:comment>This is the unique identifier of a message.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#C2SIMHeader"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isInReplyToMessageID"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid75"/>
         <rdfs:comment>This is the unique identifier of a message.</rdfs:comment>
     </owl:Axiom>
     
@@ -2105,63 +2043,42 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#CartesianOffset">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SpatialOffset"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEast"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasNorth"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUp"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid81"/>
+        <rdfs:subClassOf rdf:nodeID="genid83"/>
+        <rdfs:subClassOf rdf:nodeID="genid85"/>
         <rdfs:comment>A spatial offset expressed in local flat earth coordinates.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid81">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEast"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid83">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasNorth"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid85">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUp"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CartesianOffset"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEast"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid81"/>
         <rdfs:comment>In meters</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CartesianOffset"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasNorth"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid83"/>
         <rdfs:comment>In meters</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CartesianOffset"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUp"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid85"/>
         <rdfs:comment>In meters</rdfs:comment>
     </owl:Axiom>
     
@@ -2219,29 +2136,22 @@ Subclasses of this class can be created for country, religion, etc. Each of thes
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#PhysicalState"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubordinate"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid90"/>
         <rdfs:comment>This is an Entity that is normally thought of as having constituent entities, i.e. a Unit.
 
 CollectiveEntities may or may not hve their subordinates explicitly represented in the exercise (i.e., it may always be aggregated, or it may have subordinates that are themselves entities).  If they are represented, then the hasSubordinate property will have at least one instance.
 
 The CollectivEntity may be an abstract actor, or it may have physical properties; if the latter, then the hasCurrentState property is present with a PhysicalState.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid90">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubordinate"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#CollectiveEntity"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubordinate"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid90"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class. The individual is defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     
@@ -2313,45 +2223,31 @@ Networks are part of an EntityDescriptor. If a message is sent to a Communicatio
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MessageBody"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid93"/>
+        <rdfs:subClassOf rdf:nodeID="genid95"/>
         <rdfs:comment>The body of a message that is sent between actors in the domain.
 It is one subclass of MessageBody (other subclasses perform administrative functions in the C2SIM Coalition.)</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid93">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid95">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isFromSender"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid93"/>
         <rdfs:comment>This is the unique indentifier of an individual of the ActorEntity class who is the sender of this message. The individual is defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isToReceiver"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid95"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class OR an individual of the CommunicationNetwork class that is the intended recipient of this message. If the recipient is a CommunicationsNetwork, then all ActorEntities that have this network will receive the message.</rdfs:comment>
     </owl:Axiom>
     
@@ -2391,13 +2287,7 @@ It is one subclass of MessageBody (other subclasses perform administrative funct
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SISOEntityType"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid100"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasName"/>
@@ -2407,16 +2297,15 @@ It is one subclass of MessageBody (other subclasses perform administrative funct
         </rdfs:subClassOf>
         <rdfs:comment>An individually identified object. Objects may have physical properties, in which case they belong to the subclass ConcreteEntity. Objects may be able to perform actions, in which case they belong in the subclass ActorEntity. If they have physical properties AND can perform actions, then they inherit from both subclasses.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid100">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Entity"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasUUID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid100"/>
         <rdfs:comment>This is the unique identifier of an individual of this class.</rdfs:comment>
     </owl:Axiom>
     
@@ -2433,27 +2322,9 @@ It is one subclass of MessageBody (other subclasses perform administrative funct
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AllegianceRelationship"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCommunicationsNetwork"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isAffiliatedWith"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSuperior"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid104"/>
+        <rdfs:subClassOf rdf:nodeID="genid106"/>
+        <rdfs:subClassOf rdf:nodeID="genid108"/>
         <rdfs:comment>The Descriptor defines static attributes of an entity, i.e. that do not change during the course of the simulation. This information is provided at initialization time.
 
 The friend/hostile/... relationship of this entity with others can be specfied with hasAllegianceRelationship properties and/or the hasSide property. The hasSide property can define this entity as a member of a &quot;Force&quot; or &quot;Side,&quot; i.e. a team of entities that are friendly to each other and are all friendly, hostile or neutral to other defined teams. ForceSides are abstract objects.
@@ -2463,40 +2334,37 @@ The isAffiliatedWith property defines organizations that this entity is affiliat
 
 C2 structures can be defined by using the hasSuperior property.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid104">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCommunicationsNetwork"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid106">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isAffiliatedWith"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid108">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSuperior"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCommunicationsNetwork"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid104"/>
         <rdfs:comment>This is the unique identifier of an individual of the CommunicationNetwork class to which this entity belongs.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#isAffiliatedWith"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid106"/>
         <rdfs:comment>This is the unique identifier of an individual of the AbstractOrganization class to which this entity is affiliated. Since AbstractOrganizations are not Actors, this is not a command relationship, but a descriptive attribute of the entity.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityDescriptor"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSuperior"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid108"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class who is this entity&apos;s superior in a command and control hierarchy.</rdfs:comment>
     </owl:Axiom>
     
@@ -2549,64 +2417,43 @@ C2 structures can be defined by using the hasSuperior property.</rdfs:comment>
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#EulerAngles">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Orientation"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPhi"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPsi"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTheta"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid111"/>
+        <rdfs:subClassOf rdf:nodeID="genid113"/>
+        <rdfs:subClassOf rdf:nodeID="genid115"/>
         <rdfs:comment>Representation of the orientation of an entity in 3D space expressed as Euler angles (DIS). This orientation will be used primarily for initialization of simulation entities, especially those that are not clamped to the ground.
 This orienation indicates rotations from a geocentric coordinate system.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid111">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPhi"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid113">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPsi"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid115">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTheta"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EulerAngles"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPhi"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid111"/>
         <rdfs:comment>Angle in radians</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EulerAngles"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPsi"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid113"/>
         <rdfs:comment>Angle in radians</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EulerAngles"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTheta"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid115"/>
         <rdfs:comment>Angle in radians</rdfs:comment>
     </owl:Axiom>
     
@@ -2942,25 +2789,18 @@ The namespace and the name are free strings, and must be agreed in advance in th
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Action"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Entity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid140"/>
         <rdfs:comment>Information characterizing an object</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid140">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Entity"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ObjectDefinitions"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Entity"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid140"/>
         <rdfs:comment>This element is optional to allow ObjectInitialization messages to define only AbstractObjects or Tasks. The usual case, however, will be for the ObjectDefinitions class to have Entity definitions.</rdfs:comment>
     </owl:Axiom>
     
@@ -2991,25 +2831,18 @@ The namespace and the name are free strings, and must be agreed in advance in th
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ScenarioSetting"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSystemEntityList"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemEntityList"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid145"/>
         <rdfs:comment>This message is sent by each system to a marshalling server upon receipt of a SubmitInitialization message.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid145">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSystemEntityList"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemEntityList"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ObjectInitializationBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSystemEntityList"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemEntityList"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid145"/>
         <rdfs:comment>A C2SIM system may provide to the marshalling server its own system entity list, which the server can use to compile a master list.</rdfs:comment>
     </owl:Axiom>
     
@@ -3044,20 +2877,8 @@ The namespace and the name are free strings, and must be agreed in advance in th
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#OrderBody">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DomainMessageBody"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTask"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Task"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid148"/>
+        <rdfs:subClassOf rdf:nodeID="genid150"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasIssuedTime"/>
@@ -3065,89 +2886,66 @@ The namespace and the name are free strings, and must be agreed in advance in th
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTaskReference"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOrderID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasRequestingEntity"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid153"/>
+        <rdfs:subClassOf rdf:nodeID="genid155"/>
+        <rdfs:subClassOf rdf:nodeID="genid157"/>
         <rdfs:comment>The structure for sending order messages.
 This message may define tasks, or it may refer to tasks defined elsewhere (such as in an initialization message).
 An order generally comes from an entity with command authority and thus is expected to be obeyed if it is physically possible to do so.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid148">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid150">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTask"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Task"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid153">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTaskReference"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid155">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOrderID"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid157">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasRequestingEntity"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OrderBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntity"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#MapGraphic"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid148"/>
         <rdfs:comment>This optional property allows the order to define map graphics for use in the task.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OrderBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTask"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Task"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid150"/>
         <rdfs:comment>This is the definition of a task for this order. This property is optional, as the order may instead provide the unique identifier of a task defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OrderBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasTaskReference"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid153"/>
         <rdfs:comment>This is the unique identifier of an individual of Task class. This property is optional, as the individual may be defined in this message in the hasTask property.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OrderBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasOrderID"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid155"/>
         <rdfs:comment>This is the unique identifier of an individual order.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#OrderBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasRequestingEntity"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid157"/>
         <rdfs:comment>The ID must refer to an Actor individual. 
 The entity issuing the order might not  be the same as the Sender, if the order was relayed through another unit. This optional property supports this case.</rdfs:comment>
     </owl:Axiom>
@@ -3176,25 +2974,18 @@ The entity issuing the order might not  be the same as the Sender, if the order 
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Orientation">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#PhysicalConcept"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasHeadingAngle"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid159"/>
         <rdfs:comment>Represents the direction in which an entity is oriented; typically the direction it is facing. Where this class is used, C2SIM Coalitions must state whether they require values for both EulerAngles, Heading, or both. In the absence of specification both are required.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid159">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasHeadingAngle"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Orientation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasHeadingAngle"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#angle"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid159"/>
         <rdfs:comment>Angle in radians, clockwise from north.</rdfs:comment>
     </owl:Axiom>
     
@@ -3204,25 +2995,18 @@ The entity issuing the order might not  be the same as the Sender, if the order 
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#Overlay">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#AbstractObject"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityReference"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid161"/>
         <rdfs:comment>A logical grouping of Entities (units, graphics, etc.) for purposes of conveniently referring to them.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid161">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityReference"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Overlay"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityReference"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid161"/>
         <rdfs:comment>This is the unique identifier of an individual of the Entity class that is in this overlay. The individual is defined elsewhere. The entity could be an actor or a graphic, for example.</rdfs:comment>
     </owl:Axiom>
     
@@ -3314,13 +3098,7 @@ The entity issuing the order might not  be the same as the Sender, if the order 
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#PhysicalState">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityState"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityHealthStatus"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityHealthStatus"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid167"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasLocation"/>
@@ -3352,16 +3130,15 @@ The entity issuing the order might not  be the same as the Sender, if the order 
         <rdfs:comment>Description of the physical state of an entity, including location, orientation, health, speed, etc.
 Note that an EnvironmentalState class should be a subclass of PhysicalState. The EnvironmentalState could be the state of, for example, a smoke plume, which would have a location and could have direction, orientation, and speed.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid167">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityHealthStatus"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityHealthStatus"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#PhysicalState"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityHealthStatus"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#EntityHealthStatus"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid167"/>
         <rdfs:comment>This property has cardinality 0+ to allow for multiple health measures, e.g. operational status and a resource status.</rdfs:comment>
     </owl:Axiom>
     
@@ -3484,25 +3261,18 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubjectEntity"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid184"/>
         <rdfs:comment>The content of a report that is used primarily to convey the position of an entity.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid184">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubjectEntity"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#PositionReportContent"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSubjectEntity"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid184"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class. This property is omitted if the report is about the reporting entity. However, it must be included if the report is about, e.g., a subordinate.</rdfs:comment>
     </owl:Axiom>
     
@@ -3592,25 +3362,18 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SpatialOffset"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid191"/>
         <rdfs:comment>A location defined by an offset to some reference location.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid191">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityReference"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RelativeLocation"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEntityReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid191"/>
         <rdfs:comment>This is the unique identifier of an individual of the Entity class whose location is the reference for this location. The individual is defined elsewhere.</rdfs:comment>
     </owl:Axiom>
     
@@ -3634,25 +3397,18 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TimeReferenceCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEventReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid195"/>
         <rdfs:comment>Specifies an absolute time relative to the start or end time of an event.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid195">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEventReference"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#RelativeTime"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasEventReference"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid195"/>
         <rdfs:comment>This is the unique identifier of an individual of theh Event class that is the reference for this time instant. If the Event has a duration, then the time reference is the start time of the event.</rdfs:comment>
     </owl:Axiom>
     
@@ -3685,25 +3441,18 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasReportingEntity"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid199"/>
         <rdfs:comment>The structure for sending report messages.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid199">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasReportingEntity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ReportBody"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasReportingEntity"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid199"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class, that is making the report.</rdfs:comment>
     </owl:Axiom>
     
@@ -3720,25 +3469,18 @@ Note that an EnvironmentalState class should be a subclass of PhysicalState. The
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#DateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDuration"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Duration"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid202"/>
         <rdfs:comment>This is a collection class that may be used for different types of messages reporting information to other systems.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid202">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDuration"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Duration"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#ReportContent"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasDuration"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Duration"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid202"/>
         <rdfs:comment>Optional duration to specify the interval of time (a duration prior to the given observation time) over which the observation was made.</rdfs:comment>
     </owl:Axiom>
     
@@ -4203,13 +3945,7 @@ Used to define the type of an Entity for its representation and modeling in simu
 
     <owl:Class rdf:about="http://www.sisostds.org/ontologies/C2SIM#SystemEntityList">
         <rdfs:subClassOf rdf:resource="http://www.sisostds.org/ontologies/C2SIM#InitializationConcept"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid230"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasSystemName"/>
@@ -4220,16 +3956,15 @@ Used to define the type of an Entity for its representation and modeling in simu
         <rdfs:comment>This is a listing of entities that reside within a system. The list defines what system a message should be sent to in order to get it to a given actor.  Each entity can reside on only one system. This list does not define necessarily define the complete list of entities on the given system.
 Systems can build a map from this and other lists to get the system from a given entity.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid230">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#SystemEntityList"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasActorReference"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid230"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class.</rdfs:comment>
     </owl:Axiom>
     
@@ -4283,20 +4018,8 @@ Systems can build a map from this and other lists to get the system from a given
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TimeInstant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAffectedEntity"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPerformingEntity"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid238"/>
+        <rdfs:subClassOf rdf:nodeID="genid240"/>
         <rdfs:comment>A request for an actor in the domain to perform a Task. The actor to perform the Task is indicated by the hasPerformingEntity property of the Task.</rdfs:comment>
         <rdfs:comment>An Action that takes place over time, and is performed by an Entity to change the state of the world.
 Must identify WHO, WHAT, WHEN and WHERE.
@@ -4306,28 +4029,26 @@ WHEN is represented by the start time/duration/end time (2 of 3)
 WHERE is represented by hasLocation and/or hasMapGraphicID reference.
 WHY may be represented by hasDesiredEffect.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid238">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAffectedEntity"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
+    <owl:Restriction rdf:nodeID="genid240">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPerformingEntity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Task"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasAffectedEntity"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid238"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class.</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#Task"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasPerformingEntity"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid240"/>
         <rdfs:comment>This is the unique identifier of an individual of the ActorEntity class.</rdfs:comment>
     </owl:Axiom>
     
@@ -4369,25 +4090,18 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
                 <owl:onClass rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TaskStatusCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:nodeID="genid244"/>
         <rdfs:comment>The status of a task, provided before, during or after a task is executed.</rdfs:comment>
     </owl:Class>
+    <owl:Restriction rdf:nodeID="genid244">
+        <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
+    </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://www.sisostds.org/ontologies/C2SIM#TaskStatus"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sisostds.org/ontologies/C2SIM#hasCurrentTask"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.sisostds.org/ontologies/C2SIM#UUIDBase"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
+        <owl:annotatedTarget rdf:nodeID="genid244"/>
         <rdfs:comment>The task whose status is being reported.</rdfs:comment>
     </owl:Axiom>
     
@@ -13755,5 +13469,5 @@ WHY may be represented by hasDesiredEffect.</rdfs:comment>
 
 
 
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
 
